@@ -24,6 +24,8 @@ body {
     --footer-link--font-size: 16px;
 
     --footer-list-title--font-size: 24px;
+    --title-of-group--font-size: 21px;
+    --title-of-group--padding: 4px 0;
 
     --wrapper-margin: 0 auto;
     --wrapper-padding: 0 16px 0 16px;

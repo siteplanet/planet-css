@@ -10,8 +10,11 @@ export namespace Components {
     }
     interface PlanetFooter {
     }
+    interface PlanetFooterLink {
+        "href": string;
+    }
     interface PlanetFooterList {
-        "title": string;
+        "titleOfList": string;
     }
     interface PlanetWrapper {
     }
@@ -29,6 +32,12 @@ declare global {
         prototype: HTMLPlanetFooterElement;
         new (): HTMLPlanetFooterElement;
     };
+    interface HTMLPlanetFooterLinkElement extends Components.PlanetFooterLink, HTMLStencilElement {
+    }
+    var HTMLPlanetFooterLinkElement: {
+        prototype: HTMLPlanetFooterLinkElement;
+        new (): HTMLPlanetFooterLinkElement;
+    };
     interface HTMLPlanetFooterListElement extends Components.PlanetFooterList, HTMLStencilElement {
     }
     var HTMLPlanetFooterListElement: {
@@ -44,6 +53,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-footer": HTMLPlanetFooterElement;
+        "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
     }
@@ -53,14 +63,18 @@ declare namespace LocalJSX {
     }
     interface PlanetFooter {
     }
+    interface PlanetFooterLink {
+        "href"?: string;
+    }
     interface PlanetFooterList {
-        "title"?: string;
+        "titleOfList"?: string;
     }
     interface PlanetWrapper {
     }
     interface IntrinsicElements {
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-footer": PlanetFooter;
+        "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
         "planet-wrapper": PlanetWrapper;
     }
@@ -71,6 +85,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
+            "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;
         }

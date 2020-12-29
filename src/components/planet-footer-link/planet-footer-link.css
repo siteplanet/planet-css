@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  font-size: var(--footer-link--font-size);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAVCAYAAACkCdXRAAAACXBIWXMAAAsSAAALEgHS3X78AAAA8UlEQVQ4ja3UsQrCMBAG4F+5JaBuGfoCfQAfwknfQvQB8gKKcycn3Vzci88hOPcVOip0KVQCJ4SSC4ntQaA9wsddc+mk6zqMFdPRpBBWN+3crsEYIxe7UkCpsgOAnNe9btp8CGar+vBzBuAaA3oxragCsAFQcWoWA4oHoBW9AexTwOBoBMCVb3/U0Dqn61ZVakWnZMwBSwALJ73Vil6/l5QbYHpQ6UI2KLIqO3drJ3XTis79fUGMWysALJ30USt6+PaLmPDRRUjEPJC9DUYreoY6kSozPWjHtyIY0mkWPKjRkA1xzrjVLBYKYv/EeL9tAF+M62N2w660RgAAAABJRU5ErkJggg==);
+  background-position: -5px 50%;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 0px 8px 20px;
+  line-height: 1.4;
+}
+
+a {
+  color: rgba(255, 255, 255, .6);
+  text-decoration: none;
+  transition: color 0.3s ease 0s;
+}
+
+a:hover {
+  color: #000000;
+}

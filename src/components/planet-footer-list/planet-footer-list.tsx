@@ -9,12 +9,12 @@ export class PlanetFooterList {
   /*
     Title of the list
   */
-  @Prop() title: string;
+  @Prop() titleOfList: string;
 
   render() {
     return (
       <Host>
-        <h5 class="planet-footer-list__title">{this.title}</h5>
+        <h5 class="planet-footer-list__title">{this.titleOfList}</h5>
         <slot></slot>
       </Host>
     );

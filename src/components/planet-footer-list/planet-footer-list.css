@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  flex: 1;
+  max-width: 25%;
+  min-width: 25%;
+}
+
+.planet-footer-list__title {
+  color: var(--footer--color, var(--color--text-complementary));
+  font-size: var(--footer-list-title--font-size);
+  margin: 0;
+}

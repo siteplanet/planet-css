@@ -3,6 +3,8 @@ body {
 }
 
 :root {
+    --color--text-complementary: rgba(255, 255, 255, .8);
+
     --padding-1: 4px;
     --padding-2: 8px;
     --padding-3: 12px;
@@ -13,6 +15,12 @@ body {
     --copyright-bar--font-size: 18px;
     --copyright-bar--height: 70px;
     --copyright-bar--text-align: center;
+
+    --footer--background: #4c4c4d;
+    --footer--min-height: 220px;
+    --footer--padding: 16px 0 16px 0;
+
+    --footer-list-title--font-size: 24px;
 
     --wrapper-margin: 0 auto;
     --wrapper-padding: 0 16px 0 16px;

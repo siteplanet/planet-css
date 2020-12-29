@@ -1,0 +1,11 @@
+:host {
+  box-sizing: border-box;
+  display: block;
+  background-color: var(--footer--background);
+  min-height: var(--footer--min-height);
+  padding: var(--footer--padding);
+}
+
+.plannet-footer__content {
+  display: flex;
+}

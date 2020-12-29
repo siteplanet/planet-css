@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { WrapperComponent } from './wrapper';
+import { WrapperComponent } from '../wrapper';
 
 describe('planet-wrapper', () => {
   it('renders', async () => {

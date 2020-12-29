@@ -6,10 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface PlanetCopyrightBar {
+    }
     interface PlanetWrapper {
     }
 }
 declare global {
+    interface HTMLPlanetCopyrightBarElement extends Components.PlanetCopyrightBar, HTMLStencilElement {
+    }
+    var HTMLPlanetCopyrightBarElement: {
+        prototype: HTMLPlanetCopyrightBarElement;
+        new (): HTMLPlanetCopyrightBarElement;
+    };
     interface HTMLPlanetWrapperElement extends Components.PlanetWrapper, HTMLStencilElement {
     }
     var HTMLPlanetWrapperElement: {
@@ -17,13 +25,17 @@ declare global {
         new (): HTMLPlanetWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
     }
 }
 declare namespace LocalJSX {
+    interface PlanetCopyrightBar {
+    }
     interface PlanetWrapper {
     }
     interface IntrinsicElements {
+        "planet-copyright-bar": PlanetCopyrightBar;
         "planet-wrapper": PlanetWrapper;
     }
 }
@@ -31,6 +43,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;
         }
     }

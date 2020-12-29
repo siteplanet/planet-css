@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  background-color: var(--copyright-bar--background);
+  color: var(--copyright-bar--color);
+  font-size: var(--copyright-bar--font-size);
+  height: var(--copyright-bar--height);
+  text-align: var(--copyright-bar--text-align);
+  line-height: var(--copyright-bar--height);
+}

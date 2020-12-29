@@ -8,6 +8,12 @@ body {
     --padding-3: 12px;
     --padding-4: 16px;
 
+    --copyright-bar--background: #1a1a1a;
+    --copyright-bar--color: rgba(255, 255, 255, .8);
+    --copyright-bar--font-size: 18px;
+    --copyright-bar--height: 70px;
+    --copyright-bar--text-align: center;
+
     --wrapper-margin: 0 auto;
     --wrapper-padding: 0 16px 0 16px;
 }

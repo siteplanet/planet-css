@@ -14,7 +14,7 @@ export class PlanetFooterList {
   render() {
     return (
       <Host>
-        <h5 class="planet-footer-list__title">{this.title}</h5>
+        <planet-title-of-group>{this.title}</planet-title-of-group>
         <slot></slot>
       </Host>
     );

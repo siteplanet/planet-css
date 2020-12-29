@@ -13,6 +13,8 @@ export namespace Components {
     interface PlanetFooterList {
         "title": string;
     }
+    interface PlanetTitleOfGroup {
+    }
     interface PlanetWrapper {
     }
 }
@@ -35,6 +37,12 @@ declare global {
         prototype: HTMLPlanetFooterListElement;
         new (): HTMLPlanetFooterListElement;
     };
+    interface HTMLPlanetTitleOfGroupElement extends Components.PlanetTitleOfGroup, HTMLStencilElement {
+    }
+    var HTMLPlanetTitleOfGroupElement: {
+        prototype: HTMLPlanetTitleOfGroupElement;
+        new (): HTMLPlanetTitleOfGroupElement;
+    };
     interface HTMLPlanetWrapperElement extends Components.PlanetWrapper, HTMLStencilElement {
     }
     var HTMLPlanetWrapperElement: {
@@ -45,6 +53,7 @@ declare global {
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
+        "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
     }
 }
@@ -56,12 +65,15 @@ declare namespace LocalJSX {
     interface PlanetFooterList {
         "title"?: string;
     }
+    interface PlanetTitleOfGroup {
+    }
     interface PlanetWrapper {
     }
     interface IntrinsicElements {
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-footer": PlanetFooter;
         "planet-footer-list": PlanetFooterList;
+        "planet-title-of-group": PlanetTitleOfGroup;
         "planet-wrapper": PlanetWrapper;
     }
 }
@@ -72,6 +84,7 @@ declare module "@stencil/core" {
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
+            "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;
         }
     }

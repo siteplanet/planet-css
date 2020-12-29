@@ -14,7 +14,7 @@ export class PlanetFooterLink {
   render() {
     return (
       <Host>
-        <a href={this.href}>
+        <a href={this.href} tabindex="0">
           <slot></slot>
         </a>
       </Host>

@@ -5,7 +5,7 @@ import { Component, h } from '@stencil/core';
   styleUrl: 'wrapper.css',
   shadow: true,
 })
-export class WrapperComponent {
+export class PlanetWrapper {
   render() {
     return <slot></slot>;
   }

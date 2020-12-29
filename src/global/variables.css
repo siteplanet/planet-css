@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+:root {
+    --padding-1: 4px;
+    --padding-2: 8px;
+    --padding-3: 12px;
+    --padding-4: 16px;
+
+    --wrapper-margin: 0 auto;
+    --wrapper-padding: 0 16px 0 16px;
+}

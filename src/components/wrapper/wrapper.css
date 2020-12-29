@@ -1,0 +1,5 @@
+:host {
+  display: block;
+  margin: var(--wrapper-margin);
+  padding: var(--wrapper-padding);
+}

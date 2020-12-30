@@ -5,6 +5,7 @@ body {
 
 :root {
     --color--text-complementary: rgba(255, 255, 255, .8);
+    --color--text-header: rgba(0, 0, 0, .85);
 
     --row: 0 -8px;
     --col: 0 8px;
@@ -35,6 +36,14 @@ body {
     --title-of-group--font-size: 21px;
     --title-of-group--margin: 0 0 8px 0;
     --title-of-group--padding: 4px 0;
+
+    --title-of-page--font-size: 2.7rem;
+    --title-of-page--font-size-small: 5.5vw;
+    --title-of-page--margin: 0;
+    --title-of-page--padding: 20px 0 12px 0;
+    --title-of-page--text-align: left;
+    --title-of-page--text-align-small: center;
+    --title-of-page--weight: 700;
 
     --wrapper-margin: 0 auto;
     --wrapper-padding: 0 16px 0 16px;

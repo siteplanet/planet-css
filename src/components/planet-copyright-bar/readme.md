@@ -1,4 +1,4 @@
-# Wrapper
+# planet-copyright-bar
 
 
 
@@ -7,17 +7,15 @@
 
 ## Dependencies
 
-### Used by
+### Depends on
 
- - [planet-copyright-bar](../planet-copyright-bar)
- - [planet-footer](../planet-footer)
+- [planet-wrapper](../planet-wrapper)
 
 ### Graph
 ```mermaid
 graph TD;
   planet-copyright-bar --> planet-wrapper
-  planet-footer --> planet-wrapper
-  style planet-wrapper fill:#f9f,stroke:#333,stroke-width:4px
+  style planet-copyright-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

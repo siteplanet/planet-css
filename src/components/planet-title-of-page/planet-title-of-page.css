@@ -1,0 +1,16 @@
+.title-of-page {
+  box-sizing: border-box;
+  color: var(--color--text-header);
+  font-size: var(--title-of-page--font-size-small);
+  font-weight: var(--title-of-page--weight);
+  margin: var(--title-of-page--margin);
+  padding: var(--title-of-page--padding);
+  text-align: var(--title-of-page--text-align-small);
+}
+
+@media only screen and (min-width: 960px) {
+  .title-of-page {
+      font-size: var(--title-of-page--font-size);
+      text-align: var(--title-of-page--text-align);
+  }
+}

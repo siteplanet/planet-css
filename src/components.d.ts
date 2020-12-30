@@ -18,6 +18,8 @@ export namespace Components {
     }
     interface PlanetTitleOfGroup {
     }
+    interface PlanetTitleOfPage {
+    }
     interface PlanetWrapper {
     }
 }
@@ -52,6 +54,12 @@ declare global {
         prototype: HTMLPlanetTitleOfGroupElement;
         new (): HTMLPlanetTitleOfGroupElement;
     };
+    interface HTMLPlanetTitleOfPageElement extends Components.PlanetTitleOfPage, HTMLStencilElement {
+    }
+    var HTMLPlanetTitleOfPageElement: {
+        prototype: HTMLPlanetTitleOfPageElement;
+        new (): HTMLPlanetTitleOfPageElement;
+    };
     interface HTMLPlanetWrapperElement extends Components.PlanetWrapper, HTMLStencilElement {
     }
     var HTMLPlanetWrapperElement: {
@@ -64,6 +72,7 @@ declare global {
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
+        "planet-title-of-page": HTMLPlanetTitleOfPageElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
     }
 }
@@ -80,6 +89,8 @@ declare namespace LocalJSX {
     }
     interface PlanetTitleOfGroup {
     }
+    interface PlanetTitleOfPage {
+    }
     interface PlanetWrapper {
     }
     interface IntrinsicElements {
@@ -88,6 +99,7 @@ declare namespace LocalJSX {
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
         "planet-title-of-group": PlanetTitleOfGroup;
+        "planet-title-of-page": PlanetTitleOfPage;
         "planet-wrapper": PlanetWrapper;
     }
 }
@@ -100,6 +112,7 @@ declare module "@stencil/core" {
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
+            "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;
         }
     }

@@ -16,6 +16,9 @@ export namespace Components {
     interface PlanetFooterList {
         "titleOfList": string;
     }
+    interface PlanetOverlayNavigation {
+        "open": boolean;
+    }
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
@@ -48,6 +51,12 @@ declare global {
         prototype: HTMLPlanetFooterListElement;
         new (): HTMLPlanetFooterListElement;
     };
+    interface HTMLPlanetOverlayNavigationElement extends Components.PlanetOverlayNavigation, HTMLStencilElement {
+    }
+    var HTMLPlanetOverlayNavigationElement: {
+        prototype: HTMLPlanetOverlayNavigationElement;
+        new (): HTMLPlanetOverlayNavigationElement;
+    };
     interface HTMLPlanetTitleOfGroupElement extends Components.PlanetTitleOfGroup, HTMLStencilElement {
     }
     var HTMLPlanetTitleOfGroupElement: {
@@ -71,6 +80,7 @@ declare global {
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
+        "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-title-of-page": HTMLPlanetTitleOfPageElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
@@ -87,6 +97,9 @@ declare namespace LocalJSX {
     interface PlanetFooterList {
         "titleOfList"?: string;
     }
+    interface PlanetOverlayNavigation {
+        "open"?: boolean;
+    }
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
@@ -98,6 +111,7 @@ declare namespace LocalJSX {
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
+        "planet-overlay-navigation": PlanetOverlayNavigation;
         "planet-title-of-group": PlanetTitleOfGroup;
         "planet-title-of-page": PlanetTitleOfPage;
         "planet-wrapper": PlanetWrapper;
@@ -111,6 +125,7 @@ declare module "@stencil/core" {
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
+            "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;

@@ -5,7 +5,7 @@ import { Component, Host, h } from '@stencil/core';
   styleUrl: 'copyright-bar.css',
   shadow: true,
 })
-export class CopyrightBar {
+export class PlanetCopyrightBar {
 
   render() {
     return (

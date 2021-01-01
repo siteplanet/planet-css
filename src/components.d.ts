@@ -10,8 +10,11 @@ export namespace Components {
     }
     interface PlanetFooter {
     }
+    interface PlanetFooterLink {
+        "href": string;
+    }
     interface PlanetFooterList {
-        "title": string;
+        "titleOfList": string;
     }
     interface PlanetOverlayNavigation {
         "open": boolean;
@@ -33,6 +36,12 @@ declare global {
     var HTMLPlanetFooterElement: {
         prototype: HTMLPlanetFooterElement;
         new (): HTMLPlanetFooterElement;
+    };
+    interface HTMLPlanetFooterLinkElement extends Components.PlanetFooterLink, HTMLStencilElement {
+    }
+    var HTMLPlanetFooterLinkElement: {
+        prototype: HTMLPlanetFooterLinkElement;
+        new (): HTMLPlanetFooterLinkElement;
     };
     interface HTMLPlanetFooterListElement extends Components.PlanetFooterList, HTMLStencilElement {
     }
@@ -61,6 +70,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-footer": HTMLPlanetFooterElement;
+        "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
@@ -72,8 +82,11 @@ declare namespace LocalJSX {
     }
     interface PlanetFooter {
     }
+    interface PlanetFooterLink {
+        "href"?: string;
+    }
     interface PlanetFooterList {
-        "title"?: string;
+        "titleOfList"?: string;
     }
     interface PlanetOverlayNavigation {
         "open"?: boolean;
@@ -85,6 +98,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-footer": PlanetFooter;
+        "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
         "planet-overlay-navigation": PlanetOverlayNavigation;
         "planet-title-of-group": PlanetTitleOfGroup;
@@ -97,6 +111,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
+            "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;

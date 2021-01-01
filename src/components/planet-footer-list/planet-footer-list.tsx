@@ -9,12 +9,12 @@ export class PlanetFooterList {
   /*
     Title of the list
   */
-  @Prop() title: string;
+  @Prop() titleOfList: string;
 
   render() {
     return (
       <Host>
-        <planet-title-of-group>{this.title}</planet-title-of-group>
+        <planet-title-of-group>{this.titleOfList}</planet-title-of-group>
         <slot></slot>
       </Host>
     );

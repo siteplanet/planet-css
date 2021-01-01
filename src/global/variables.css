@@ -6,10 +6,14 @@ body {
 :root {
     --color--text-complementary: rgba(255, 255, 255, .8);
 
+    --row: 0 -8px;
+    --col: 0 8px;
+
     --padding-1: 4px;
     --padding-2: 8px;
     --padding-3: 12px;
     --padding-4: 16px;
+    --padding-6: 24px;
 
     --copyright-bar--background: #1a1a1a;
     --copyright-bar--color: rgba(255, 255, 255, .8);
@@ -21,7 +25,15 @@ body {
     --footer--min-height: 220px;
     --footer--padding: 16px 0 16px 0;
 
+    --footer-link--border: 1px solid rgba(255, 255, 255, 0.1);
+    --footer-link--color: rgba(255, 255, 255, .6);
+    --footer-link--line-height: 1.4;
+    --footer-link--font-size: 16px;
+
+    --footer-list-title--font-size: 24px;
+
     --title-of-group--font-size: 21px;
+    --title-of-group--margin: 0 0 8px 0;
     --title-of-group--padding: 4px 0;
 
     --wrapper-margin: 0 auto;

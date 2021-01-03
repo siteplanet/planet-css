@@ -3,3 +3,10 @@
   margin: var(--wrapper-margin);
   padding: var(--wrapper-padding);
 }
+
+@media only screen and (max-width: 959px) {
+  :host {
+    margin: var(--wrapper-margin-small, var(--wrapper-margin));
+    padding: var(--wrapper-padding-small, var(--wrapper-padding));
+  }
+}

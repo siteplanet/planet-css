@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'planet-footer-link',
@@ -6,17 +6,17 @@ import { Component, Host, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class PlanetFooterLink {
-  /*
-    Target of the link
-  */
- @Prop() href: string;
+//   /*
+//     Target of the link
+//   */
+//  @Prop() href: string;
 
   render() {
     return (
       <Host>
-        <a href={this.href} tabindex="0">
+        {/* <a href={this.href} tabindex="0"> */}
           <slot></slot>
-        </a>
+        {/* </a> */}
       </Host>
     );
   }

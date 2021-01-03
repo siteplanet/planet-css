@@ -11,7 +11,6 @@ export namespace Components {
     interface PlanetFooter {
     }
     interface PlanetFooterLink {
-        "href": string;
     }
     interface PlanetFooterList {
         "titleOfList": string;
@@ -92,7 +91,6 @@ declare namespace LocalJSX {
     interface PlanetFooter {
     }
     interface PlanetFooterLink {
-        "href"?: string;
     }
     interface PlanetFooterList {
         "titleOfList"?: string;

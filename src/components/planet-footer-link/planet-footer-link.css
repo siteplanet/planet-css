@@ -2,7 +2,7 @@
   display: block;
 }
 
-a {
+::slotted(a), a {
   color: var(--footer-link--color);
   display: block;
   text-decoration: none;
@@ -17,6 +17,6 @@ a {
   line-height: var(--footer-link--line-height);
 }
 
-a:hover {
+::slotted(a:hover), a:hover {
   color: #000000;
 }

@@ -5,7 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { PlanetAlertSeverity } from "./components/planet-alert/planet-alert-severity.enum";
 export namespace Components {
+    interface PlanetAlert {
+        "severity": PlanetAlertSeverity;
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetFooter {
@@ -26,6 +30,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLPlanetAlertElement extends Components.PlanetAlert, HTMLStencilElement {
+    }
+    var HTMLPlanetAlertElement: {
+        prototype: HTMLPlanetAlertElement;
+        new (): HTMLPlanetAlertElement;
+    };
     interface HTMLPlanetCopyrightBarElement extends Components.PlanetCopyrightBar, HTMLStencilElement {
     }
     var HTMLPlanetCopyrightBarElement: {
@@ -75,6 +85,7 @@ declare global {
         new (): HTMLPlanetWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "planet-alert": HTMLPlanetAlertElement;
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
@@ -86,6 +97,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PlanetAlert {
+        "severity"?: PlanetAlertSeverity;
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetFooter {
@@ -105,6 +119,7 @@ declare namespace LocalJSX {
     interface PlanetWrapper {
     }
     interface IntrinsicElements {
+        "planet-alert": PlanetAlert;
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
@@ -119,6 +134,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "planet-alert": LocalJSX.PlanetAlert & JSXBase.HTMLAttributes<HTMLPlanetAlertElement>;
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;

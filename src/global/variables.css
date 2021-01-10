@@ -4,6 +4,12 @@ body {
 }
 
 :root {
+    --alert--background-color: #ecc66c;
+    --alert--font-size: 20px;
+    --alert--weight: 600;
+    --alert--line-height: 1.6;
+    --alert--padding: 16px 0 16px 0;
+
     --color--text-complementary: rgba(255, 255, 255, .8);
     --color--text-header: rgba(0, 0, 0, .85);
 
@@ -33,6 +39,11 @@ body {
 
     --footer-list-title--font-size: 24px;
 
+    --severity-error--background-color: #e98396;
+    --severity-info--background-color: #96e5eb;
+    --severity-success--background-color: #b7eba3;
+    --severity-warning--background-color: #ecc66c;
+
     --title-of-group--font-size: 21px;
     --title-of-group--margin: 0 0 8px 0;
     --title-of-group--padding: 4px 0;
@@ -47,4 +58,8 @@ body {
 
     --wrapper-margin: 0 auto;
     --wrapper-padding: 0 16px 0 16px;
+}
+
+planet-alert + planet-alert {
+    margin-top: 4px;
 }

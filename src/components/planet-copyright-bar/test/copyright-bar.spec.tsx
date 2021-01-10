@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CopyrightBar } from '../copyright-bar';
+import { PlanetCopyrightBar } from '../copyright-bar';
 
 describe('copyright-bar', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CopyrightBar],
+      components: [PlanetCopyrightBar],
       html: `<planet-copyright-bar></planet-copyright-bar>`,
     });
     expect(page.root).toEqualHtml(`
@@ -20,7 +20,7 @@ describe('copyright-bar', () => {
 
   it('renders with content', async () => {
     const page = await newSpecPage({
-      components: [CopyrightBar],
+      components: [PlanetCopyrightBar],
       html: `<planet-copyright-bar>Content</planet-copyright-bar>`,
     });
     expect(page.root).toEqualHtml(`

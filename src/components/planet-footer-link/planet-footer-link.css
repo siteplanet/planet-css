@@ -15,8 +15,10 @@
   border-bottom: var(--footer-link--border);
   padding: 8px 0px 8px 20px;
   line-height: var(--footer-link--line-height);
+  transition: 0.2s all ease;
 }
 
 ::slotted(a:hover), a:hover {
-  color: #000000;
+  color: var(--footer-link--color-hover);
+  font-weight: bold;
 }

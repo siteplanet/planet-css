@@ -37,6 +37,7 @@ body {
     --footer-link--line-height: 1.4;
     --footer-link--font-size: 16px;
 
+    --footer-list-title--color: rgba(255, 255, 255, .8);
     --footer-list-title--font-size: 24px;
 
     --severity-error--background-color: #e98396;
@@ -44,6 +45,7 @@ body {
     --severity-success--background-color: #b7eba3;
     --severity-warning--background-color: #ecc66c;
 
+    --title-of-group--color: rgba(255, 255, 255, .8);
     --title-of-group--font-size: 21px;
     --title-of-group--margin: 0 0 8px 0;
     --title-of-group--padding: 4px 0;

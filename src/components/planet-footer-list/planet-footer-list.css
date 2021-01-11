@@ -14,3 +14,7 @@
     min-width: 50%;
   }
 }
+
+planet-title-of-group {
+  color: var(--footer-list-title--color, var(--title-of-group--color));
+}

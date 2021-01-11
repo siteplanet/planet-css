@@ -12,6 +12,9 @@ export namespace Components {
     }
     interface PlanetCopyrightBar {
     }
+    interface PlanetCoverOfPage {
+        "imageUrl": string;
+    }
     interface PlanetFooter {
     }
     interface PlanetFooterLink {
@@ -41,6 +44,12 @@ declare global {
     var HTMLPlanetCopyrightBarElement: {
         prototype: HTMLPlanetCopyrightBarElement;
         new (): HTMLPlanetCopyrightBarElement;
+    };
+    interface HTMLPlanetCoverOfPageElement extends Components.PlanetCoverOfPage, HTMLStencilElement {
+    }
+    var HTMLPlanetCoverOfPageElement: {
+        prototype: HTMLPlanetCoverOfPageElement;
+        new (): HTMLPlanetCoverOfPageElement;
     };
     interface HTMLPlanetFooterElement extends Components.PlanetFooter, HTMLStencilElement {
     }
@@ -87,6 +96,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "planet-alert": HTMLPlanetAlertElement;
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
+        "planet-cover-of-page": HTMLPlanetCoverOfPageElement;
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
@@ -101,6 +111,9 @@ declare namespace LocalJSX {
         "severity"?: PlanetAlertSeverity;
     }
     interface PlanetCopyrightBar {
+    }
+    interface PlanetCoverOfPage {
+        "imageUrl"?: string;
     }
     interface PlanetFooter {
     }
@@ -121,6 +134,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "planet-alert": PlanetAlert;
         "planet-copyright-bar": PlanetCopyrightBar;
+        "planet-cover-of-page": PlanetCoverOfPage;
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
@@ -136,6 +150,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "planet-alert": LocalJSX.PlanetAlert & JSXBase.HTMLAttributes<HTMLPlanetAlertElement>;
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
+            "planet-cover-of-page": LocalJSX.PlanetCoverOfPage & JSXBase.HTMLAttributes<HTMLPlanetCoverOfPageElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;

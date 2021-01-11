@@ -1,0 +1,7 @@
+:host {
+  display: block;
+  background-color: rgb(186, 202, 206);
+  background-position: center;
+  background-size: cover;
+  min-height: 300px;
+}

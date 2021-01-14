@@ -28,6 +28,10 @@ export namespace Components {
     interface PlanetFooterList {
         "titleOfList": string;
     }
+    interface PlanetItem {
+    }
+    interface PlanetLabel {
+    }
     interface PlanetOverlayNavigation {
         "open": boolean;
     }
@@ -93,6 +97,18 @@ declare global {
         prototype: HTMLPlanetFooterListElement;
         new (): HTMLPlanetFooterListElement;
     };
+    interface HTMLPlanetItemElement extends Components.PlanetItem, HTMLStencilElement {
+    }
+    var HTMLPlanetItemElement: {
+        prototype: HTMLPlanetItemElement;
+        new (): HTMLPlanetItemElement;
+    };
+    interface HTMLPlanetLabelElement extends Components.PlanetLabel, HTMLStencilElement {
+    }
+    var HTMLPlanetLabelElement: {
+        prototype: HTMLPlanetLabelElement;
+        new (): HTMLPlanetLabelElement;
+    };
     interface HTMLPlanetOverlayNavigationElement extends Components.PlanetOverlayNavigation, HTMLStencilElement {
     }
     var HTMLPlanetOverlayNavigationElement: {
@@ -127,6 +143,8 @@ declare global {
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
+        "planet-item": HTMLPlanetItemElement;
+        "planet-label": HTMLPlanetLabelElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-title-of-page": HTMLPlanetTitleOfPageElement;
@@ -155,6 +173,10 @@ declare namespace LocalJSX {
     interface PlanetFooterList {
         "titleOfList"?: string;
     }
+    interface PlanetItem {
+    }
+    interface PlanetLabel {
+    }
     interface PlanetOverlayNavigation {
         "open"?: boolean;
     }
@@ -174,6 +196,8 @@ declare namespace LocalJSX {
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
+        "planet-item": PlanetItem;
+        "planet-label": PlanetLabel;
         "planet-overlay-navigation": PlanetOverlayNavigation;
         "planet-title-of-group": PlanetTitleOfGroup;
         "planet-title-of-page": PlanetTitleOfPage;
@@ -193,6 +217,8 @@ declare module "@stencil/core" {
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
+            "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
+            "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;

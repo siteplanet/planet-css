@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { PlanetCardHeader } from '../planet-card-header';
+import { PlanetLabel } from '../planet-label';
 
-describe('planet-card-content', () => {
+describe('planet-label', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [PlanetCardHeader],
-      html: `<planet-card-content></planet-card-content>`,
+      components: [PlanetLabel],
+      html: `<planet-label></planet-label>`,
     });
     expect(page.root).toEqualHtml(`
-      <planet-card-content>
+      <planet-label>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </planet-card-content>
+      </planet-label>
     `);
   });
 });

@@ -1,6 +1,6 @@
 .title-of-page {
   box-sizing: border-box;
-  color: var(--color--text-header);
+  color: var(--color--text-content);
   font-size: var(--title-of-page--font-size-small);
   font-weight: var(--title-of-page--weight);
   margin: var(--title-of-page--margin);

@@ -1,0 +1,5 @@
+:host {
+  background-color: var(--card--background-color);
+  border-radius: var(--card--border-radius);
+  display: block;
+}

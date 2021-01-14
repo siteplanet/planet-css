@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  background-color: var(--card-header--background-color);
+  border-radius: var(--card-header--border-radius);
+  font-size: var(--card-header--font-size);
+  font-weight: var(--card-header--font-weight);
+  line-height: var(--card-header--line-height);
+  padding: var(--card-header--padding);
+}

@@ -10,6 +10,12 @@ export namespace Components {
     interface PlanetAlert {
         "severity": PlanetAlertSeverity;
     }
+    interface PlanetCard {
+    }
+    interface PlanetCardContent {
+    }
+    interface PlanetCardHeader {
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetCoverOfPage {
@@ -38,6 +44,24 @@ declare global {
     var HTMLPlanetAlertElement: {
         prototype: HTMLPlanetAlertElement;
         new (): HTMLPlanetAlertElement;
+    };
+    interface HTMLPlanetCardElement extends Components.PlanetCard, HTMLStencilElement {
+    }
+    var HTMLPlanetCardElement: {
+        prototype: HTMLPlanetCardElement;
+        new (): HTMLPlanetCardElement;
+    };
+    interface HTMLPlanetCardContentElement extends Components.PlanetCardContent, HTMLStencilElement {
+    }
+    var HTMLPlanetCardContentElement: {
+        prototype: HTMLPlanetCardContentElement;
+        new (): HTMLPlanetCardContentElement;
+    };
+    interface HTMLPlanetCardHeaderElement extends Components.PlanetCardHeader, HTMLStencilElement {
+    }
+    var HTMLPlanetCardHeaderElement: {
+        prototype: HTMLPlanetCardHeaderElement;
+        new (): HTMLPlanetCardHeaderElement;
     };
     interface HTMLPlanetCopyrightBarElement extends Components.PlanetCopyrightBar, HTMLStencilElement {
     }
@@ -95,6 +119,9 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "planet-alert": HTMLPlanetAlertElement;
+        "planet-card": HTMLPlanetCardElement;
+        "planet-card-content": HTMLPlanetCardContentElement;
+        "planet-card-header": HTMLPlanetCardHeaderElement;
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-cover-of-page": HTMLPlanetCoverOfPageElement;
         "planet-footer": HTMLPlanetFooterElement;
@@ -109,6 +136,12 @@ declare global {
 declare namespace LocalJSX {
     interface PlanetAlert {
         "severity"?: PlanetAlertSeverity;
+    }
+    interface PlanetCard {
+    }
+    interface PlanetCardContent {
+    }
+    interface PlanetCardHeader {
     }
     interface PlanetCopyrightBar {
     }
@@ -133,6 +166,9 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "planet-alert": PlanetAlert;
+        "planet-card": PlanetCard;
+        "planet-card-content": PlanetCardContent;
+        "planet-card-header": PlanetCardHeader;
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-cover-of-page": PlanetCoverOfPage;
         "planet-footer": PlanetFooter;
@@ -149,6 +185,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "planet-alert": LocalJSX.PlanetAlert & JSXBase.HTMLAttributes<HTMLPlanetAlertElement>;
+            "planet-card": LocalJSX.PlanetCard & JSXBase.HTMLAttributes<HTMLPlanetCardElement>;
+            "planet-card-content": LocalJSX.PlanetCardContent & JSXBase.HTMLAttributes<HTMLPlanetCardContentElement>;
+            "planet-card-header": LocalJSX.PlanetCardHeader & JSXBase.HTMLAttributes<HTMLPlanetCardHeaderElement>;
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-cover-of-page": LocalJSX.PlanetCoverOfPage & JSXBase.HTMLAttributes<HTMLPlanetCoverOfPageElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;

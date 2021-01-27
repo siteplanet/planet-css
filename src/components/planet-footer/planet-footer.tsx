@@ -11,7 +11,7 @@ export class PlanetFooter {
     return (
       <Host>
         <planet-wrapper>
-          <div class="plannet-footer__content">
+          <div class="planet-footer__content">
             <slot></slot>
           </div>
         </planet-wrapper>

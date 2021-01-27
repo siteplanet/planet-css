@@ -1,0 +1,32 @@
+:host {
+  background-color: var(--frameset--background, var(--color--background));
+  display: block;
+}
+
+@media only screen and (min-width: 960px) {
+  :host {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.planet-frameset__nav {
+  background-color: var(--frameset--background-nav, var(--color--background));
+  box-sizing: border-box;
+  padding: var(--frameset--padding, var(--padding-4));
+}
+
+@media only screen and (min-width: 960px) {
+  .planet-frameset__nav {
+    min-height: 100vh;
+    max-width: 300px;
+    min-width: 300px;
+    padding-bottom: 80px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .planet-frameset__main {
+    flex: 1;
+  }
+}

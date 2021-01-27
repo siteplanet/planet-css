@@ -28,6 +28,8 @@ export namespace Components {
     interface PlanetFooterList {
         "titleOfList": string;
     }
+    interface PlanetFrameset {
+    }
     interface PlanetItem {
     }
     interface PlanetLabel {
@@ -97,6 +99,12 @@ declare global {
         prototype: HTMLPlanetFooterListElement;
         new (): HTMLPlanetFooterListElement;
     };
+    interface HTMLPlanetFramesetElement extends Components.PlanetFrameset, HTMLStencilElement {
+    }
+    var HTMLPlanetFramesetElement: {
+        prototype: HTMLPlanetFramesetElement;
+        new (): HTMLPlanetFramesetElement;
+    };
     interface HTMLPlanetItemElement extends Components.PlanetItem, HTMLStencilElement {
     }
     var HTMLPlanetItemElement: {
@@ -143,6 +151,7 @@ declare global {
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
+        "planet-frameset": HTMLPlanetFramesetElement;
         "planet-item": HTMLPlanetItemElement;
         "planet-label": HTMLPlanetLabelElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
@@ -173,6 +182,8 @@ declare namespace LocalJSX {
     interface PlanetFooterList {
         "titleOfList"?: string;
     }
+    interface PlanetFrameset {
+    }
     interface PlanetItem {
     }
     interface PlanetLabel {
@@ -196,6 +207,7 @@ declare namespace LocalJSX {
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
+        "planet-frameset": PlanetFrameset;
         "planet-item": PlanetItem;
         "planet-label": PlanetLabel;
         "planet-overlay-navigation": PlanetOverlayNavigation;
@@ -217,6 +229,7 @@ declare module "@stencil/core" {
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
+            "planet-frameset": LocalJSX.PlanetFrameset & JSXBase.HTMLAttributes<HTMLPlanetFramesetElement>;
             "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
             "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;

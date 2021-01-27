@@ -10,6 +10,7 @@ body {
     --alert--line-height: 1.6;
     --alert--padding: 16px 0 16px 0;
 
+    --color--background: #e1e3e3;
     --color--text-complementary: rgba(255, 255, 255, .8);
     --color--text-content: rgba(0, 0, 0, .85);
 
@@ -53,6 +54,8 @@ body {
 
     --footer-list-title--color: rgba(255, 255, 255, .8);
     --footer-list-title--font-size: 24px;
+
+    --frameset--background-nav: #c0bebe;
 
     --severity-error--background-color: #e98396;
     --severity-info--background-color: #96e5eb;

@@ -80,5 +80,9 @@ body {
 }
 
 planet-alert + planet-alert {
-    margin-top: 4px;
+    margin-top: var(--padding-1);
+}
+
+planet-card + planet-card {
+    margin-top: var(--padding-4);
 }

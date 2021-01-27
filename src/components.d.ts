@@ -37,6 +37,8 @@ export namespace Components {
     interface PlanetOverlayNavigation {
         "open": boolean;
     }
+    interface PlanetPage {
+    }
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
@@ -123,6 +125,12 @@ declare global {
         prototype: HTMLPlanetOverlayNavigationElement;
         new (): HTMLPlanetOverlayNavigationElement;
     };
+    interface HTMLPlanetPageElement extends Components.PlanetPage, HTMLStencilElement {
+    }
+    var HTMLPlanetPageElement: {
+        prototype: HTMLPlanetPageElement;
+        new (): HTMLPlanetPageElement;
+    };
     interface HTMLPlanetTitleOfGroupElement extends Components.PlanetTitleOfGroup, HTMLStencilElement {
     }
     var HTMLPlanetTitleOfGroupElement: {
@@ -155,6 +163,7 @@ declare global {
         "planet-item": HTMLPlanetItemElement;
         "planet-label": HTMLPlanetLabelElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
+        "planet-page": HTMLPlanetPageElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-title-of-page": HTMLPlanetTitleOfPageElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
@@ -191,6 +200,8 @@ declare namespace LocalJSX {
     interface PlanetOverlayNavigation {
         "open"?: boolean;
     }
+    interface PlanetPage {
+    }
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
@@ -211,6 +222,7 @@ declare namespace LocalJSX {
         "planet-item": PlanetItem;
         "planet-label": PlanetLabel;
         "planet-overlay-navigation": PlanetOverlayNavigation;
+        "planet-page": PlanetPage;
         "planet-title-of-group": PlanetTitleOfGroup;
         "planet-title-of-page": PlanetTitleOfPage;
         "planet-wrapper": PlanetWrapper;
@@ -233,6 +245,7 @@ declare module "@stencil/core" {
             "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
             "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
+            "planet-page": LocalJSX.PlanetPage & JSXBase.HTMLAttributes<HTMLPlanetPageElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;

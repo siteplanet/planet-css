@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+::slotted(planet-card:not(:first-child)), planet-card:not(:first-child) {
+  margin-top: var(--padding-4);
+}

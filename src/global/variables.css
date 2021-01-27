@@ -79,6 +79,18 @@ body {
     --wrapper-padding: 0 16px 0 16px;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.2s all ease;
+}
+  
+a:hover {
+    color: var(--footer-link--color-hover);
+    font-weight: bold;
+}
+  
+
 planet-alert + planet-alert {
     margin-top: var(--padding-1);
 }

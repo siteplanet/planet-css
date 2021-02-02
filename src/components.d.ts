@@ -12,6 +12,10 @@ export namespace Components {
     interface PlanetAlert {
         "severity": PlanetAlertSeverity;
     }
+    interface PlanetButton {
+    }
+    interface PlanetButtonGroup {
+    }
     interface PlanetCard {
     }
     interface PlanetCardContent {
@@ -60,6 +64,18 @@ declare global {
     var HTMLPlanetAlertElement: {
         prototype: HTMLPlanetAlertElement;
         new (): HTMLPlanetAlertElement;
+    };
+    interface HTMLPlanetButtonElement extends Components.PlanetButton, HTMLStencilElement {
+    }
+    var HTMLPlanetButtonElement: {
+        prototype: HTMLPlanetButtonElement;
+        new (): HTMLPlanetButtonElement;
+    };
+    interface HTMLPlanetButtonGroupElement extends Components.PlanetButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPlanetButtonGroupElement: {
+        prototype: HTMLPlanetButtonGroupElement;
+        new (): HTMLPlanetButtonGroupElement;
     };
     interface HTMLPlanetCardElement extends Components.PlanetCard, HTMLStencilElement {
     }
@@ -160,6 +176,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "planet-action-bar": HTMLPlanetActionBarElement;
         "planet-alert": HTMLPlanetAlertElement;
+        "planet-button": HTMLPlanetButtonElement;
+        "planet-button-group": HTMLPlanetButtonGroupElement;
         "planet-card": HTMLPlanetCardElement;
         "planet-card-content": HTMLPlanetCardContentElement;
         "planet-card-header": HTMLPlanetCardHeaderElement;
@@ -183,6 +201,10 @@ declare namespace LocalJSX {
     }
     interface PlanetAlert {
         "severity"?: PlanetAlertSeverity;
+    }
+    interface PlanetButton {
+    }
+    interface PlanetButtonGroup {
     }
     interface PlanetCard {
     }
@@ -222,6 +244,8 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "planet-action-bar": PlanetActionBar;
         "planet-alert": PlanetAlert;
+        "planet-button": PlanetButton;
+        "planet-button-group": PlanetButtonGroup;
         "planet-card": PlanetCard;
         "planet-card-content": PlanetCardContent;
         "planet-card-header": PlanetCardHeader;
@@ -246,6 +270,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "planet-action-bar": LocalJSX.PlanetActionBar & JSXBase.HTMLAttributes<HTMLPlanetActionBarElement>;
             "planet-alert": LocalJSX.PlanetAlert & JSXBase.HTMLAttributes<HTMLPlanetAlertElement>;
+            "planet-button": LocalJSX.PlanetButton & JSXBase.HTMLAttributes<HTMLPlanetButtonElement>;
+            "planet-button-group": LocalJSX.PlanetButtonGroup & JSXBase.HTMLAttributes<HTMLPlanetButtonGroupElement>;
             "planet-card": LocalJSX.PlanetCard & JSXBase.HTMLAttributes<HTMLPlanetCardElement>;
             "planet-card-content": LocalJSX.PlanetCardContent & JSXBase.HTMLAttributes<HTMLPlanetCardContentElement>;
             "planet-card-header": LocalJSX.PlanetCardHeader & JSXBase.HTMLAttributes<HTMLPlanetCardHeaderElement>;

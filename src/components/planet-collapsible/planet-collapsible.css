@@ -1,0 +1,44 @@
+:host {
+  cursor: pointer;
+  display: block;
+}
+
+.planet-collapsible__content {
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  display: block;
+  padding: 16px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.planet-collapsible__header {
+  background-color: #1a1a1a;
+  color: #FFFFFF;
+  color: rgba(255, 255, 255, .9);
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  padding: 16px;
+  width: 100%;
+}
+
+.planet-collapsible__header:hover {
+  background-color: #000000;
+      text-decoration: underline;
+}
+
+:host(.planet-collapsible--toggled) .collapsible__header {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.planet-collapsible__icon {
+  line-height: 45px;
+}
+
+.planet-collapsible__title {
+  flex: 1;
+  font-size: 20px;
+  line-height: 45px;
+}

@@ -18,7 +18,6 @@
   display: inline-block;
   font-size: var(--button--font-size);
   font-weight: var(--button--font-weight);
-  margin-bottom: var(--padding-1);
   margin-top: calc(-1 * var(--padding-1));
   outline: none;
   padding: var(--padding-2) var(--padding-6);

@@ -120,3 +120,7 @@ planet-alert + planet-alert {
 planet-card + planet-card {
     margin-top: var(--padding-4);
 }
+
+planet-collapsible + planet-collapsible {
+    margin-top: var(--padding-2);
+}

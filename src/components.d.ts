@@ -29,6 +29,8 @@ export namespace Components {
     }
     interface PlanetCardHeader {
     }
+    interface PlanetCollapsible {
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetCoverOfPage {
@@ -101,6 +103,12 @@ declare global {
     var HTMLPlanetCardHeaderElement: {
         prototype: HTMLPlanetCardHeaderElement;
         new (): HTMLPlanetCardHeaderElement;
+    };
+    interface HTMLPlanetCollapsibleElement extends Components.PlanetCollapsible, HTMLStencilElement {
+    }
+    var HTMLPlanetCollapsibleElement: {
+        prototype: HTMLPlanetCollapsibleElement;
+        new (): HTMLPlanetCollapsibleElement;
     };
     interface HTMLPlanetCopyrightBarElement extends Components.PlanetCopyrightBar, HTMLStencilElement {
     }
@@ -188,6 +196,7 @@ declare global {
         "planet-card": HTMLPlanetCardElement;
         "planet-card-content": HTMLPlanetCardContentElement;
         "planet-card-header": HTMLPlanetCardHeaderElement;
+        "planet-collapsible": HTMLPlanetCollapsibleElement;
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-cover-of-page": HTMLPlanetCoverOfPageElement;
         "planet-footer": HTMLPlanetFooterElement;
@@ -224,6 +233,8 @@ declare namespace LocalJSX {
     interface PlanetCardContent {
     }
     interface PlanetCardHeader {
+    }
+    interface PlanetCollapsible {
     }
     interface PlanetCopyrightBar {
     }
@@ -262,6 +273,7 @@ declare namespace LocalJSX {
         "planet-card": PlanetCard;
         "planet-card-content": PlanetCardContent;
         "planet-card-header": PlanetCardHeader;
+        "planet-collapsible": PlanetCollapsible;
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-cover-of-page": PlanetCoverOfPage;
         "planet-footer": PlanetFooter;
@@ -288,6 +300,7 @@ declare module "@stencil/core" {
             "planet-card": LocalJSX.PlanetCard & JSXBase.HTMLAttributes<HTMLPlanetCardElement>;
             "planet-card-content": LocalJSX.PlanetCardContent & JSXBase.HTMLAttributes<HTMLPlanetCardContentElement>;
             "planet-card-header": LocalJSX.PlanetCardHeader & JSXBase.HTMLAttributes<HTMLPlanetCardHeaderElement>;
+            "planet-collapsible": LocalJSX.PlanetCollapsible & JSXBase.HTMLAttributes<HTMLPlanetCollapsibleElement>;
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-cover-of-page": LocalJSX.PlanetCoverOfPage & JSXBase.HTMLAttributes<HTMLPlanetCoverOfPageElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;

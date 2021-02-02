@@ -23,6 +23,10 @@ body {
     --button--background-color--shadow--disabled: #6ca1f2;
     --button--background-color--shadow--hover: #3e7cdf;
     --button--border-radius: 8px;
+    --button--border-radius--top-left: 8px;
+    --button--border-radius--top-right: 8px;
+    --button--border-radius--bottom-left: 8px;
+    --button--border-radius--bottom-right: 8px;
     --button--color: rgba(255, 255, 255, 0.9);
     --button--font-size: 22px;
     --button--font-size--mini: 18px;

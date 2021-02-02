@@ -6,6 +6,10 @@
   --box-shadow-color: var(--button--background-color--shadow);
   background-color: var(--button--background-color);
   border-radius: var(--button--border-radius);
+  border-top-left-radius: var(--button--border-radius--top-left);
+  border-top-right-radius: var(--button--border-radius--top-right);
+  border-bottom-left-radius: var(--button--border-radius--bottom-left);
+  border-bottom-right-radius: var(--button--border-radius--bottom-right);
   border: none;
   box-shadow: 0 var(--padding-1) var(--box-shadow-color);
   box-sizing: border-box;

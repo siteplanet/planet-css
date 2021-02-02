@@ -1,13 +1,14 @@
 :host {
-  display: block;
+  font-size: 0;
+  width: auto;
 }
 
 ::slotted(planet-button:not(:first-child)), planet-button:not(:first-child) {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+  --button--border-radius--top-left: 0;
+  --button--border-radius--bottom-left: 0;
 }
 
 ::slotted(planet-button:not(:last-child)), planet-button:not(:last-child) {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+  --button--border-radius--top-right: 0;
+  --button--border-radius--bottom-right: 0;
 }

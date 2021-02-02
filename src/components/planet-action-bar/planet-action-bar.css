@@ -25,6 +25,10 @@ planet-wrapper {
   line-height: var(--action-bar--line-height);
 }
 
+.planet-action-bar__actions {
+  text-align: right;
+}
+
 @media (max-width: 960px) {
   planet-wrapper {
     display: block;
@@ -34,5 +38,9 @@ planet-wrapper {
   .planet-action-bar__actions {
     display: block;
     width: 100%;
+  }
+
+  .planet-action-bar__actions {
+    text-align: left;
   }
 }

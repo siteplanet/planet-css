@@ -14,6 +14,20 @@ body {
     --alert--line-height: 1.6;
     --alert--padding: 16px 0 16px 0;
 
+    --button--background-color: #4B94FF;
+    --button--background-color--active: #4385EC;
+    --button--background-color--disabled: #71A9FF;
+    --button--background-color--hover: #4385EC;
+    --button--background-color--shadow: #478bf0;
+    --button--background-color--shadow--active: #3d79d8;
+    --button--background-color--shadow--disabled: #6ca1f2;
+    --button--background-color--shadow--hover: #3e7cdf;
+    --button--border-radius: 8px;
+    --button--color: rgba(255, 255, 255, 0.9);
+    --button--font-size: 22px;
+    --button--font-size--mini: 18px;
+    --button--font-weight: 600;
+
     --color--background: #e1e3e3;
     --color--text-complementary: rgba(255, 255, 255, .8);
     --color--text-content: rgba(0, 0, 0, .85);
@@ -21,6 +35,7 @@ body {
     --row: 0 -8px;
     --col: 0 8px;
 
+    --padding-half: 2px;
     --padding-1: 4px;
     --padding-2: 8px;
     --padding-3: 12px;
@@ -94,7 +109,6 @@ a:hover {
     font-weight: bold;
 }
   
-
 planet-alert + planet-alert {
     margin-top: var(--padding-1);
 }

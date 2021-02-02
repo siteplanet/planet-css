@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { PlanetButtonSeverity } from './planet-button-severity.enum';
 
 @Component({
   tag: 'planet-button',
@@ -6,12 +7,28 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class PlanetButton {
+  @Prop() disabled: boolean;
+  @Prop() form: string;
+  @Prop() full: boolean;
+  @Prop() severity: PlanetButtonSeverity;
+  @Prop() size: 'mini' | 'large' = 'large';
+  @Prop() type: 'button' | 'submit' = 'submit';
 
   render() {
     return (
-      <Host>
+      <button
+        class={{
+          'button': true,
+          'button--error': this.severity === PlanetButtonSeverity.ERROR,
+          'button--full': this.full,
+          'button--mini': this.size === 'mini',
+          'button--success': this.severity === PlanetButtonSeverity.SUCCESS,
+        }}
+        disabled={this.disabled}
+        form={this.form}
+        type={this.type}>
         <slot></slot>
-      </Host>
+      </button>
     );
   }
 

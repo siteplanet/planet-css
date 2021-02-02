@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlanetAlertSeverity } from "./components/planet-alert/planet-alert-severity.enum";
+import { PlanetButtonSeverity } from "./components/planet-button/planet-button-severity.enum";
 export namespace Components {
     interface PlanetActionBar {
     }
@@ -13,6 +14,12 @@ export namespace Components {
         "severity": PlanetAlertSeverity;
     }
     interface PlanetButton {
+        "disabled": boolean;
+        "form": string;
+        "full": boolean;
+        "severity": PlanetButtonSeverity;
+        "size": 'mini' | 'large';
+        "type": 'button' | 'submit';
     }
     interface PlanetButtonGroup {
     }
@@ -203,6 +210,12 @@ declare namespace LocalJSX {
         "severity"?: PlanetAlertSeverity;
     }
     interface PlanetButton {
+        "disabled"?: boolean;
+        "form"?: string;
+        "full"?: boolean;
+        "severity"?: PlanetButtonSeverity;
+        "size"?: 'mini' | 'large';
+        "type"?: 'button' | 'submit';
     }
     interface PlanetButtonGroup {
     }

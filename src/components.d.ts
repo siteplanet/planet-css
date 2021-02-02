@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlanetAlertSeverity } from "./components/planet-alert/planet-alert-severity.enum";
 export namespace Components {
+    interface PlanetActionBar {
+    }
     interface PlanetAlert {
         "severity": PlanetAlertSeverity;
     }
@@ -47,6 +49,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLPlanetActionBarElement extends Components.PlanetActionBar, HTMLStencilElement {
+    }
+    var HTMLPlanetActionBarElement: {
+        prototype: HTMLPlanetActionBarElement;
+        new (): HTMLPlanetActionBarElement;
+    };
     interface HTMLPlanetAlertElement extends Components.PlanetAlert, HTMLStencilElement {
     }
     var HTMLPlanetAlertElement: {
@@ -150,6 +158,7 @@ declare global {
         new (): HTMLPlanetWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "planet-action-bar": HTMLPlanetActionBarElement;
         "planet-alert": HTMLPlanetAlertElement;
         "planet-card": HTMLPlanetCardElement;
         "planet-card-content": HTMLPlanetCardContentElement;
@@ -170,6 +179,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PlanetActionBar {
+    }
     interface PlanetAlert {
         "severity"?: PlanetAlertSeverity;
     }
@@ -209,6 +220,7 @@ declare namespace LocalJSX {
     interface PlanetWrapper {
     }
     interface IntrinsicElements {
+        "planet-action-bar": PlanetActionBar;
         "planet-alert": PlanetAlert;
         "planet-card": PlanetCard;
         "planet-card-content": PlanetCardContent;
@@ -232,6 +244,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "planet-action-bar": LocalJSX.PlanetActionBar & JSXBase.HTMLAttributes<HTMLPlanetActionBarElement>;
             "planet-alert": LocalJSX.PlanetAlert & JSXBase.HTMLAttributes<HTMLPlanetAlertElement>;
             "planet-card": LocalJSX.PlanetCard & JSXBase.HTMLAttributes<HTMLPlanetCardElement>;
             "planet-card-content": LocalJSX.PlanetCardContent & JSXBase.HTMLAttributes<HTMLPlanetCardContentElement>;

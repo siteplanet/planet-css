@@ -1,0 +1,38 @@
+:host {
+  background-color: var(--action-bar--background-color);
+  bottom: 0;
+  box-sizing: border-box;
+  display: block;
+  left: 0;
+  padding: var(--padding-4);
+  position: fixed;
+  right: 0;
+  z-index: 99;
+}
+
+planet-wrapper {
+  display: flex;
+}
+
+.planet-action-bar__content,
+.planet-action-bar__actions {
+  flex: 1;
+}
+
+.planet-action-bar__content,
+.planet-action-bar__actions {
+  font-size: var(--action-bar--font-size);
+  line-height: var(--action-bar--line-height);
+}
+
+@media (max-width: 960px) {
+  planet-wrapper {
+    display: block;
+  }
+
+  .planet-action-bar__content,
+  .planet-action-bar__actions {
+    display: block;
+    width: 100%;
+  }
+}

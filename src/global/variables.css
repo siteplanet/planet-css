@@ -4,6 +4,10 @@ body {
 }
 
 :root {
+    --action-bar--background-color: #FFCE5E;
+    --action-bar--font-size: 22px;
+    --action-bar--line-height: 48px;
+
     --alert--background-color: #ecc66c;
     --alert--font-size: 20px;
     --alert--weight: 600;

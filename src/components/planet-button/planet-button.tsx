@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { PlanetButtonSeverity } from './planet-button-severity.enum';
 
 @Component({
@@ -7,9 +7,6 @@ import { PlanetButtonSeverity } from './planet-button-severity.enum';
   shadow: true,
 })
 export class PlanetButton {
-  @Event({
-    bubbles: false,
-  }) click: EventEmitter<void>;
   @Prop() disabled: boolean;
   @Prop() form: string;
   @Prop() full: boolean;
@@ -29,8 +26,7 @@ export class PlanetButton {
         }}
         disabled={this.disabled}
         form={this.form}
-        type={this.type}
-        onClick={(event) => { this.click.emit(); event.stopPropagation();}}>
+        type={this.type}>
         <slot></slot>
       </button>
     );

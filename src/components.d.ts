@@ -242,7 +242,6 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "form"?: string;
         "full"?: boolean;
-        "onClick"?: (event: CustomEvent<void>) => void;
         "severity"?: PlanetButtonSeverity;
         "size"?: 'mini' | 'large';
         "type"?: 'button' | 'submit';

@@ -17,13 +17,6 @@
 | `type`     | `type`     |             | `"button" \| "submit"`                                       | `'submit'`  |
 
 
-## Events
-
-| Event   | Description | Type                |
-| ------- | ----------- | ------------------- |
-| `click` |             | `CustomEvent<void>` |
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

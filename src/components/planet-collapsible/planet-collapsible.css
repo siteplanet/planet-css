@@ -13,7 +13,8 @@
 }
 
 .planet-collapsible__header {
-  background-color: #1a1a1a;
+  transition: all 0.25s ease;
+  background-color: #252525;
   color: #FFFFFF;
   color: rgba(255, 255, 255, .9);
   border-radius: 6px;
@@ -24,11 +25,11 @@
 }
 
 .planet-collapsible__header:hover {
+  transition: all 0.5s ease;
   background-color: #000000;
-      text-decoration: underline;
 }
 
-:host(.planet-collapsible--toggled) .collapsible__header {
+:host(.planet-collapsible--toggled) .planet-collapsible__header {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }

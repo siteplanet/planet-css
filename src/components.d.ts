@@ -30,6 +30,7 @@ export namespace Components {
     interface PlanetCardHeader {
     }
     interface PlanetCollapsible {
+        "toggle": () => Promise<void>;
     }
     interface PlanetCopyrightBar {
     }
@@ -45,6 +46,9 @@ export namespace Components {
     }
     interface PlanetFrameset {
     }
+    interface PlanetInput {
+        "label": string;
+    }
     interface PlanetItem {
     }
     interface PlanetLabel {
@@ -57,6 +61,8 @@ export namespace Components {
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
+    }
+    interface PlanetValidationMessage {
     }
     interface PlanetWrapper {
     }
@@ -146,6 +152,12 @@ declare global {
         prototype: HTMLPlanetFramesetElement;
         new (): HTMLPlanetFramesetElement;
     };
+    interface HTMLPlanetInputElement extends Components.PlanetInput, HTMLStencilElement {
+    }
+    var HTMLPlanetInputElement: {
+        prototype: HTMLPlanetInputElement;
+        new (): HTMLPlanetInputElement;
+    };
     interface HTMLPlanetItemElement extends Components.PlanetItem, HTMLStencilElement {
     }
     var HTMLPlanetItemElement: {
@@ -182,6 +194,12 @@ declare global {
         prototype: HTMLPlanetTitleOfPageElement;
         new (): HTMLPlanetTitleOfPageElement;
     };
+    interface HTMLPlanetValidationMessageElement extends Components.PlanetValidationMessage, HTMLStencilElement {
+    }
+    var HTMLPlanetValidationMessageElement: {
+        prototype: HTMLPlanetValidationMessageElement;
+        new (): HTMLPlanetValidationMessageElement;
+    };
     interface HTMLPlanetWrapperElement extends Components.PlanetWrapper, HTMLStencilElement {
     }
     var HTMLPlanetWrapperElement: {
@@ -203,12 +221,14 @@ declare global {
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
         "planet-frameset": HTMLPlanetFramesetElement;
+        "planet-input": HTMLPlanetInputElement;
         "planet-item": HTMLPlanetItemElement;
         "planet-label": HTMLPlanetLabelElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
         "planet-page": HTMLPlanetPageElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-title-of-page": HTMLPlanetTitleOfPageElement;
+        "planet-validation-message": HTMLPlanetValidationMessageElement;
         "planet-wrapper": HTMLPlanetWrapperElement;
     }
 }
@@ -222,6 +242,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "form"?: string;
         "full"?: boolean;
+        "onClick"?: (event: CustomEvent<void>) => void;
         "severity"?: PlanetButtonSeverity;
         "size"?: 'mini' | 'large';
         "type"?: 'button' | 'submit';
@@ -250,6 +271,9 @@ declare namespace LocalJSX {
     }
     interface PlanetFrameset {
     }
+    interface PlanetInput {
+        "label"?: string;
+    }
     interface PlanetItem {
     }
     interface PlanetLabel {
@@ -262,6 +286,8 @@ declare namespace LocalJSX {
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
+    }
+    interface PlanetValidationMessage {
     }
     interface PlanetWrapper {
     }
@@ -280,12 +306,14 @@ declare namespace LocalJSX {
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
         "planet-frameset": PlanetFrameset;
+        "planet-input": PlanetInput;
         "planet-item": PlanetItem;
         "planet-label": PlanetLabel;
         "planet-overlay-navigation": PlanetOverlayNavigation;
         "planet-page": PlanetPage;
         "planet-title-of-group": PlanetTitleOfGroup;
         "planet-title-of-page": PlanetTitleOfPage;
+        "planet-validation-message": PlanetValidationMessage;
         "planet-wrapper": PlanetWrapper;
     }
 }
@@ -307,12 +335,14 @@ declare module "@stencil/core" {
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
             "planet-frameset": LocalJSX.PlanetFrameset & JSXBase.HTMLAttributes<HTMLPlanetFramesetElement>;
+            "planet-input": LocalJSX.PlanetInput & JSXBase.HTMLAttributes<HTMLPlanetInputElement>;
             "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
             "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
             "planet-page": LocalJSX.PlanetPage & JSXBase.HTMLAttributes<HTMLPlanetPageElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;
+            "planet-validation-message": LocalJSX.PlanetValidationMessage & JSXBase.HTMLAttributes<HTMLPlanetValidationMessageElement>;
             "planet-wrapper": LocalJSX.PlanetWrapper & JSXBase.HTMLAttributes<HTMLPlanetWrapperElement>;
         }
     }

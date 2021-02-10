@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, State, Method } from '@stencil/core';
 
 @Component({
   tag: 'planet-collapsible',
@@ -6,11 +6,22 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class PlanetCollapsible {
+  @State() toggled: boolean;
 
+  @Method() async toggle() {
+      this.toggled = !this.toggled;
+  }
+  
   render() {
     return (
-      <Host class="planet-collapsible">
-        <div class="planet-collapsible__header">
+      <Host class={{
+        'planet-collapsible': true,
+        'planet-collapsible--toggled': this.toggled,
+      }}>
+        <div class="planet-collapsible__header" onClick={this.toggle.bind(this)}>
+          <div class="planet-collapsible__chevron">
+            {this.toggled ? (<slot name="chevron-open" />) : (<slot name="chevron-closed" />)}
+          </div>
           <div class="planet-collapsible__title">
             <slot name="title" />
           </div>
@@ -18,9 +29,9 @@ export class PlanetCollapsible {
             <slot name="actions" />
           </div>
         </div>
-        <div class="planet-collapsible__content">
+        {this.toggled ? (<div class="planet-collapsible__content" hidden={this.toggled}>
           <slot name="content" />
-        </div>
+        </div>) : null}
       </Host>
     );
   }

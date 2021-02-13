@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.crud__actions {
+  line-height: 80px;
+  text-align: right;
+}
+
+planet-pagination + planet-button-group {
+  margin-left: 10px;
+}

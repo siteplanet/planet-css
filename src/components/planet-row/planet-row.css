@@ -1,0 +1,6 @@
+:host {
+  display: flex;
+  margin: 0 -10px 0 -10px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}

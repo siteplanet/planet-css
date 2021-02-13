@@ -1,0 +1,6 @@
+:host {
+  border-bottom: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  display: block;
+  padding: 8px 4px;
+}

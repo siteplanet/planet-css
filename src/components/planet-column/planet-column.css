@@ -1,0 +1,67 @@
+:host(.column) {
+  box-sizing: border-box;
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+:host(.column--xlarge-1) { max-width: 8.333%; min-width: 8.333%; }
+:host(.column--xlarge-2) { max-width: 16.666%; min-width: 16.666%; }
+:host(.column--xlarge-3) { max-width: 25%; min-width: 25%; }
+:host(.column--xlarge-4) { max-width: 33.333%; min-width: 33.333%; }
+:host(.column--xlarge-5) { max-width: 41.666%; min-width: 41.666%; }
+:host(.column--xlarge-6) { max-width: 50%; min-width: 50%; }
+:host(.column--xlarge-7) { max-width: 58.333%; min-width: 58.333%; }
+:host(.column--xlarge-8) { max-width: 66.666%; min-width: 66.666%; }
+:host(.column--xlarge-9) { max-width: 75%; min-width: 75%; }
+:host(.column--xlarge-10) { max-width: 83.333%; min-width: 83.333%; }
+:host(.column--xlarge-11) { max-width: 91.666%; min-width: 91.666%; }
+:host(.column--xlarge-12) { max-width: 100%; min-width: 100%; }
+
+@media (max-width: 1920px) {
+  :host(.column--large-1) { max-width: 8.333%; min-width: 8.333%; }
+  :host(.column--large-2) { max-width: 16.666%; min-width: 16.666%; }
+  :host(.column--large-3) { max-width: 25%; min-width: 25%; }
+  :host(.column--large-4) { max-width: 33.333%; min-width: 33.333%; }
+  :host(.column--large-5) { max-width: 41.666%; min-width: 41.666%; }
+  :host(.column--large-6) { max-width: 50%; min-width: 50%; }
+  :host(.column--large-7) { max-width: 58.333%; min-width: 58.333%; }
+  :host(.column--large-8) { max-width: 66.666%; min-width: 66.666%; }
+  :host(.column--large-9) { max-width: 75%; min-width: 75%; }
+  :host(.column--large-10) { max-width: 83.333%; min-width: 83.333%; }
+  :host(.column--large-11) { max-width: 91.666%; min-width: 91.666%; }
+  :host(.column--large-12) { max-width: 100%; min-width: 100%; }
+}
+
+@media (max-width: 960px) {
+  :host(.column--medium-1) { max-width: 8.333%; min-width: 8.333%; }
+  :host(.column--medium-2) { max-width: 16.666%; min-width: 16.666%; }
+  :host(.column--medium-3) { max-width: 25%; min-width: 25%; }
+  :host(.column--medium-4) { max-width: 33.333%; min-width: 33.333%; }
+  :host(.column--medium-5) { max-width: 41.666%; min-width: 41.666%; }
+  :host(.column--medium-6) { max-width: 50%; min-width: 50%; }
+  :host(.column--medium-7) { max-width: 58.333%; min-width: 58.333%; }
+  :host(.column--medium-8) { max-width: 66.666%; min-width: 66.666%; }
+  :host(.column--medium-9) { max-width: 75%; min-width: 75%; }
+  :host(.column--medium-10) { max-width: 83.333%; min-width: 83.333%; }
+  :host(.column--medium-11) { max-width: 91.666%; min-width: 91.666%; }
+  :host(.column--medium-12) { max-width: 100%; min-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  :host(.column--small-1) { max-width: 12.5%; min-width: 12.5%; }
+  :host(.column--small-2) { max-width: 25%; min-width: 25%; }
+  :host(.column--small-3) { max-width: 37.5%; min-width: 37.5%; }
+  :host(.column--small-4) { max-width: 50%; min-width: 50%; }
+  :host(.column--small-5) { max-width: 62.5%; min-width: 62.5%; }
+  :host(.column--small-6) { max-width: 75%; min-width: 75%; }
+  :host(.column--small-7) { max-width: 87.5%; min-width: 87.5%; }
+  :host(.column--small-8) { max-width: 100%; min-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  :host(.column--xsmall-1) { max-width: 25%; min-width: 25%; }
+  :host(.column--xsmall-2) { max-width: 50%; min-width: 50%; }
+  :host(.column--xsmall-3) { max-width: 75%; min-width: 75%; }
+  :host(.column--xsmall-4) { max-width: 100%; min-width: 100%; }
+}

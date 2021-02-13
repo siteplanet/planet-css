@@ -32,10 +32,21 @@ export namespace Components {
     interface PlanetCollapsible {
         "toggle": () => Promise<void>;
     }
+    interface PlanetColumn {
+        "large": number;
+        "medium": number;
+        "small": number;
+        "xlarge": number;
+        "xsmall": number;
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetCoverOfPage {
         "imageUrl": string;
+    }
+    interface PlanetCrud {
+        "page": number;
+        "pages": number;
     }
     interface PlanetFooter {
     }
@@ -46,6 +57,12 @@ export namespace Components {
     }
     interface PlanetFrameset {
     }
+    interface PlanetGrid {
+    }
+    interface PlanetGridHeader {
+    }
+    interface PlanetGridItem {
+    }
     interface PlanetInput {
         "label": string;
     }
@@ -53,10 +70,18 @@ export namespace Components {
     }
     interface PlanetLabel {
     }
+    interface PlanetModal {
+    }
     interface PlanetOverlayNavigation {
         "open": boolean;
     }
     interface PlanetPage {
+    }
+    interface PlanetPagination {
+        "page": number;
+        "pages": number;
+    }
+    interface PlanetRow {
     }
     interface PlanetTitleOfGroup {
     }
@@ -116,6 +141,12 @@ declare global {
         prototype: HTMLPlanetCollapsibleElement;
         new (): HTMLPlanetCollapsibleElement;
     };
+    interface HTMLPlanetColumnElement extends Components.PlanetColumn, HTMLStencilElement {
+    }
+    var HTMLPlanetColumnElement: {
+        prototype: HTMLPlanetColumnElement;
+        new (): HTMLPlanetColumnElement;
+    };
     interface HTMLPlanetCopyrightBarElement extends Components.PlanetCopyrightBar, HTMLStencilElement {
     }
     var HTMLPlanetCopyrightBarElement: {
@@ -127,6 +158,12 @@ declare global {
     var HTMLPlanetCoverOfPageElement: {
         prototype: HTMLPlanetCoverOfPageElement;
         new (): HTMLPlanetCoverOfPageElement;
+    };
+    interface HTMLPlanetCrudElement extends Components.PlanetCrud, HTMLStencilElement {
+    }
+    var HTMLPlanetCrudElement: {
+        prototype: HTMLPlanetCrudElement;
+        new (): HTMLPlanetCrudElement;
     };
     interface HTMLPlanetFooterElement extends Components.PlanetFooter, HTMLStencilElement {
     }
@@ -152,6 +189,24 @@ declare global {
         prototype: HTMLPlanetFramesetElement;
         new (): HTMLPlanetFramesetElement;
     };
+    interface HTMLPlanetGridElement extends Components.PlanetGrid, HTMLStencilElement {
+    }
+    var HTMLPlanetGridElement: {
+        prototype: HTMLPlanetGridElement;
+        new (): HTMLPlanetGridElement;
+    };
+    interface HTMLPlanetGridHeaderElement extends Components.PlanetGridHeader, HTMLStencilElement {
+    }
+    var HTMLPlanetGridHeaderElement: {
+        prototype: HTMLPlanetGridHeaderElement;
+        new (): HTMLPlanetGridHeaderElement;
+    };
+    interface HTMLPlanetGridItemElement extends Components.PlanetGridItem, HTMLStencilElement {
+    }
+    var HTMLPlanetGridItemElement: {
+        prototype: HTMLPlanetGridItemElement;
+        new (): HTMLPlanetGridItemElement;
+    };
     interface HTMLPlanetInputElement extends Components.PlanetInput, HTMLStencilElement {
     }
     var HTMLPlanetInputElement: {
@@ -170,6 +225,12 @@ declare global {
         prototype: HTMLPlanetLabelElement;
         new (): HTMLPlanetLabelElement;
     };
+    interface HTMLPlanetModalElement extends Components.PlanetModal, HTMLStencilElement {
+    }
+    var HTMLPlanetModalElement: {
+        prototype: HTMLPlanetModalElement;
+        new (): HTMLPlanetModalElement;
+    };
     interface HTMLPlanetOverlayNavigationElement extends Components.PlanetOverlayNavigation, HTMLStencilElement {
     }
     var HTMLPlanetOverlayNavigationElement: {
@@ -181,6 +242,18 @@ declare global {
     var HTMLPlanetPageElement: {
         prototype: HTMLPlanetPageElement;
         new (): HTMLPlanetPageElement;
+    };
+    interface HTMLPlanetPaginationElement extends Components.PlanetPagination, HTMLStencilElement {
+    }
+    var HTMLPlanetPaginationElement: {
+        prototype: HTMLPlanetPaginationElement;
+        new (): HTMLPlanetPaginationElement;
+    };
+    interface HTMLPlanetRowElement extends Components.PlanetRow, HTMLStencilElement {
+    }
+    var HTMLPlanetRowElement: {
+        prototype: HTMLPlanetRowElement;
+        new (): HTMLPlanetRowElement;
     };
     interface HTMLPlanetTitleOfGroupElement extends Components.PlanetTitleOfGroup, HTMLStencilElement {
     }
@@ -215,17 +288,25 @@ declare global {
         "planet-card-content": HTMLPlanetCardContentElement;
         "planet-card-header": HTMLPlanetCardHeaderElement;
         "planet-collapsible": HTMLPlanetCollapsibleElement;
+        "planet-column": HTMLPlanetColumnElement;
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-cover-of-page": HTMLPlanetCoverOfPageElement;
+        "planet-crud": HTMLPlanetCrudElement;
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
         "planet-frameset": HTMLPlanetFramesetElement;
+        "planet-grid": HTMLPlanetGridElement;
+        "planet-grid-header": HTMLPlanetGridHeaderElement;
+        "planet-grid-item": HTMLPlanetGridItemElement;
         "planet-input": HTMLPlanetInputElement;
         "planet-item": HTMLPlanetItemElement;
         "planet-label": HTMLPlanetLabelElement;
+        "planet-modal": HTMLPlanetModalElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
         "planet-page": HTMLPlanetPageElement;
+        "planet-pagination": HTMLPlanetPaginationElement;
+        "planet-row": HTMLPlanetRowElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-title-of-page": HTMLPlanetTitleOfPageElement;
         "planet-validation-message": HTMLPlanetValidationMessageElement;
@@ -256,10 +337,21 @@ declare namespace LocalJSX {
     }
     interface PlanetCollapsible {
     }
+    interface PlanetColumn {
+        "large"?: number;
+        "medium"?: number;
+        "small"?: number;
+        "xlarge"?: number;
+        "xsmall"?: number;
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetCoverOfPage {
         "imageUrl"?: string;
+    }
+    interface PlanetCrud {
+        "page"?: number;
+        "pages"?: number;
     }
     interface PlanetFooter {
     }
@@ -270,6 +362,12 @@ declare namespace LocalJSX {
     }
     interface PlanetFrameset {
     }
+    interface PlanetGrid {
+    }
+    interface PlanetGridHeader {
+    }
+    interface PlanetGridItem {
+    }
     interface PlanetInput {
         "label"?: string;
     }
@@ -277,10 +375,18 @@ declare namespace LocalJSX {
     }
     interface PlanetLabel {
     }
+    interface PlanetModal {
+    }
     interface PlanetOverlayNavigation {
         "open"?: boolean;
     }
     interface PlanetPage {
+    }
+    interface PlanetPagination {
+        "page"?: number;
+        "pages"?: number;
+    }
+    interface PlanetRow {
     }
     interface PlanetTitleOfGroup {
     }
@@ -299,17 +405,25 @@ declare namespace LocalJSX {
         "planet-card-content": PlanetCardContent;
         "planet-card-header": PlanetCardHeader;
         "planet-collapsible": PlanetCollapsible;
+        "planet-column": PlanetColumn;
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-cover-of-page": PlanetCoverOfPage;
+        "planet-crud": PlanetCrud;
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
         "planet-frameset": PlanetFrameset;
+        "planet-grid": PlanetGrid;
+        "planet-grid-header": PlanetGridHeader;
+        "planet-grid-item": PlanetGridItem;
         "planet-input": PlanetInput;
         "planet-item": PlanetItem;
         "planet-label": PlanetLabel;
+        "planet-modal": PlanetModal;
         "planet-overlay-navigation": PlanetOverlayNavigation;
         "planet-page": PlanetPage;
+        "planet-pagination": PlanetPagination;
+        "planet-row": PlanetRow;
         "planet-title-of-group": PlanetTitleOfGroup;
         "planet-title-of-page": PlanetTitleOfPage;
         "planet-validation-message": PlanetValidationMessage;
@@ -328,17 +442,25 @@ declare module "@stencil/core" {
             "planet-card-content": LocalJSX.PlanetCardContent & JSXBase.HTMLAttributes<HTMLPlanetCardContentElement>;
             "planet-card-header": LocalJSX.PlanetCardHeader & JSXBase.HTMLAttributes<HTMLPlanetCardHeaderElement>;
             "planet-collapsible": LocalJSX.PlanetCollapsible & JSXBase.HTMLAttributes<HTMLPlanetCollapsibleElement>;
+            "planet-column": LocalJSX.PlanetColumn & JSXBase.HTMLAttributes<HTMLPlanetColumnElement>;
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-cover-of-page": LocalJSX.PlanetCoverOfPage & JSXBase.HTMLAttributes<HTMLPlanetCoverOfPageElement>;
+            "planet-crud": LocalJSX.PlanetCrud & JSXBase.HTMLAttributes<HTMLPlanetCrudElement>;
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
             "planet-frameset": LocalJSX.PlanetFrameset & JSXBase.HTMLAttributes<HTMLPlanetFramesetElement>;
+            "planet-grid": LocalJSX.PlanetGrid & JSXBase.HTMLAttributes<HTMLPlanetGridElement>;
+            "planet-grid-header": LocalJSX.PlanetGridHeader & JSXBase.HTMLAttributes<HTMLPlanetGridHeaderElement>;
+            "planet-grid-item": LocalJSX.PlanetGridItem & JSXBase.HTMLAttributes<HTMLPlanetGridItemElement>;
             "planet-input": LocalJSX.PlanetInput & JSXBase.HTMLAttributes<HTMLPlanetInputElement>;
             "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
             "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
+            "planet-modal": LocalJSX.PlanetModal & JSXBase.HTMLAttributes<HTMLPlanetModalElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
             "planet-page": LocalJSX.PlanetPage & JSXBase.HTMLAttributes<HTMLPlanetPageElement>;
+            "planet-pagination": LocalJSX.PlanetPagination & JSXBase.HTMLAttributes<HTMLPlanetPaginationElement>;
+            "planet-row": LocalJSX.PlanetRow & JSXBase.HTMLAttributes<HTMLPlanetRowElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;
             "planet-validation-message": LocalJSX.PlanetValidationMessage & JSXBase.HTMLAttributes<HTMLPlanetValidationMessageElement>;

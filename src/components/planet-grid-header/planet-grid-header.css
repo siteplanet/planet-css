@@ -1,0 +1,8 @@
+:host {
+  border-bottom: 1px solid #AAAAAA;
+  box-sizing: border-box;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 4px;
+}

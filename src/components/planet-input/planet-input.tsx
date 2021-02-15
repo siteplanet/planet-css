@@ -1,4 +1,6 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Event, Host, h, Prop, EventEmitter } from '@stencil/core';
+import { Validator } from '../../validators/validator';
+import { PlanetValueInterface } from './planet-value-interface';
 
 @Component({
   tag: 'planet-input',
@@ -7,6 +9,18 @@ import { Component, Host, h, Prop } from '@stencil/core';
 })
 export class PlanetInput {
   @Prop() label: string;
+  @Prop({ mutable: true }) value: PlanetValueInterface<string>;
+  @Prop() validators: (() => Validator<PlanetValueInterface<string>>)[] = [];
+
+  @Event() changed: EventEmitter<PlanetValueInterface<string>>;
+
+  handleInput(event) {
+    this.value = {
+      description: event.target ? event.target.value : null,
+      value: event.target ? event.target.value : null,
+    };
+    this.changed.emit(this.value);
+  }
 
   render() {
     return (
@@ -16,11 +30,13 @@ export class PlanetInput {
             {this.label}
           </div>
           <div class="planet-input__area">
-            <input />
+            <input value={this.value ? this.value.value : null} onInput={(event) => this.handleInput(event)} />
           </div>
         </div>
         <div class="planet-input__message">
-          <slot name="message"></slot>
+          {this.validators.map(validator => {
+            return validator().validate(this.value) ? (<div>{validator().errorMessage}</div>) : null;
+          })}
         </div>
       </Host>
     );

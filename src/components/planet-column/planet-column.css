@@ -1,8 +1,8 @@
 :host(.column) {
   box-sizing: border-box;
   flex: 1;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 :host(.column--xlarge-1) { max-width: 8.333%; min-width: 8.333%; }

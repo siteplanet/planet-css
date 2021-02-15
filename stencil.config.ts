@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget, ComponentModelConfig } from '@stencil/vue-output-target';
+import { sass } from '@stencil/sass';
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
 ];
@@ -41,4 +42,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  plugins: [
+    sass()
+  ]
 };

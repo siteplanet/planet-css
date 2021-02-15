@@ -1,7 +1,3 @@
-:host {
-  display: inline-block;
-}
-
 .button {
   --box-shadow-color: var(--button--background-color--shadow);
   background-color: var(--button--background-color);

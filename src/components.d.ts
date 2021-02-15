@@ -7,11 +7,15 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlanetAlertSeverity } from "./components/planet-alert/planet-alert-severity.enum";
 import { PlanetButtonSeverity } from "./components/planet-button/planet-button-severity.enum";
+import { PlanetValueInterface } from "./components/planet-input/planet-value-interface";
+import { Validator } from "./validators/validator";
 export namespace Components {
     interface PlanetActionBar {
     }
     interface PlanetAlert {
         "severity": PlanetAlertSeverity;
+    }
+    interface PlanetBackdrop {
     }
     interface PlanetButton {
         "disabled": boolean;
@@ -39,14 +43,25 @@ export namespace Components {
         "xlarge": number;
         "xsmall": number;
     }
+    interface PlanetConfirm {
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetCoverOfPage {
         "imageUrl": string;
     }
     interface PlanetCrud {
+        "closeForm": () => Promise<void>;
+        "columns": {
+    key: string;
+    label: string;
+    type: string;
+  }[];
+        "data": [];
+        "openForm": (state: 'put' | 'post') => Promise<void>;
         "page": number;
         "pages": number;
+        "titleOfForm": string;
     }
     interface PlanetFooter {
     }
@@ -65,12 +80,15 @@ export namespace Components {
     }
     interface PlanetInput {
         "label": string;
+        "validators": (() => Validator<PlanetValueInterface<string>>)[];
+        "value": PlanetValueInterface<string>;
     }
     interface PlanetItem {
     }
     interface PlanetLabel {
     }
     interface PlanetModal {
+        "titleOfModal": string;
     }
     interface PlanetOverlayNavigation {
         "open": boolean;
@@ -104,6 +122,12 @@ declare global {
     var HTMLPlanetAlertElement: {
         prototype: HTMLPlanetAlertElement;
         new (): HTMLPlanetAlertElement;
+    };
+    interface HTMLPlanetBackdropElement extends Components.PlanetBackdrop, HTMLStencilElement {
+    }
+    var HTMLPlanetBackdropElement: {
+        prototype: HTMLPlanetBackdropElement;
+        new (): HTMLPlanetBackdropElement;
     };
     interface HTMLPlanetButtonElement extends Components.PlanetButton, HTMLStencilElement {
     }
@@ -146,6 +170,12 @@ declare global {
     var HTMLPlanetColumnElement: {
         prototype: HTMLPlanetColumnElement;
         new (): HTMLPlanetColumnElement;
+    };
+    interface HTMLPlanetConfirmElement extends Components.PlanetConfirm, HTMLStencilElement {
+    }
+    var HTMLPlanetConfirmElement: {
+        prototype: HTMLPlanetConfirmElement;
+        new (): HTMLPlanetConfirmElement;
     };
     interface HTMLPlanetCopyrightBarElement extends Components.PlanetCopyrightBar, HTMLStencilElement {
     }
@@ -282,6 +312,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "planet-action-bar": HTMLPlanetActionBarElement;
         "planet-alert": HTMLPlanetAlertElement;
+        "planet-backdrop": HTMLPlanetBackdropElement;
         "planet-button": HTMLPlanetButtonElement;
         "planet-button-group": HTMLPlanetButtonGroupElement;
         "planet-card": HTMLPlanetCardElement;
@@ -289,6 +320,7 @@ declare global {
         "planet-card-header": HTMLPlanetCardHeaderElement;
         "planet-collapsible": HTMLPlanetCollapsibleElement;
         "planet-column": HTMLPlanetColumnElement;
+        "planet-confirm": HTMLPlanetConfirmElement;
         "planet-copyright-bar": HTMLPlanetCopyrightBarElement;
         "planet-cover-of-page": HTMLPlanetCoverOfPageElement;
         "planet-crud": HTMLPlanetCrudElement;
@@ -319,6 +351,8 @@ declare namespace LocalJSX {
     interface PlanetAlert {
         "severity"?: PlanetAlertSeverity;
     }
+    interface PlanetBackdrop {
+    }
     interface PlanetButton {
         "disabled"?: boolean;
         "form"?: string;
@@ -344,14 +378,24 @@ declare namespace LocalJSX {
         "xlarge"?: number;
         "xsmall"?: number;
     }
+    interface PlanetConfirm {
+    }
     interface PlanetCopyrightBar {
     }
     interface PlanetCoverOfPage {
         "imageUrl"?: string;
     }
     interface PlanetCrud {
+        "columns"?: {
+    key: string;
+    label: string;
+    type: string;
+  }[];
+        "data"?: [];
+        "onItemDeleted"?: (event: CustomEvent<object>) => void;
         "page"?: number;
         "pages"?: number;
+        "titleOfForm"?: string;
     }
     interface PlanetFooter {
     }
@@ -370,12 +414,16 @@ declare namespace LocalJSX {
     }
     interface PlanetInput {
         "label"?: string;
+        "onChanged"?: (event: CustomEvent<PlanetValueInterface<string>>) => void;
+        "validators"?: (() => Validator<PlanetValueInterface<string>>)[];
+        "value"?: PlanetValueInterface<string>;
     }
     interface PlanetItem {
     }
     interface PlanetLabel {
     }
     interface PlanetModal {
+        "titleOfModal"?: string;
     }
     interface PlanetOverlayNavigation {
         "open"?: boolean;
@@ -399,6 +447,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "planet-action-bar": PlanetActionBar;
         "planet-alert": PlanetAlert;
+        "planet-backdrop": PlanetBackdrop;
         "planet-button": PlanetButton;
         "planet-button-group": PlanetButtonGroup;
         "planet-card": PlanetCard;
@@ -406,6 +455,7 @@ declare namespace LocalJSX {
         "planet-card-header": PlanetCardHeader;
         "planet-collapsible": PlanetCollapsible;
         "planet-column": PlanetColumn;
+        "planet-confirm": PlanetConfirm;
         "planet-copyright-bar": PlanetCopyrightBar;
         "planet-cover-of-page": PlanetCoverOfPage;
         "planet-crud": PlanetCrud;
@@ -436,6 +486,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "planet-action-bar": LocalJSX.PlanetActionBar & JSXBase.HTMLAttributes<HTMLPlanetActionBarElement>;
             "planet-alert": LocalJSX.PlanetAlert & JSXBase.HTMLAttributes<HTMLPlanetAlertElement>;
+            "planet-backdrop": LocalJSX.PlanetBackdrop & JSXBase.HTMLAttributes<HTMLPlanetBackdropElement>;
             "planet-button": LocalJSX.PlanetButton & JSXBase.HTMLAttributes<HTMLPlanetButtonElement>;
             "planet-button-group": LocalJSX.PlanetButtonGroup & JSXBase.HTMLAttributes<HTMLPlanetButtonGroupElement>;
             "planet-card": LocalJSX.PlanetCard & JSXBase.HTMLAttributes<HTMLPlanetCardElement>;
@@ -443,6 +494,7 @@ declare module "@stencil/core" {
             "planet-card-header": LocalJSX.PlanetCardHeader & JSXBase.HTMLAttributes<HTMLPlanetCardHeaderElement>;
             "planet-collapsible": LocalJSX.PlanetCollapsible & JSXBase.HTMLAttributes<HTMLPlanetCollapsibleElement>;
             "planet-column": LocalJSX.PlanetColumn & JSXBase.HTMLAttributes<HTMLPlanetColumnElement>;
+            "planet-confirm": LocalJSX.PlanetConfirm & JSXBase.HTMLAttributes<HTMLPlanetConfirmElement>;
             "planet-copyright-bar": LocalJSX.PlanetCopyrightBar & JSXBase.HTMLAttributes<HTMLPlanetCopyrightBarElement>;
             "planet-cover-of-page": LocalJSX.PlanetCoverOfPage & JSXBase.HTMLAttributes<HTMLPlanetCoverOfPageElement>;
             "planet-crud": LocalJSX.PlanetCrud & JSXBase.HTMLAttributes<HTMLPlanetCrudElement>;

@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'planet-modal',
@@ -6,10 +6,22 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class PlanetModal {
+  @Prop() titleOfModal: string;
 
   render() {
     return (
       <Host>
+        <planet-backdrop>
+          <div class="modal__box">
+            <div class="modal__title">{this.titleOfModal}</div>
+            <div class="modal__content">
+              <slot name="content" />
+            </div>
+            <div class="modal__actions">
+              <slot name="actions" />
+            </div>
+          </div>
+        </planet-backdrop>
         <slot></slot>
       </Host>
     );

@@ -1,3 +1,41 @@
 :host {
   display: block;
 }
+
+.modal__box {
+  display: block;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
+  margin: 16px;
+  right: auto;
+  top: 0;
+  z-index: 101;
+  background-color: #FFCE5E;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 80%;
+}
+
+.modal__title {
+  background-color: #FFC224;
+  font-weight: bold;
+  font-size: 25px;
+  font-style: italic;
+  padding: 16px;
+  box-sizing: border-box;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.modal__content {
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.modal__actions {
+  box-sizing: border-box;
+  margin-top: -16px;
+  padding: 16px;
+}

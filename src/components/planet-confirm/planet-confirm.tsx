@@ -1,11 +1,11 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'planet-grid',
-  styleUrl: 'planet-grid.css',
+  tag: 'planet-confirm',
+  styleUrl: 'planet-confirm.css',
   shadow: true,
 })
-export class PlanetGrid {
+export class PlanetConfirm {
 
   render() {
     return (

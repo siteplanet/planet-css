@@ -3,6 +3,7 @@ import { Validator } from "../validator";
 
 export const MaxValidator: (max: number) => Validator<PlanetValueInterface<number>> = (max: number) => {
     return {
+        key: 'max',
         validate: (value: PlanetValueInterface<number>) => {
             console.log(value, max);
             return true;

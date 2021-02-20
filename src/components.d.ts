@@ -57,7 +57,7 @@ export namespace Components {
     label: string;
     type: string;
   }[];
-        "data": [];
+        "data": any[];
         "openForm": (state: 'put' | 'post') => Promise<void>;
         "page": number;
         "pages": number;
@@ -80,6 +80,7 @@ export namespace Components {
     }
     interface PlanetInput {
         "label": string;
+        "name": string;
         "validators": (() => Validator<PlanetValueInterface<string>>)[];
         "value": PlanetValueInterface<string>;
     }
@@ -391,8 +392,10 @@ declare namespace LocalJSX {
     label: string;
     type: string;
   }[];
-        "data"?: [];
+        "data"?: any[];
+        "onItemAdd"?: (event: CustomEvent<object>) => void;
         "onItemDeleted"?: (event: CustomEvent<object>) => void;
+        "onItemUpdate"?: (event: CustomEvent<object>) => void;
         "page"?: number;
         "pages"?: number;
         "titleOfForm"?: string;
@@ -414,6 +417,7 @@ declare namespace LocalJSX {
     }
     interface PlanetInput {
         "label"?: string;
+        "name"?: string;
         "onChanged"?: (event: CustomEvent<PlanetValueInterface<string>>) => void;
         "validators"?: (() => Validator<PlanetValueInterface<string>>)[];
         "value"?: PlanetValueInterface<string>;

@@ -1,4 +1,4 @@
-# planet-title-of-page
+# planet-grid
 
 
 
@@ -14,8 +14,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  planet-crud --> planet-title-of-page
-  style planet-title-of-page fill:#f9f,stroke:#333,stroke-width:4px
+  planet-crud --> planet-grid
+  style planet-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

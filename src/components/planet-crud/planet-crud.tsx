@@ -40,7 +40,44 @@ export class PlanetCrud {
   /*
   * Data for rows
   */
-  @Prop() data: [];
+  @Prop() data: any[] = [
+    {
+      id: {
+        description: 'x',
+        value: 'x',
+      },
+      shortName: {
+        description: 'x',
+        value: 'x',
+      },
+      longName: {
+        description: 'x',
+        value: 'x',
+      },
+      country: {
+        description: 'x',
+        value: 'x',
+      },
+    },
+    {
+      id: {
+        description: 'x',
+        value: 'x',
+      },
+      shortName: {
+        description: 'x',
+        value: 'x',
+      },
+      longName: {
+        description: 'x',
+        value: 'x',
+      },
+      country: {
+        description: 'x',
+        value: 'x',
+      },
+    }
+  ]
   /*
   * Number of current page
   */
@@ -54,20 +91,26 @@ export class PlanetCrud {
   */
   @Prop() titleOfForm: string;
 
-  @State() dataState: [];
-  @State() modalState: string;
+  @State() dataState: any[];
   @State() formState: object;
+  @State() formMode: 'post' | 'put' | null;
 
+  @Event() itemAdd: EventEmitter<object>;
   @Event() itemDeleted: EventEmitter<object>;
+  @Event() itemUpdate: EventEmitter<object>;
 
   @Method() async openForm(state: 'put' | 'post') {
     this.createForm();
-    this.modalState = state;
+    this.formMode = state;
   }
 
   @Method() async closeForm() {
-    this.modalState = null;
+    this.formMode = null;
     this.clearForm();
+  }
+
+  componentWillLoad() {
+    this.dataState = this.data;
   }
 
   clearForm() {
@@ -90,20 +133,32 @@ export class PlanetCrud {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submit');
-    // send data to our backend
+    switch (this.formMode) {
+      case 'post': this.handleAdd(this.formState); break;
+      case 'put': this.handleUpdate(this.formState); break;
+    }
   }
 
+  handleAdd(item) {
+    console.log(`emit add`, { new: item });
+    this.itemAdd.emit({ new: item });
+  }
 
-  deleteItem(item) {
-    console.log(`delete`, item);
+  handleDelete(item) {
+    console.log(`emit delete`, { previous: item });
+    this.itemDeleted.emit({ previous: item });
+  }
+
+  handleUpdate(item) {
+    console.log(`emit update`, { previous: item });
+    this.itemUpdate.emit({ previous: item });
   }
 
   render() {
     return (
       <Host class="crud">
-        {this.modalState ? (
-          <form onSubmit={(e) => this.handleSubmit(e)}>
+        {this.formMode ? (
+          <form id="form" onSubmit={(e) => this.handleSubmit(e)}>
             <planet-modal titleOfModal="New item">
               <div slot="content">
                 <planet-row class="form-section">
@@ -120,13 +175,12 @@ export class PlanetCrud {
                 </planet-row>
               </div>
               <div slot="actions">
-                {JSON.stringify(this.formState)}
                 <planet-row>
                   <planet-column>
-                    <planet-button severity={PlanetButtonSeverity.ERROR} full onClick={() => this.closeForm()}>Close</planet-button>
+                    <planet-button severity={PlanetButtonSeverity.ERROR} full onClick={() => this.closeForm()} type="button">Close</planet-button>
                   </planet-column>
                   <planet-column>
-                    <planet-button severity={PlanetButtonSeverity.SUCCESS} full>Save</planet-button>
+                    <planet-button severity={PlanetButtonSeverity.SUCCESS} full type="submit" form="form" onClick={(e) => this.handleSubmit(e)}>Save</planet-button>
                   </planet-column>
                 </planet-row>
               </div>
@@ -147,22 +201,19 @@ export class PlanetCrud {
           </planet-column>
         </planet-row>
         <planet-grid>
-          {this.dataState ? this.dataState.map(() => (
+          {this.columns.map(column => (<planet-grid-header>{column.label}</planet-grid-header>))}
+          <planet-grid-header>Actions</planet-grid-header>
+          {this.dataState ? this.dataState.map((row) => (
             <Fragment>
-              <planet-grid-item>1</planet-grid-item>
-              <planet-grid-item>2</planet-grid-item>
-              <planet-grid-item>3</planet-grid-item>
-              <planet-grid-item>4</planet-grid-item>
+              {this.columns.map(column => (
+                <planet-grid-item>{row[column.key] ? row[column.key].value : null}</planet-grid-item>
+              ))}
               <planet-grid-item>
                 <planet-button size="mini">Edit</planet-button>
-                <planet-button severity={PlanetButtonSeverity.ERROR} size="mini" onClick={() => this.deleteItem('post')}>Delete</planet-button>
-              </planet-grid-item></Fragment>
+                <planet-button severity={PlanetButtonSeverity.ERROR} size="mini" onClick={() => this.handleDelete(row)}>Delete</planet-button>
+              </planet-grid-item>
+            </Fragment>
           )) : null}
-          <planet-grid-header>A</planet-grid-header>
-          <planet-grid-header>B</planet-grid-header>
-          <planet-grid-header>C</planet-grid-header>
-          <planet-grid-header>D</planet-grid-header>
-          <planet-grid-header>E</planet-grid-header>
           <planet-grid-item>1</planet-grid-item>
           <planet-grid-item>2</planet-grid-item>
           <planet-grid-item>3</planet-grid-item>

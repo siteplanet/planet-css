@@ -4,7 +4,7 @@
 }
 
 .planet-collapsible__content {
-  background-color: #FFFFFF;
+  background-color: var(--collapsible-content--background-color);
   box-sizing: border-box;
   display: block;
   padding: 16px;

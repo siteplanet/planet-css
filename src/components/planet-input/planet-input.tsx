@@ -43,7 +43,7 @@ export class PlanetInput {
             {this.label}
           </div>
           <div class="planet-input__area">
-            <input value={this.value ? this.value.value : null} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />
+            <input name={this.name} value={this.value ? this.value.value : null} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />
           </div>
         </div>
         <div class="planet-input__message">

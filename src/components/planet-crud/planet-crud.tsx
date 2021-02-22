@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Fragment, Host, h, Prop, State, Method } from '@stencil/core';
+import { Component, Event, EventEmitter, Fragment, Host, h, Prop, State, Method, Watch } from '@stencil/core';
 import { RequiredValidator } from '../../validators/required-validator/required-validator';
 import { PlanetButtonSeverity } from '../planet-button/planet-button-severity.enum';
 
@@ -109,6 +109,10 @@ export class PlanetCrud {
     this.clearForm();
   }
 
+  @Watch('data') dataUpdate(newValue: any[], _oldValue: any[]) {
+    this.dataState = newValue;
+  }
+
   componentWillLoad() {
     this.dataState = this.data;
   }
@@ -140,12 +144,11 @@ export class PlanetCrud {
   }
 
   handleAdd(item) {
-    console.log(`emit add`, { new: item });
     this.itemAdd.emit({ new: item });
+    console.log(`emit add`, { new: item });
   }
 
   handleDelete(item) {
-    console.log(`emit delete`, { previous: item });
     this.itemDeleted.emit({ previous: item });
   }
 
@@ -209,27 +212,13 @@ export class PlanetCrud {
                 <planet-grid-item>{row[column.key] ? row[column.key].value : null}</planet-grid-item>
               ))}
               <planet-grid-item>
-                <planet-button size="mini">Edit</planet-button>
-                <planet-button severity={PlanetButtonSeverity.ERROR} size="mini" onClick={() => this.handleDelete(row)}>Delete</planet-button>
+                <planet-buton-group>
+                  <planet-button size="mini">Edit</planet-button>
+                  <planet-button severity={PlanetButtonSeverity.ERROR} size="mini" onClick={() => this.handleDelete(row)}>Delete</planet-button>
+                </planet-buton-group>
               </planet-grid-item>
             </Fragment>
           )) : null}
-          <planet-grid-item>1</planet-grid-item>
-          <planet-grid-item>2</planet-grid-item>
-          <planet-grid-item>3</planet-grid-item>
-          <planet-grid-item>4</planet-grid-item>
-          <planet-grid-item>
-            <planet-button size="mini">Edit</planet-button>
-            <planet-button severity={PlanetButtonSeverity.ERROR} size="mini">Delete</planet-button>
-          </planet-grid-item>
-          <planet-grid-item>1</planet-grid-item>
-          <planet-grid-item>2</planet-grid-item>
-          <planet-grid-item>3</planet-grid-item>
-          <planet-grid-item>4</planet-grid-item>
-          <planet-grid-item>
-            <planet-button size="mini">Edit</planet-button>
-            <planet-button severity={PlanetButtonSeverity.ERROR} size="mini">Delete</planet-button>
-          </planet-grid-item>
         </planet-grid>
         <slot></slot>
       </Host>

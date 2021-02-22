@@ -63,7 +63,6 @@ button:active {
 .button:disabled, .button[disabled] {
   background-color: var(--button--background-color--disabled);
   --box-shadow-color: var(--button--background-color--shadow--disabled);
-  transform: translateY(var(--padding-1));
 }
 
 .button:active {

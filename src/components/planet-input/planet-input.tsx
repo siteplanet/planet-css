@@ -1,4 +1,4 @@
-import { Component, Element, Event, Host, h, Prop, EventEmitter } from '@stencil/core';
+import { Component, Element, Event, Fragment, Host, h, Prop, EventEmitter } from '@stencil/core';
 import { Validator } from '../../validators/validator';
 import { PlanetValueInterface } from './planet-value-interface';
 
@@ -11,16 +11,26 @@ export class PlanetInput {
   @Element() el!: any;
 
   @Prop() label: string;
-  @Prop() name: string;
-  @Prop({ mutable: true }) value: PlanetValueInterface<string>;
-  @Prop() validators: (() => Validator<PlanetValueInterface<string>>)[] = [];
+  @Prop() name: string = '__name';
+  @Prop({ mutable: true }) value: PlanetValueInterface<any>;
+  @Prop() type: 'text' | 'toggle' = 'text';
+  @Prop() validators: (() => Validator<PlanetValueInterface<any>>)[] = [];
 
-  @Event() changed: EventEmitter<PlanetValueInterface<string>>;
+  @Event() changed: EventEmitter<PlanetValueInterface<any>>;
 
   handleInput(event) {
     this.value = {
       description: event.target ? event.target.value : null,
       value: event.target ? event.target.value : null,
+    };
+    this.changed.emit(this.value);
+  }
+
+  handleToggle(event) {
+    console.log(`handle toggle`);
+    this.value = {
+      description: event.target ? event.target.checked : null,
+      value: event.target ? event.target.checked : null,
     };
     this.changed.emit(this.value);
   }
@@ -43,7 +53,13 @@ export class PlanetInput {
             {this.label}
           </div>
           <div class="planet-input__area">
-            <input name={this.name} value={this.value ? this.value.value : null} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />
+            {this.type === 'text' ? (<input name={this.name} value={this.value ? this.value.value : null} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />) : null}
+            {this.type === 'toggle' ? (
+              <Fragment>
+                <input class="planet-input__toggle" id={this.name} name={this.name} type='checkbox' checked={this.value ? this.value.value : this.value} onChange={(event) => this.handleToggle(event)} />
+                <label htmlFor={this.name}>label</label>
+              </Fragment>
+            ) : null}
           </div>
         </div>
         <div class="planet-input__message">
@@ -72,12 +88,12 @@ export class PlanetInput {
     if (input) {
       const form = this.el.closest('form');
       if (form) {
-          const fakeSubmit = document.createElement('button');
-          fakeSubmit.type = 'submit';
-          fakeSubmit.style.display = 'none';
-          form.appendChild(fakeSubmit);
-          fakeSubmit.click();
-          fakeSubmit.remove();
+        const fakeSubmit = document.createElement('button');
+        fakeSubmit.type = 'submit';
+        fakeSubmit.style.display = 'none';
+        form.appendChild(fakeSubmit);
+        fakeSubmit.click();
+        fakeSubmit.remove();
       }
     }
   }

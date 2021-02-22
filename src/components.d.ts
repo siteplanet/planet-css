@@ -81,8 +81,9 @@ export namespace Components {
     interface PlanetInput {
         "label": string;
         "name": string;
-        "validators": (() => Validator<PlanetValueInterface<string>>)[];
-        "value": PlanetValueInterface<string>;
+        "type": 'text' | 'toggle';
+        "validators": (() => Validator<PlanetValueInterface<any>>)[];
+        "value": PlanetValueInterface<any>;
     }
     interface PlanetItem {
     }
@@ -418,9 +419,10 @@ declare namespace LocalJSX {
     interface PlanetInput {
         "label"?: string;
         "name"?: string;
-        "onChanged"?: (event: CustomEvent<PlanetValueInterface<string>>) => void;
-        "validators"?: (() => Validator<PlanetValueInterface<string>>)[];
-        "value"?: PlanetValueInterface<string>;
+        "onChanged"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
+        "type"?: 'text' | 'toggle';
+        "validators"?: (() => Validator<PlanetValueInterface<any>>)[];
+        "value"?: PlanetValueInterface<any>;
     }
     interface PlanetItem {
     }

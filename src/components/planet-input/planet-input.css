@@ -46,3 +46,47 @@ input, select {
   font-size: 22px;
   font-weight: 600;
 }
+
+/* Toggle */
+.planet-input__toggle + label {
+  cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 30px;
+	background: #4B94FF;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.planet-input__toggle + label:after {
+  content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 20px;
+	height: 20px;
+	background: #FFFFFF;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.planet-input__toggle {
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.planet-input__toggle:checked + label {
+	background: #75CC31;
+}
+
+.planet-input__toggle:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.planet-input__toggle + label:active:after {
+	width: 24px;
+}
+

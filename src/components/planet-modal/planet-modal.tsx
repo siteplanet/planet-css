@@ -17,9 +17,6 @@ export class PlanetModal {
             <div class="modal__content">
               <slot name="content" />
             </div>
-            <div class="modal__actions">
-              <slot name="actions" />
-            </div>
           </div>
         </planet-backdrop>
         <slot></slot>

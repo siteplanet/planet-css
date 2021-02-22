@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 import { PlanetButtonSeverity } from './planet-button-severity.enum';
 
 @Component({
@@ -16,11 +16,13 @@ export class PlanetButton {
 
   render() {
     return (
+      <Host class={{
+        'button--full': this.full,
+      }}>
       <button
         class={{
           'button': true,
           'button--error': this.severity === PlanetButtonSeverity.ERROR,
-          'button--full': this.full,
           'button--mini': this.size === 'mini',
           'button--success': this.severity === PlanetButtonSeverity.SUCCESS,
         }}
@@ -29,6 +31,7 @@ export class PlanetButton {
         type={this.type}>
         <slot></slot>
       </button>
+      </Host>
     );
   }
 

@@ -13,7 +13,7 @@ export class PlanetModal {
       <Host>
         <planet-backdrop>
           <div class="modal__box">
-            <div class="modal__title">{this.titleOfModal}</div>
+            <div class="modal__title">{this.titleOfModal}<slot name="title" /></div>
             <div class="modal__content">
               <slot name="content" />
             </div>

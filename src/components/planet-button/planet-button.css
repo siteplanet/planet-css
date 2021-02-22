@@ -102,7 +102,7 @@ button:active {
   --box-shadow-color: rgb(86, 150, 38);
 }
 
-.button--full {
+:host(.button--full) {
   display: block;
   width: 100%;
 }

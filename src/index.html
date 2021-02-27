@@ -21,13 +21,25 @@
       </div>
     </planet-action-bar>
     <planet-wrapper>
-      <planet-crud titleOfForm="My Title"></planet-crud>
-      <planet-input label="Label">
-        <div slot='message'>Error</div>
-      </planet-input>
-      <planet-input label="Label" name="x" type="toggle">
-        <div slot='message'>Error</div>
-      </planet-input>
+      <planet-title-of-page>Alert</planet-title-of-page>
+      <planet-alert severity="error">Error text</planet-alert>
+      <planet-alert severity="info">Info text</planet-alert>
+      <planet-alert severity="success">Sucess text</planet-alert>
+      <planet-alert severity="warning">Warning text</planet-alert>
+     
+      <planet-title-of-page>Button</planet-title-of-page>
+      <planet-button>Button</planet-button>
+      <planet-button severity="success">Button</planet-button>
+      <planet-button severity="error">Button</planet-button>
+
+      <planet-title-of-page>Button Group</planet-title-of-page>
+      <planet-button-group>
+        <planet-button onClick="event.stopPropagation();">Button</planet-button>
+        <planet-button onClick="event.stopPropagation();" severity="success">Button</planet-button>
+        <planet-button onClick="event.stopPropagation();" severity="error">Button</planet-button>
+      </planet-button-group>
+
+      <planet-title-of-page>Card</planet-title-of-page>
       <planet-card>
         <planet-card-header>Blabla</planet-card-header>
         <planet-card-content>
@@ -42,14 +54,11 @@
           </planet-item>
         </planet-card-content>
       </planet-card>
-      <planet-title-of-page>Title</planet-title-of-page>
-    </planet-wrapper>
-    <planet-wrapper>
-      <planet-alert severity="error">Error text</planet-alert>
-      <planet-alert severity="info">Info text</planet-alert>
-      <planet-alert severity="success">Sucess text</planet-alert>
-      <planet-alert severity="warning">Warning text</planet-alert>
-      <br />
+
+      <planet-title-of-page>Crud</planet-title-of-page>
+      <planet-crud titleOfForm="My Title"></planet-crud>
+
+      <planet-title-of-page>Collapsible</planet-title-of-page>
       <planet-collapsible>
         <div slot="title">Collapsible</div>
         <div slot="actions">
@@ -72,23 +81,20 @@
         </div>
         <div slot="content">content</div>
       </planet-collapsible>
-      <planet-collapsible>
-        <div slot="title">Collapsible</div>
-        <div slot="actions">
-          <planet-button-group>
-            <planet-button onClick="event.stopPropagation();">Button</planet-button>
-            <planet-button onClick="event.stopPropagation();" severity="success">Button</planet-button>
-            <planet-button onClick="event.stopPropagation();" severity="error">Button</planet-button>
-          </planet-button-group>
-        </div>
-        <div slot="content">content</div>
-      </planet-collapsible>
-      <planet-button-group>
-        <planet-button onClick="event.stopPropagation();">Button</planet-button>
-        <planet-button onClick="event.stopPropagation();" severity="success">Button</planet-button>
-        <planet-button onClick="event.stopPropagation();" severity="error">Button</planet-button>
-      </planet-button-group>
-      <br /><br />
+
+      <planet-title-of-page>Input</planet-title-of-page>
+      <planet-input label="Autocomplete" name="x" type="autocomplete" value="true">
+        <div slot='message'>Error</div>
+      </planet-input>
+      <planet-input label="Text">
+        <div slot='message'>Error</div>
+      </planet-input>
+      <planet-input label="Select" name="x" type="select" value="true">
+        <div slot='message'>Error</div>
+      </planet-input>
+      <planet-input label="Toggle" name="x" type="toggle" value="true">
+        <div slot='message'>Error</div>
+      </planet-input>
     </planet-wrapper>
     <!-- <planet-overlay-navigation open>
       <a href="#">a</a>

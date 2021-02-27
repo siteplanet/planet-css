@@ -81,7 +81,8 @@ export namespace Components {
     interface PlanetInput {
         "label": string;
         "name": string;
-        "type": 'text' | 'toggle';
+        "options": PlanetValueInterface<any>[];
+        "type": 'autocomplete' | 'select' | 'text' | 'toggle';
         "validators": (() => Validator<PlanetValueInterface<any>>)[];
         "value": PlanetValueInterface<any>;
     }
@@ -419,8 +420,10 @@ declare namespace LocalJSX {
     interface PlanetInput {
         "label"?: string;
         "name"?: string;
-        "onChanged"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
-        "type"?: 'text' | 'toggle';
+        "onPChange"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
+        "onPInput"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
+        "options"?: PlanetValueInterface<any>[];
+        "type"?: 'autocomplete' | 'select' | 'text' | 'toggle';
         "validators"?: (() => Validator<PlanetValueInterface<any>>)[];
         "value"?: PlanetValueInterface<any>;
     }

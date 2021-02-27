@@ -5,12 +5,12 @@ import { vueOutputTarget, ComponentModelConfig } from '@stencil/vue-output-targe
 import { sass } from '@stencil/sass';
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
-  {
-    elementSelectors: ['planet-input'],
-    event: 'changed',
-    targetAttr: 'value',
-    type: 'text',
-  },
+  // {
+  //   elementSelectors: ['planet-input'],
+  //   targetAttr: 'value',
+  //   event: 'onChange',
+  //   type: 'boolean',
+  // },
 ];
 
 const vueComponentModels: ComponentModelConfig[] = [];

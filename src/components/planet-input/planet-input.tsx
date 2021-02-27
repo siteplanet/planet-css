@@ -1,4 +1,4 @@
-import { Component, Element, Event, Fragment, Host, h, Prop, EventEmitter } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Fragment, Host, h, Prop, Watch, State } from '@stencil/core';
 import { Validator } from '../../validators/validator';
 import { PlanetValueInterface } from './planet-value-interface';
 
@@ -8,58 +8,149 @@ import { PlanetValueInterface } from './planet-value-interface';
   shadow: true,
 })
 export class PlanetInput {
-  @Element() el!: any;
+  @Element() el!: HTMLElement;
 
   @Prop() label: string;
   @Prop() name: string = '__name';
+  @Prop({ mutable: true }) options: PlanetValueInterface<any>[] = [{
+    description: 'Denmark',
+    value: 'DNK',
+  },
+  {
+    description: 'Netherlands',
+    value: 'NLD',
+  }];
   @Prop({ mutable: true }) value: PlanetValueInterface<any>;
-  @Prop() type: 'text' | 'toggle' = 'text';
+  @Prop() type: 'autocomplete' | 'select' | 'text' | 'toggle' = 'text';
   @Prop() validators: (() => Validator<PlanetValueInterface<any>>)[] = [];
 
-  @Event() changed: EventEmitter<PlanetValueInterface<any>>;
+  @Event() pChange: EventEmitter<PlanetValueInterface<any>>;
+  @Event() pInput: EventEmitter<PlanetValueInterface<any>>;
+
+  @State() showOptions = false;
+  @State() focusedOption = 0;
+
+  @Watch('options') optionsChanged() {
+    this.focusedOption = 0;
+  }
+
+  @Watch('value') valueChanged(value: PlanetValueInterface<any>) {
+    this.pChange.emit(value);
+  }
+
+  handleBlur() {
+    this.toggleOptions(false);
+  }
+  
+  handleFocus() {
+    this.toggleOptions(true);
+  }
 
   handleInput(event) {
-    this.value = {
+    this.toggleOptions(true);
+    this.value = { 
       description: event.target ? event.target.value : null,
       value: event.target ? event.target.value : null,
     };
-    this.changed.emit(this.value);
+    this.pInput.emit(this.value);
+  }
+
+  handleSelect(option: PlanetValueInterface<any>) {
+    this.value = option;
+    this.toggleOptions(false);
   }
 
   handleToggle(event) {
-    console.log(`handle toggle`);
-    this.value = {
-      description: event.target ? event.target.checked : null,
-      value: event.target ? event.target.checked : null,
-    };
-    this.changed.emit(this.value);
+    this.value = { value: event.target ? event.target.checked : null };
   }
 
   handleKeyUp(event) {
+    if (event.key === 'ArrowUp') {
+      if (this.showOptions) {
+        event.preventDefault();
+        this.moveUpOption();
+      }
+    }
+    if (event.key === 'ArrowDown') {
+      if (this.showOptions) {
+        event.preventDefault();
+        this.moveDownOption();
+      }
+    }
     if (event.key === 'Enter' || event.keyCode === 13) {
-      this.callEnter(this.el);
+      if (this.showOptions && this.options[this.focusedOption] !== undefined) {
+        event.preventDefault();
+        this.handleSelect(this.options[this.focusedOption]);
+      } else {
+        this.callEnter(this.el);
+      }
     }
   }
 
-  render() {
-    const { el, value, name } = this;
+  private moveUpOption() {
+    if (this.focusedOption === 0) {
+      return;
+    }
+    this.focusedOption = this.focusedOption - 1;
+  }
 
+  private moveDownOption() {
+    if (this.focusedOption === this.options.length - 1) {
+      return;
+    }
+    this.focusedOption = this.focusedOption + 1;
+  }
+
+  private toggleOptions(value: boolean) {
+    if (value) {
+      this.focusedOption = 0;
+    }
+    this.showOptions = value;
+  }
+
+  render() {
+    const { el, focusedOption, label, name, value } = this;
     this.renderInputOutsideShadowRoot(el, name, value);
 
     return (
       <Host>
         <div class="planet-input__control">
           <div class="planet-input__label">
-            {this.label}
+            {label}
           </div>
           <div class="planet-input__area">
-            {this.type === 'text' ? (<input name={this.name} value={this.value ? this.value.value : null} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />) : null}
+            {this.type === 'autocomplete' || this.type === 'select' || this.type === 'text' ? (
+              <Fragment>
+                <input name={name} value={value?.value !== undefined ? (value.description ? value.description : value.value) : value} onBlur={() => this.handleBlur()} onFocus={() => this.handleFocus()} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />
+                {value?.value !== undefined && value.value != value.description ? (<div class="planet-input__value">{value.value}</div>) : null}
+              </Fragment>
+              ) : null}
             {this.type === 'toggle' ? (
               <Fragment>
-                <input class="planet-input__toggle" id={this.name} name={this.name} type='checkbox' checked={this.value ? this.value.value : this.value} onChange={(event) => this.handleToggle(event)} />
-                <label htmlFor={this.name}>label</label>
+                <input 
+                  class="planet-input__toggle"
+                  id={name}
+                  name={name}
+                  type='checkbox'
+                  checked={value ? value.value : value}
+                  onChange={(event) => {
+                    this.handleToggle(event)
+                  }}
+                  role="switch" />
+                <label htmlFor={name}></label>
               </Fragment>
             ) : null}
+            {this.showOptions && (this.type === 'autocomplete' || this.type === 'select') ? (<div class="planet-input__options">
+              {this.options.map((option, index) => (
+                <div class={{
+                  'planet-input__option': true,
+                  'planet-input__option--focused': index === focusedOption,
+                }} onMouseDown={(_) => this.handleSelect(option)}>
+                  {option.description}<br />
+                  {option.value}
+                </div>
+              ))}
+            </div>) : null}
           </div>
         </div>
         <div class="planet-input__message">

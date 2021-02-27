@@ -7,19 +7,20 @@
 
 ## Properties
 
-| Property     | Attribute | Description | Type                                                | Default     |
-| ------------ | --------- | ----------- | --------------------------------------------------- | ----------- |
-| `label`      | `label`   |             | `string`                                            | `undefined` |
-| `name`       | `name`    |             | `string`                                            | `undefined` |
-| `validators` | --        |             | `(() => Validator<PlanetValueInterface<string>>)[]` | `[]`        |
-| `value`      | --        |             | `PlanetValueInterface<string>`                      | `undefined` |
+| Property     | Attribute | Description | Type                                             | Default                             |
+| ------------ | --------- | ----------- | ------------------------------------------------ | ----------------------------------- |
+| `label`      | `label`   |             | `string`                                         | `undefined`                         |
+| `name`       | `name`    |             | `string`                                         | `'__name'`                          |
+| `type`       | `type`    |             | `"text" \| "toggle"`                             | `'text'`                            |
+| `validators` | --        |             | `(() => Validator<PlanetValueInterface<any>>)[]` | `[]`                                |
+| `value`      | --        |             | `PlanetValueInterface<any>`                      | `{ description: 'x', value: true }` |
 
 
 ## Events
 
-| Event     | Description | Type                                        |
-| --------- | ----------- | ------------------------------------------- |
-| `changed` |             | `CustomEvent<PlanetValueInterface<string>>` |
+| Event     | Description | Type                   |
+| --------- | ----------- | ---------------------- |
+| `pChange` |             | `CustomEvent<boolean>` |
 
 
 ## Dependencies

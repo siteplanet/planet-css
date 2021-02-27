@@ -18,6 +18,7 @@
 .planet-input__area {
   font-size: 22px;
   font-weight: 600;
+  position: relative;
 }
 
 .planet-input__message {
@@ -42,8 +43,14 @@ input, select {
   border: none;
   display: block;
   outline: none;
+  padding: 0;
   width: 100%;
   font-size: 22px;
+  font-weight: 600;
+}
+
+.planet-input__value {
+  font-size: 17px;
   font-weight: 600;
 }
 
@@ -90,3 +97,33 @@ input, select {
 	width: 24px;
 }
 
+.planet-input__options {
+  box-sizing: border-box;
+  position: absolute;
+  background-color: #CCCCCC;
+  border-radius: 4px;
+  margin-top: 4px;
+  left: -8px;
+  right: -8px;
+  z-index: 100;
+  padding: 8px;
+}
+
+.planet-input__option {
+  background-color: #EAEAEA;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.planet-input__option--focused {
+  background-color: #6fb0be;
+}
+
+.planet-input__option:hover {
+  background-color: #82ccdd;
+}
+
+.planet-input__option + .planet-input__option {
+  border-top: 1px solid #CCCCCC;
+}

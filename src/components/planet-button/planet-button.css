@@ -12,11 +12,11 @@
   color: var(--button--color);
   cursor: pointer;
   display: inline-block;
-  font-size: var(--button--font-size);
+  font-size: var(--button--font-size--md);
+  padding: var(--button--md--padding);
   font-weight: var(--button--font-weight);
   /* margin-top: calc(-1 * var(--padding-1)); */
   outline: none;
-  padding: var(--padding-2) var(--padding-6);
   text-align: center;
   transition: all .3s;
   top: 0;
@@ -40,10 +40,24 @@
   bottom: -0;
 }
 
-.button--mini {
-  font-size: var(--button--font-size--mini);
-  /* margin-top: calc(-1 * var(--padding-half)); */
-  padding: var(--padding-2) var(--padding-4);
+.button--size-lg {
+  font-size: var(--button--font-size--lg);
+  padding: var(--button--lg--padding);
+}
+
+.button--size-md {
+  font-size: var(--button--font-size--md);
+  padding: var(--button--md--padding);
+}
+
+.button--size-sm {
+  font-size: var(--button--font-size--sm);
+  padding: var(--button--sm--padding);
+}
+
+.button--size-xs {
+  font-size: var(--button--font-size--xs);
+  padding: var(--button--xs--padding);
 }
 
 button:focus {
@@ -102,7 +116,8 @@ button:active {
   --box-shadow-color: rgb(86, 150, 38);
 }
 
-:host(.button--full) {
+:host(.button--full),
+:host(.button--full) .button {
   display: block;
   width: 100%;
 }

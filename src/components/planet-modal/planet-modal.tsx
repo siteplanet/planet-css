@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'planet-modal',
@@ -7,13 +7,23 @@ import { Component, Host, h, Prop } from '@stencil/core';
 })
 export class PlanetModal {
   @Prop() titleOfModal: string;
+  @Event() pClose: EventEmitter<void>;
+
+  handleClose(): void {
+    this.pClose.emit();
+  }
 
   render() {
     return (
       <Host>
         <planet-backdrop>
           <div class="modal__box">
-            <div class="modal__title">{this.titleOfModal}<slot name="title" /></div>
+            <div class="modal__header">
+              <div class="modal__title">{this.titleOfModal}<slot name="title" /></div>
+              <planet-button-group>
+                <planet-button size="mini" onClick={() => this.handleClose()}>X</planet-button>
+              </planet-button-group>
+            </div>
             <div class="modal__content">
               <slot name="content" />
             </div>

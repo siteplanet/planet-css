@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                                                         | Default     |
-| ---------- | ---------- | ----------- | ------------------------------------------------------------ | ----------- |
-| `disabled` | `disabled` |             | `boolean`                                                    | `undefined` |
-| `form`     | `form`     |             | `string`                                                     | `undefined` |
-| `full`     | `full`     |             | `boolean`                                                    | `undefined` |
-| `severity` | `severity` |             | `PlanetButtonSeverity.ERROR \| PlanetButtonSeverity.SUCCESS` | `undefined` |
-| `size`     | `size`     |             | `"large" \| "mini"`                                          | `'large'`   |
-| `type`     | `type`     |             | `"button" \| "submit"`                                       | `'submit'`  |
+| Property    | Attribute     | Description | Type                                                         | Default     |
+| ----------- | ------------- | ----------- | ------------------------------------------------------------ | ----------- |
+| `disabled`  | `disabled`    |             | `boolean`                                                    | `undefined` |
+| `form`      | `form`        |             | `string`                                                     | `undefined` |
+| `full`      | `full`        |             | `boolean`                                                    | `undefined` |
+| `pTabIndex` | `p-tab-index` |             | `number`                                                     | `undefined` |
+| `severity`  | `severity`    |             | `PlanetButtonSeverity.ERROR \| PlanetButtonSeverity.SUCCESS` | `undefined` |
+| `size`      | `size`        |             | `"large" \| "lg" \| "md" \| "mini" \| "sm" \| "xs"`          | `'large'`   |
+| `type`      | `type`        |             | `"button" \| "submit"`                                       | `'submit'`  |
 
 
 ## Dependencies
@@ -23,6 +24,7 @@
 
  - [planet-crud](../planet-crud)
  - [planet-input-box](../planet-input-box)
+ - [planet-modal](../planet-modal)
  - [planet-pagination](../planet-pagination)
 
 ### Graph
@@ -30,6 +32,7 @@
 graph TD;
   planet-crud --> planet-button
   planet-input-box --> planet-button
+  planet-modal --> planet-button
   planet-pagination --> planet-button
   style planet-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

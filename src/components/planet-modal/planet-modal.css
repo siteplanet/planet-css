@@ -18,15 +18,25 @@
   width: 80%;
 }
 
-.modal__title {
+.modal__header {
   background-color: #FFC224;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  display: flex;
+  width: 100%;
+}
+
+.modal__header planet-button-group {
+  margin: 10px;
+}
+
+.modal__title {
   font-weight: bold;
   font-size: 25px;
   font-style: italic;
   padding: 16px;
   box-sizing: border-box;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  width: 100%;
 }
 
 .modal__content {

@@ -9,6 +9,7 @@
 
 | Property     | Attribute   | Description | Type                                             | Default     |
 | ------------ | ----------- | ----------- | ------------------------------------------------ | ----------- |
+| `focused`    | `focused`   |             | `boolean`                                        | `undefined` |
 | `label`      | `label`     |             | `string`                                         | `undefined` |
 | `showHelp`   | `show-help` |             | `boolean`                                        | `false`     |
 | `validators` | --          |             | `(() => Validator<PlanetValueInterface<any>>)[]` | `[]`        |

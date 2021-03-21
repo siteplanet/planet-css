@@ -10,7 +10,9 @@ export class PlanetGridItem {
   render() {
     return (
       <Host>
-        <slot></slot>
+        <div class="planet-grid-item__value">
+          <slot></slot>
+        </div>
       </Host>
     );
   }

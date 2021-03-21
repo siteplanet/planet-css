@@ -18,3 +18,7 @@ planet-pagination + planet-button-group {
 .form-section planet-column:first-child, .form-section planet-column:nth-child(2) {
   margin-top: 0;
 }
+
+.modal-actions {
+  margin-top: 16px;
+}

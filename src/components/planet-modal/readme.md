@@ -12,6 +12,13 @@
 | `titleOfModal` | `title-of-modal` |             | `string` | `undefined` |
 
 
+## Events
+
+| Event    | Description | Type                |
+| -------- | ----------- | ------------------- |
+| `pClose` |             | `CustomEvent<void>` |
+
+
 ## Dependencies
 
 ### Used by
@@ -21,11 +28,15 @@
 ### Depends on
 
 - [planet-backdrop](../planet-backdrop)
+- [planet-button-group](../planet-button-group)
+- [planet-button](../planet-button)
 
 ### Graph
 ```mermaid
 graph TD;
   planet-modal --> planet-backdrop
+  planet-modal --> planet-button-group
+  planet-modal --> planet-button
   planet-crud --> planet-modal
   style planet-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```

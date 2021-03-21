@@ -8,6 +8,7 @@ import { Validator } from '../../validators/validator';
   shadow: true,
 })
 export class PlanetInputBox {
+  @Prop({ mutable: true }) focused: boolean;
   @Prop() label: string;
   @Prop() showHelp = false;
   @Prop() validators: (() => Validator<PlanetValueInterface<any>>)[] = [];
@@ -31,10 +32,12 @@ export class PlanetInputBox {
   }
 
   render() {
-    const { label, showHelp, validators, value } = this;
+    const { focused, label, showHelp, validators, value } = this;
 
     return (
-      <Host>
+      <Host class={{
+        'planet-input-box--focused': focused,
+      }}>
         <div class="planet-input-box__content" onClick={() => this.handleFocus()}>
           <div class="planet-input-box__main">
             <div class="planet-input-box__label">
@@ -46,8 +49,8 @@ export class PlanetInputBox {
           </div>
           <div class="planet-input__actions">
             <planet-button-group>
-              {showHelp ? (<planet-button size="mini" onClick={(event) => this.handleHelp(event)}>?</planet-button>) : null}
-              <planet-button disabled={value?.value ? false : true} size="mini" onClick={() => this.handleClear()}>X</planet-button>
+              {showHelp ? (<planet-button size="mini" onClick={(event) => this.handleHelp(event)} pTabIndex={-1}>?</planet-button>) : null}
+              <planet-button disabled={value?.value ? false : true} size="mini" pTabIndex={-1} onClick={() => this.handleClear()}>X</planet-button>
             </planet-button-group>
           </div>
         </div>

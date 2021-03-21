@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, Fragment, Host, h, Prop, State, Method, Watch } from '@stencil/core';
 import { RequiredValidator } from '../../validators/required-validator/required-validator';
 import { PlanetButtonSeverity } from '../planet-button/planet-button-severity.enum';
+import { PlanetValueInterface } from '../planet-input/planet-value-interface';
 
 @Component({
   tag: 'planet-crud',
@@ -14,27 +15,38 @@ export class PlanetCrud {
   @Prop() columns: {
     key: string;
     label: string;
-    type: string;
+    showInGrid: boolean;
+    type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
+    validators: any[];
+    defaultValue?: PlanetValueInterface<any>,
   }[] = [
       {
         key: 'id',
         label: 'ID',
-        type: 'text'
+        showInGrid: false,
+        type: 'text',
+        validators: [RequiredValidator],
       },
       {
         key: 'shortName',
         label: 'Short Name',
-        type: 'text'
+        showInGrid: true,
+        type: 'text',
+        validators: [RequiredValidator],
       },
       {
         key: 'longName',
         label: 'Long Name',
-        type: 'text'
+        showInGrid: true,
+        type: 'text',
+        validators: [RequiredValidator],
       },
       {
         key: 'country',
         label: 'Country',
-        type: 'text'
+        showInGrid: true,
+        type: 'text',
+        validators: [RequiredValidator],
       },
     ];
   /*
@@ -93,14 +105,15 @@ export class PlanetCrud {
 
   @State() dataState: any[];
   @State() formState: object;
+  @State() formStatePrevious: object;
   @State() formMode: 'post' | 'put' | null;
 
   @Event() itemAdd: EventEmitter<object>;
   @Event() itemDeleted: EventEmitter<object>;
   @Event() itemUpdate: EventEmitter<object>;
 
-  @Method() async openForm(state: 'put' | 'post') {
-    this.createForm();
+  @Method() async openForm(state: 'put' | 'post', row?: any) {
+    this.createForm(state, row);
     this.formMode = state;
   }
 
@@ -119,15 +132,18 @@ export class PlanetCrud {
 
   clearForm() {
     this.formState = {};
+    this.formStatePrevious = {};
   }
 
-  createForm() {
+  createForm(state: 'put' | 'post', row?: any) {
     this.formState = {};
+    this.formStatePrevious = {};
     this.columns.forEach(column => {
       this.formState[column.key] = {
-        description: null,
-        value: null,
+        description: row ? row[column.key]?.description : (state === 'post' && column?.defaultValue?.description ? column.defaultValue.description : null),
+        value: row ? row[column.key]?.value : (state === 'post' && column?.defaultValue?.value ? column.defaultValue.value : null),
       };
+      this.formStatePrevious[column.key] = this.formState[column.key];
     });
   }
 
@@ -147,14 +163,14 @@ export class PlanetCrud {
     this.itemAdd.emit({ new: item });
     console.log(`emit add`, { new: item });
   }
-
+  
   handleDelete(item) {
     this.itemDeleted.emit({ previous: item });
   }
 
   handleUpdate(item) {
-    console.log(`emit update`, { previous: item });
-    this.itemUpdate.emit({ previous: item });
+    console.log(`emit update`, { new: item, previous: this.formStatePrevious });
+    this.itemUpdate.emit({ new: item, previous: this.formStatePrevious });
   }
 
   render() {
@@ -162,28 +178,27 @@ export class PlanetCrud {
       <Host class="crud">
         {this.formMode ? (
           <form id="form" onSubmit={(e) => this.handleSubmit(e)}>
-            <planet-modal titleOfModal="New item">
+            <planet-modal titleOfModal="New item" onPClose={() => { this.closeForm() }}>
               <div slot="content">
                 <planet-row class="form-section">
                   {this.columns.map(column => (
                     <planet-column key={column.key} xlarge={6}>
                       <planet-input
                         label={column.label}
+                        type={column.type}
                         value={this.formState[column.key]}
-                        validators={[RequiredValidator]}
-                        onInput={(event) => this.handleInput(column.key, event)}>
+                        validators={column.validators}
+                        onPChange={(event) => this.handleInput(column.key, event)}>
                       </planet-input>
                     </planet-column>
                   ))}
                 </planet-row>
-              </div>
-              <div slot="actions">
-                <planet-row>
+                <planet-row class="modal-actions">
                   <planet-column>
-                    <planet-button severity={PlanetButtonSeverity.ERROR} full onClick={() => this.closeForm()} type="button">Close</planet-button>
+                    <planet-button full={true} severity={PlanetButtonSeverity.ERROR} onClick={() => this.closeForm()} type="button">Close</planet-button>
                   </planet-column>
                   <planet-column>
-                    <planet-button severity={PlanetButtonSeverity.SUCCESS} full type="submit" form="form" onClick={(e) => this.handleSubmit(e)}>Save</planet-button>
+                    <planet-button full={true} severity={PlanetButtonSeverity.SUCCESS} type="submit" form="form" onClick={(e) => this.handleSubmit(e)}>Save</planet-button>
                   </planet-column>
                 </planet-row>
               </div>
@@ -203,18 +218,18 @@ export class PlanetCrud {
             </planet-button-group>
           </planet-column>
         </planet-row>
-        <planet-grid>
-          {this.columns.map(column => (<planet-grid-header>{column.label}</planet-grid-header>))}
+        <planet-grid style={{ gridTemplateColumns: `repeat(${this.columns.filter(column => column.showInGrid).length + 1}, 1fr)` }}>
+          {this.columns.filter(column => column.showInGrid).map(column => (<planet-grid-header>{column.label}</planet-grid-header>))}
           <planet-grid-header>Actions</planet-grid-header>
           {this.dataState ? this.dataState.map((row) => (
             <Fragment>
-              {this.columns.map(column => (
+              {this.columns.filter(column => column.showInGrid).map(column => (
                 <planet-grid-item>{row[column.key] ? row[column.key].value : null}</planet-grid-item>
               ))}
               <planet-grid-item>
                 <planet-buton-group>
-                  <planet-button size="mini">Edit</planet-button>
-                  <planet-button severity={PlanetButtonSeverity.ERROR} size="mini" onClick={() => this.handleDelete(row)}>Delete</planet-button>
+                  <planet-button size="xs" onClick={() => this.openForm('put', row)}>Edit</planet-button>
+                  <planet-button severity={PlanetButtonSeverity.ERROR} size="xs" onClick={() => this.handleDelete(row)}>Delete</planet-button>
                 </planet-buton-group>
               </planet-grid-item>
             </Fragment>

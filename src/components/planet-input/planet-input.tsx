@@ -25,6 +25,7 @@ export class PlanetInput {
 
   @State() dateHours = 0;
   @State() dateMinutes = 0;
+  @State() focused = false;
   @State() showOptions = false;
   @State() filteredOptions: PlanetValueInterface<any>[] = [];
   @State() focusedOption = 0;
@@ -33,9 +34,31 @@ export class PlanetInput {
     this.filterOptions();
   }
 
+  @Watch('dateHours') dateHoursChanged() {
+    this.updateTime();
+  }
+
+  @Watch('dateMinutes') dateMinutesChanged() {
+    this.updateTime();
+  }
+
   @Watch('value') valueChanged(value: PlanetValueInterface<any>) {
+    if (this.type === 'time') {
+      this.parseTime();
+    }
     this.filterOptions();
     this.pChange.emit(value);
+  }
+
+  parseTime() {
+    const value = this.value?.value;
+    if (/^\d{2}:\d{2}:\d{2}$/.test(value)) {
+      console.log(value.match(/^\d{2}:\d{2}:\d{2}$/));
+    }
+  }
+
+  updateTime() {
+    this.value = { description: null, value: `${this.dateHours < 10 ? '0' : ''}${this.dateHours}:${this.dateMinutes < 10 ? '0' : ''}${this.dateMinutes}:00` };
   }
 
   handleBlur() {
@@ -157,12 +180,12 @@ export class PlanetInput {
   }
 
   render() {
-    const { el, dateHours, dateMinutes, focusedOption, label, name, showValue, validators, value } = this;
+    const { el, dateHours, dateMinutes, focused, focusedOption, label, name, showValue, validators, value } = this;
     this.renderInputOutsideShadowRoot(el, name, value);
 
     return (
       <Host>
-        <planet-input-box label={label} validators={validators} value={value} onPClear={() => {this.handleClear()}} onPFocus={() => {this.handleSetFocus()}} onPHelp={() => {this.handleHelp()}}>
+        <planet-input-box focused={focused} label={label} validators={validators} value={value} onPClear={() => {this.handleClear()}} onPFocus={() => {this.handleSetFocus()}} onPHelp={() => {this.handleHelp()}}>
           <div slot="planet-input-box__area">
             {this.type === 'autocomplete' || this.type === 'select' || this.type === 'text' ? (
               <Fragment>
@@ -172,8 +195,8 @@ export class PlanetInput {
             ) : null}
             {this.type === 'time' ? (
               <Fragment>
-                <input type='number' value={dateHours} onInput={(event) => this.handleDateInput(event, 'hours')} onKeyUp={(event) => this.handleDateKeyUp(event, 'hours')} />
-                <input type='number' value={dateMinutes} onInput={(event) => this.handleDateInput(event, 'minutes')} onKeyUp={(event) => this.handleDateKeyUp(event, 'minutes')} />
+                <input class='planet-input__time-control' type='number' min={0} max={23} value={dateHours} onInput={(event) => this.handleDateInput(event, 'hours')} onKeyUp={(event) => this.handleDateKeyUp(event, 'hours')} /> :
+                <input class='planet-input__time-control' type='number' min={0} max={59} value={dateMinutes} onInput={(event) => this.handleDateInput(event, 'minutes')} onKeyUp={(event) => this.handleDateKeyUp(event, 'minutes')} />
               </Fragment>
             ) : null}
             {this.type === 'toggle' ? (

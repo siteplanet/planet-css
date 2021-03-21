@@ -3,4 +3,13 @@
   box-sizing: border-box;
   display: block;
   padding: 8px 4px;
+  display: flex;
+  align-items: center;
+}
+
+.planet-grid-item__value {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0px;
 }

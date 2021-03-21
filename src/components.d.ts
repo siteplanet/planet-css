@@ -22,8 +22,9 @@ export namespace Components {
         "disabled": boolean;
         "form": string;
         "full": boolean;
+        "pTabIndex": number;
         "severity": PlanetButtonSeverity;
-        "size": 'mini' | 'large';
+        "size": 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg';
         "type": 'button' | 'submit';
     }
     interface PlanetButtonGroup {
@@ -56,10 +57,13 @@ export namespace Components {
         "columns": {
     key: string;
     label: string;
-    type: string;
+    showInGrid: boolean;
+    type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
+    validators: any[];
+    defaultValue?: PlanetValueInterface<any>,
   }[];
         "data": any[];
-        "openForm": (state: 'put' | 'post') => Promise<void>;
+        "openForm": (state: 'put' | 'post', row?: any) => Promise<void>;
         "page": number;
         "pages": number;
         "titleOfForm": string;
@@ -93,6 +97,7 @@ export namespace Components {
         "value": PlanetValueInterface<any>;
     }
     interface PlanetInputBox {
+        "focused": boolean;
         "label": string;
         "showHelp": boolean;
         "validators": (() => Validator<PlanetValueInterface<any>>)[];
@@ -386,8 +391,9 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "form"?: string;
         "full"?: boolean;
+        "pTabIndex"?: number;
         "severity"?: PlanetButtonSeverity;
-        "size"?: 'mini' | 'large';
+        "size"?: 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg';
         "type"?: 'button' | 'submit';
     }
     interface PlanetButtonGroup {
@@ -418,7 +424,10 @@ declare namespace LocalJSX {
         "columns"?: {
     key: string;
     label: string;
-    type: string;
+    showInGrid: boolean;
+    type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
+    validators: any[];
+    defaultValue?: PlanetValueInterface<any>,
   }[];
         "data"?: any[];
         "onItemAdd"?: (event: CustomEvent<object>) => void;
@@ -460,6 +469,7 @@ declare namespace LocalJSX {
         "value"?: PlanetValueInterface<any>;
     }
     interface PlanetInputBox {
+        "focused"?: boolean;
         "label"?: string;
         "onPClear"?: (event: CustomEvent<void>) => void;
         "onPFocus"?: (event: CustomEvent<void>) => void;
@@ -473,6 +483,7 @@ declare namespace LocalJSX {
     interface PlanetLabel {
     }
     interface PlanetModal {
+        "onPClose"?: (event: CustomEvent<void>) => void;
         "titleOfModal"?: string;
     }
     interface PlanetOverlayNavigation {

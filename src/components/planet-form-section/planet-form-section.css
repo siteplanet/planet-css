@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  margin-top: -8px;
+}
+
+.title-of-form-section {
+  box-sizing: border-box;
+  font-size: var(--form-section--title--font-size-small);
+  font-weight: var(--form-section--title--font-weight);
+  margin: var(--form-section--title--margin);
+  padding: var(--form-section--title--padding);
+}
+
+@media only screen and (min-width: 960px) {
+  .title-of-form-section {
+      font-size: var(--form-section--title--font-size);
+      text-align: var(--form-section--title--text-align);
+  }
+}

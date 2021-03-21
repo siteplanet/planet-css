@@ -12,47 +12,89 @@ export class PlanetInput {
 
   @Prop() label: string;
   @Prop() name: string = '__name';
-  @Prop({ mutable: true }) options: PlanetValueInterface<any>[] = [{
-    description: 'Denmark',
-    value: 'DNK',
-  },
-  {
-    description: 'Netherlands',
-    value: 'NLD',
-  }];
+  @Prop({ mutable: true }) options: PlanetValueInterface<any>[];
+  @Prop() showHelp = false;
+  @Prop() showValue = true;
   @Prop({ mutable: true }) value: PlanetValueInterface<any>;
-  @Prop() type: 'autocomplete' | 'select' | 'text' | 'toggle' = 'text';
+  @Prop() type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle' = 'text';
   @Prop() validators: (() => Validator<PlanetValueInterface<any>>)[] = [];
 
   @Event() pChange: EventEmitter<PlanetValueInterface<any>>;
+  @Event() pHelp: EventEmitter<void>;
   @Event() pInput: EventEmitter<PlanetValueInterface<any>>;
 
+  @State() dateHours = 0;
+  @State() dateMinutes = 0;
   @State() showOptions = false;
+  @State() filteredOptions: PlanetValueInterface<any>[] = [];
   @State() focusedOption = 0;
 
   @Watch('options') optionsChanged() {
-    this.focusedOption = 0;
+    this.filterOptions();
   }
 
   @Watch('value') valueChanged(value: PlanetValueInterface<any>) {
+    this.filterOptions();
     this.pChange.emit(value);
   }
 
   handleBlur() {
     this.toggleOptions(false);
   }
-  
+
   handleFocus() {
     this.toggleOptions(true);
   }
 
+  handleHelp() {
+    this.pHelp.emit();
+  }
+
   handleInput(event) {
     this.toggleOptions(true);
-    this.value = { 
+    this.value = {
       description: event.target ? event.target.value : null,
       value: event.target ? event.target.value : null,
     };
     this.pInput.emit(this.value);
+  }
+
+  handleClear(): void {
+    this.value = null;
+  }
+
+  handleDateInput(event, field: 'hours' | 'minutes'): void {
+    if (field === 'hours') {
+      this.dateHours = event.target ? event.target.value : null;
+    }
+    if (field === 'minutes') {
+      this.dateMinutes = event.target ? event.target.value : null;
+    }
+  }
+
+  handleDateKeyUp(event, field: 'hours' | 'minutes') {
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (field === 'hours') {
+        this.dateHours = this.dateHours ? (this.dateHours === 23 ? 0 : parseInt(this.dateHours.toString(), 10) + 1) : 0;
+      }
+      if (field === 'minutes') {
+        this.dateMinutes = this.dateMinutes ? (this.dateMinutes === 59 ? 0 : parseInt(this.dateMinutes.toString(), 10) + 1) : 0;
+      }
+    }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      if (field === 'hours') {
+        this.dateHours = this.dateHours ? (this.dateHours === 0 ? 0 : this.dateHours - 1) : 0;
+      }
+      if (field === 'minutes') {
+        this.dateMinutes = this.dateMinutes ? (this.dateMinutes === 0 ? 59 : this.dateMinutes - 1) : 0;
+      }
+    }
+  }
+
+  handleSetFocus() {
+    console.log(`set focus`);
   }
 
   handleSelect(option: PlanetValueInterface<any>) {
@@ -78,9 +120,9 @@ export class PlanetInput {
       }
     }
     if (event.key === 'Enter' || event.keyCode === 13) {
-      if (this.showOptions && this.options[this.focusedOption] !== undefined) {
+      if (this.showOptions && this.filteredOptions[this.focusedOption] !== undefined) {
         event.preventDefault();
-        this.handleSelect(this.options[this.focusedOption]);
+        this.handleSelect(this.filteredOptions[this.focusedOption]);
       } else {
         this.callEnter(this.el);
       }
@@ -95,7 +137,7 @@ export class PlanetInput {
   }
 
   private moveDownOption() {
-    if (this.focusedOption === this.options.length - 1) {
+    if (this.focusedOption === this.filterOptions.length - 1) {
       return;
     }
     this.focusedOption = this.focusedOption + 1;
@@ -108,26 +150,35 @@ export class PlanetInput {
     this.showOptions = value;
   }
 
+  private filterOptions(): void {
+    this.focusedOption = 0;
+    const value = (this.value?.value ? this.value?.value.toString() : '').trim().toUpperCase();
+    this.filteredOptions = !this.options || this.type === 'select' ? this.options : this.options.filter((option) => (option?.description ? option?.description.toString() : '').trim().toUpperCase()?.indexOf(value) > -1 || (option?.value ? option?.value.toString() : '').trim().toUpperCase()?.indexOf(value) > -1);
+  }
+
   render() {
-    const { el, focusedOption, label, name, value } = this;
+    const { el, dateHours, dateMinutes, focusedOption, label, name, showValue, validators, value } = this;
     this.renderInputOutsideShadowRoot(el, name, value);
 
     return (
       <Host>
-        <div class="planet-input__control">
-          <div class="planet-input__label">
-            {label}
-          </div>
-          <div class="planet-input__area">
+        <planet-input-box label={label} validators={validators} value={value} onPClear={() => {this.handleClear()}} onPFocus={() => {this.handleSetFocus()}} onPHelp={() => {this.handleHelp()}}>
+          <div slot="planet-input-box__area">
             {this.type === 'autocomplete' || this.type === 'select' || this.type === 'text' ? (
               <Fragment>
                 <input name={name} value={value?.value !== undefined ? (value.description ? value.description : value.value) : value} onBlur={() => this.handleBlur()} onFocus={() => this.handleFocus()} onInput={(event) => this.handleInput(event)} onKeyUp={(event) => this.handleKeyUp(event)} />
-                {value?.value !== undefined && value.value != value.description ? (<div class="planet-input__value">{value.value}</div>) : null}
+                {showValue && value?.value !== undefined && value.value != value.description ? (<div class="planet-input__value">{value.value}</div>) : null}
               </Fragment>
-              ) : null}
+            ) : null}
+            {this.type === 'time' ? (
+              <Fragment>
+                <input type='number' value={dateHours} onInput={(event) => this.handleDateInput(event, 'hours')} onKeyUp={(event) => this.handleDateKeyUp(event, 'hours')} />
+                <input type='number' value={dateMinutes} onInput={(event) => this.handleDateInput(event, 'minutes')} onKeyUp={(event) => this.handleDateKeyUp(event, 'minutes')} />
+              </Fragment>
+            ) : null}
             {this.type === 'toggle' ? (
               <Fragment>
-                <input 
+                <input
                   class="planet-input__toggle"
                   id={name}
                   name={name}
@@ -140,25 +191,20 @@ export class PlanetInput {
                 <label htmlFor={name}></label>
               </Fragment>
             ) : null}
-            {this.showOptions && (this.type === 'autocomplete' || this.type === 'select') ? (<div class="planet-input__options">
-              {this.options.map((option, index) => (
+            {this.showOptions && this.filteredOptions && (this.type === 'autocomplete' || this.type === 'select') ? (<div class="planet-input__options">
+              {this.filteredOptions.map((option, index) => (
                 <div class={{
                   'planet-input__option': true,
                   'planet-input__option--focused': index === focusedOption,
                 }} onMouseDown={(_) => this.handleSelect(option)}>
-                  {option.description}<br />
-                  {option.value}
+                  {option.description}
+                  {showValue ? (<Fragment><br />{option.value}</Fragment>) : null}
                 </div>
               ))}
             </div>) : null}
           </div>
-        </div>
-        <div class="planet-input__message">
-          {this.validators.map(validator => {
-            return validator().validate(this.value) ? (<div>{validator().errorMessage}</div>) : null;
-          })}
-        </div>
-      </Host>
+        </planet-input-box>
+      </Host >
     );
   }
 

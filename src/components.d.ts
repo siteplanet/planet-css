@@ -9,6 +9,7 @@ import { PlanetAlertSeverity } from "./components/planet-alert/planet-alert-seve
 import { PlanetButtonSeverity } from "./components/planet-button/planet-button-severity.enum";
 import { PlanetValueInterface } from "./components/planet-input/planet-value-interface";
 import { Validator } from "./validators/validator";
+import { PlanetValueInterface as PlanetValueInterface1 } from ".";
 export namespace Components {
     interface PlanetActionBar {
     }
@@ -70,6 +71,9 @@ export namespace Components {
     interface PlanetFooterList {
         "titleOfList": string;
     }
+    interface PlanetFormSection {
+        "titleOfSection": string;
+    }
     interface PlanetFrameset {
     }
     interface PlanetGrid {
@@ -82,7 +86,15 @@ export namespace Components {
         "label": string;
         "name": string;
         "options": PlanetValueInterface<any>[];
-        "type": 'autocomplete' | 'select' | 'text' | 'toggle';
+        "showHelp": boolean;
+        "showValue": boolean;
+        "type": 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
+        "validators": (() => Validator<PlanetValueInterface<any>>)[];
+        "value": PlanetValueInterface<any>;
+    }
+    interface PlanetInputBox {
+        "label": string;
+        "showHelp": boolean;
         "validators": (() => Validator<PlanetValueInterface<any>>)[];
         "value": PlanetValueInterface<any>;
     }
@@ -216,6 +228,12 @@ declare global {
         prototype: HTMLPlanetFooterListElement;
         new (): HTMLPlanetFooterListElement;
     };
+    interface HTMLPlanetFormSectionElement extends Components.PlanetFormSection, HTMLStencilElement {
+    }
+    var HTMLPlanetFormSectionElement: {
+        prototype: HTMLPlanetFormSectionElement;
+        new (): HTMLPlanetFormSectionElement;
+    };
     interface HTMLPlanetFramesetElement extends Components.PlanetFrameset, HTMLStencilElement {
     }
     var HTMLPlanetFramesetElement: {
@@ -245,6 +263,12 @@ declare global {
     var HTMLPlanetInputElement: {
         prototype: HTMLPlanetInputElement;
         new (): HTMLPlanetInputElement;
+    };
+    interface HTMLPlanetInputBoxElement extends Components.PlanetInputBox, HTMLStencilElement {
+    }
+    var HTMLPlanetInputBoxElement: {
+        prototype: HTMLPlanetInputBoxElement;
+        new (): HTMLPlanetInputBoxElement;
     };
     interface HTMLPlanetItemElement extends Components.PlanetItem, HTMLStencilElement {
     }
@@ -330,11 +354,13 @@ declare global {
         "planet-footer": HTMLPlanetFooterElement;
         "planet-footer-link": HTMLPlanetFooterLinkElement;
         "planet-footer-list": HTMLPlanetFooterListElement;
+        "planet-form-section": HTMLPlanetFormSectionElement;
         "planet-frameset": HTMLPlanetFramesetElement;
         "planet-grid": HTMLPlanetGridElement;
         "planet-grid-header": HTMLPlanetGridHeaderElement;
         "planet-grid-item": HTMLPlanetGridItemElement;
         "planet-input": HTMLPlanetInputElement;
+        "planet-input-box": HTMLPlanetInputBoxElement;
         "planet-item": HTMLPlanetItemElement;
         "planet-label": HTMLPlanetLabelElement;
         "planet-modal": HTMLPlanetModalElement;
@@ -409,6 +435,9 @@ declare namespace LocalJSX {
     interface PlanetFooterList {
         "titleOfList"?: string;
     }
+    interface PlanetFormSection {
+        "titleOfSection"?: string;
+    }
     interface PlanetFrameset {
     }
     interface PlanetGrid {
@@ -421,9 +450,21 @@ declare namespace LocalJSX {
         "label"?: string;
         "name"?: string;
         "onPChange"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
+        "onPHelp"?: (event: CustomEvent<void>) => void;
         "onPInput"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
         "options"?: PlanetValueInterface<any>[];
-        "type"?: 'autocomplete' | 'select' | 'text' | 'toggle';
+        "showHelp"?: boolean;
+        "showValue"?: boolean;
+        "type"?: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
+        "validators"?: (() => Validator<PlanetValueInterface<any>>)[];
+        "value"?: PlanetValueInterface<any>;
+    }
+    interface PlanetInputBox {
+        "label"?: string;
+        "onPClear"?: (event: CustomEvent<void>) => void;
+        "onPFocus"?: (event: CustomEvent<void>) => void;
+        "onPHelp"?: (event: CustomEvent<void>) => void;
+        "showHelp"?: boolean;
         "validators"?: (() => Validator<PlanetValueInterface<any>>)[];
         "value"?: PlanetValueInterface<any>;
     }
@@ -471,11 +512,13 @@ declare namespace LocalJSX {
         "planet-footer": PlanetFooter;
         "planet-footer-link": PlanetFooterLink;
         "planet-footer-list": PlanetFooterList;
+        "planet-form-section": PlanetFormSection;
         "planet-frameset": PlanetFrameset;
         "planet-grid": PlanetGrid;
         "planet-grid-header": PlanetGridHeader;
         "planet-grid-item": PlanetGridItem;
         "planet-input": PlanetInput;
+        "planet-input-box": PlanetInputBox;
         "planet-item": PlanetItem;
         "planet-label": PlanetLabel;
         "planet-modal": PlanetModal;
@@ -510,11 +553,13 @@ declare module "@stencil/core" {
             "planet-footer": LocalJSX.PlanetFooter & JSXBase.HTMLAttributes<HTMLPlanetFooterElement>;
             "planet-footer-link": LocalJSX.PlanetFooterLink & JSXBase.HTMLAttributes<HTMLPlanetFooterLinkElement>;
             "planet-footer-list": LocalJSX.PlanetFooterList & JSXBase.HTMLAttributes<HTMLPlanetFooterListElement>;
+            "planet-form-section": LocalJSX.PlanetFormSection & JSXBase.HTMLAttributes<HTMLPlanetFormSectionElement>;
             "planet-frameset": LocalJSX.PlanetFrameset & JSXBase.HTMLAttributes<HTMLPlanetFramesetElement>;
             "planet-grid": LocalJSX.PlanetGrid & JSXBase.HTMLAttributes<HTMLPlanetGridElement>;
             "planet-grid-header": LocalJSX.PlanetGridHeader & JSXBase.HTMLAttributes<HTMLPlanetGridHeaderElement>;
             "planet-grid-item": LocalJSX.PlanetGridItem & JSXBase.HTMLAttributes<HTMLPlanetGridItemElement>;
             "planet-input": LocalJSX.PlanetInput & JSXBase.HTMLAttributes<HTMLPlanetInputElement>;
+            "planet-input-box": LocalJSX.PlanetInputBox & JSXBase.HTMLAttributes<HTMLPlanetInputBoxElement>;
             "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
             "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
             "planet-modal": LocalJSX.PlanetModal & JSXBase.HTMLAttributes<HTMLPlanetModalElement>;

@@ -127,3 +127,7 @@ planet-card + planet-card {
 planet-collapsible + planet-collapsible {
     margin-top: var(--padding-2);
 }
+
+planet-form-section + planet-form-section {
+    margin-top: var(--padding-6);
+}

@@ -1,0 +1,63 @@
+import { Component, Event, EventEmitter, Host, h, Prop } from '@stencil/core';
+import { PlanetValueInterface } from '../..';
+import { Validator } from '../../validators/validator';
+
+@Component({
+  tag: 'planet-input-box',
+  styleUrl: 'planet-input-box.css',
+  shadow: true,
+})
+export class PlanetInputBox {
+  @Prop() label: string;
+  @Prop() showHelp = false;
+  @Prop() validators: (() => Validator<PlanetValueInterface<any>>)[] = [];
+  @Prop({ mutable: true }) value: PlanetValueInterface<any>;
+
+  @Event() pClear: EventEmitter<void>;
+  @Event() pFocus: EventEmitter<void>;
+  @Event() pHelp: EventEmitter<void>;
+
+  handleClear() {
+    this.pClear.emit();
+  }
+
+  handleFocus() {
+    this.pFocus.emit();
+  }
+  
+  handleHelp(event) {
+    event.stopPropagation();
+    this.pHelp.emit();
+  }
+
+  render() {
+    const { label, showHelp, validators, value } = this;
+
+    return (
+      <Host>
+        <div class="planet-input-box__content" onClick={() => this.handleFocus()}>
+          <div class="planet-input-box__main">
+            <div class="planet-input-box__label">
+              {label}
+            </div>
+            <div class="planet-input-box__controls">
+              <slot name="planet-input-box__area"></slot>
+            </div>
+          </div>
+          <div class="planet-input__actions">
+            <planet-button-group>
+              {showHelp ? (<planet-button size="mini" onClick={(event) => this.handleHelp(event)}>?</planet-button>) : null}
+              <planet-button disabled={value?.value ? false : true} size="mini" onClick={() => this.handleClear()}>X</planet-button>
+            </planet-button-group>
+          </div>
+        </div>
+        <div class="planet-input-box__message">
+          {validators.map(validator => {
+              return validator().validate(this.value) ? (<div>{validator().errorMessage}</div>) : null;
+          })}
+        </div>
+      </Host>
+    );
+  }
+
+}

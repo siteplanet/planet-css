@@ -1,0 +1,47 @@
+:host {
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: block;
+  margin-top: 8px;
+  padding: 16px;
+  position: relative;
+}
+
+.planet-input-box__content {
+  display: flex;
+  width: 100%;
+}
+
+.planet-input-box__main {
+  width: 100%;
+}
+
+.planet-input-box__label {
+  display: block;
+  font-size: 15px;
+}
+
+.planet-input-box__controls {
+  font-size: 22px;
+  font-weight: 600;
+  position: relative;
+}
+
+.planet-input-box__message {
+  background-color: #FF3945;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  color: rgba(255, 255, 255, .85);
+  font-size: 17px;
+  z-index: -2;
+  margin-top: -8px;
+  padding: 22px 16px 16px 16px;
+  position: relative;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.planet-input-box__message:empty {
+  display: none;
+}

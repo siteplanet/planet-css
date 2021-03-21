@@ -25,10 +25,10 @@ export const config: Config = {
       directivesProxyFile: '../planet-ng/src/directives/proxies.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
-    // reactOutputTarget({
-    //   componentCorePackage: 'planet',
-    //   proxiesFile: '../planet-react/src/components.ts',
-    // }),
+    reactOutputTarget({
+      componentCorePackage:  '@siteplanet/planet-css',
+      proxiesFile: '../planet-react/src/components.ts',
+    }),
     // vueOutputTarget({
     //   componentCorePackage: 'planet',
     //   proxiesFile: '../planet-vue/src/proxies.ts',

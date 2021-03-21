@@ -79,6 +79,9 @@ graph TD;
   planet-crud --> planet-grid-header
   planet-crud --> planet-grid-item
   planet-modal --> planet-backdrop
+  planet-input --> planet-input-box
+  planet-input-box --> planet-button-group
+  planet-input-box --> planet-button
   planet-pagination --> planet-button-group
   planet-pagination --> planet-button
   style planet-crud fill:#f9f,stroke:#333,stroke-width:4px

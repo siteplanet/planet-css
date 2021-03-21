@@ -22,12 +22,14 @@
 ### Used by
 
  - [planet-crud](../planet-crud)
+ - [planet-input-box](../planet-input-box)
  - [planet-pagination](../planet-pagination)
 
 ### Graph
 ```mermaid
 graph TD;
   planet-crud --> planet-button
+  planet-input-box --> planet-button
   planet-pagination --> planet-button
   style planet-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

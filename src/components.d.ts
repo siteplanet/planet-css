@@ -100,6 +100,7 @@ export namespace Components {
         "focused": boolean;
         "label": string;
         "showHelp": boolean;
+        "showSearch": boolean;
         "validators": (() => Validator<PlanetValueInterface<any>>)[];
         "value": PlanetValueInterface<any>;
     }
@@ -461,6 +462,7 @@ declare namespace LocalJSX {
         "onPChange"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
         "onPHelp"?: (event: CustomEvent<void>) => void;
         "onPInput"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
+        "onPSearch"?: (event: CustomEvent<void>) => void;
         "options"?: PlanetValueInterface<any>[];
         "showHelp"?: boolean;
         "showValue"?: boolean;
@@ -474,7 +476,9 @@ declare namespace LocalJSX {
         "onPClear"?: (event: CustomEvent<void>) => void;
         "onPFocus"?: (event: CustomEvent<void>) => void;
         "onPHelp"?: (event: CustomEvent<void>) => void;
+        "onPSearch"?: (event: CustomEvent<void>) => void;
         "showHelp"?: boolean;
+        "showSearch"?: boolean;
         "validators"?: (() => Validator<PlanetValueInterface<any>>)[];
         "value"?: PlanetValueInterface<any>;
     }

@@ -26,6 +26,7 @@
 | `pChange` |             | `CustomEvent<PlanetValueInterface<any>>` |
 | `pHelp`   |             | `CustomEvent<void>`                      |
 | `pInput`  |             | `CustomEvent<PlanetValueInterface<any>>` |
+| `pSearch` |             | `CustomEvent<void>`                      |
 
 
 ## Dependencies

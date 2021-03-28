@@ -185,7 +185,7 @@ export class PlanetInput {
   }
 
   render() {
-    const { el, dateHours, dateMinutes, focused, focusedOption, label, name, showValue, validators, value } = this;
+    const { el, dateHours, dateMinutes, focused, focusedOption, label, name, showValue, type, validators, value } = this;
     this.renderInputOutsideShadowRoot(el, name, value);
 
     return (
@@ -193,6 +193,7 @@ export class PlanetInput {
         <planet-input-box
           focused={focused}
           label={label}
+          showSearch={type === 'autocomplete' || type === 'select'}
           validators={validators}
           value={value} onPClear={() =>
           {this.handleClear()}}

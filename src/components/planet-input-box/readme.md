@@ -7,22 +7,24 @@
 
 ## Properties
 
-| Property     | Attribute   | Description | Type                                             | Default     |
-| ------------ | ----------- | ----------- | ------------------------------------------------ | ----------- |
-| `focused`    | `focused`   |             | `boolean`                                        | `undefined` |
-| `label`      | `label`     |             | `string`                                         | `undefined` |
-| `showHelp`   | `show-help` |             | `boolean`                                        | `false`     |
-| `validators` | --          |             | `(() => Validator<PlanetValueInterface<any>>)[]` | `[]`        |
-| `value`      | --          |             | `PlanetValueInterface<any>`                      | `undefined` |
+| Property     | Attribute     | Description | Type                                             | Default     |
+| ------------ | ------------- | ----------- | ------------------------------------------------ | ----------- |
+| `focused`    | `focused`     |             | `boolean`                                        | `undefined` |
+| `label`      | `label`       |             | `string`                                         | `undefined` |
+| `showHelp`   | `show-help`   |             | `boolean`                                        | `false`     |
+| `showSearch` | `show-search` |             | `boolean`                                        | `false`     |
+| `validators` | --            |             | `(() => Validator<PlanetValueInterface<any>>)[]` | `[]`        |
+| `value`      | --            |             | `PlanetValueInterface<any>`                      | `undefined` |
 
 
 ## Events
 
-| Event    | Description | Type                |
-| -------- | ----------- | ------------------- |
-| `pClear` |             | `CustomEvent<void>` |
-| `pFocus` |             | `CustomEvent<void>` |
-| `pHelp`  |             | `CustomEvent<void>` |
+| Event     | Description | Type                |
+| --------- | ----------- | ------------------- |
+| `pClear`  |             | `CustomEvent<void>` |
+| `pFocus`  |             | `CustomEvent<void>` |
+| `pHelp`   |             | `CustomEvent<void>` |
+| `pSearch` |             | `CustomEvent<void>` |
 
 
 ## Dependencies

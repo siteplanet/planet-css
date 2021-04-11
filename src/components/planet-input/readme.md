@@ -21,12 +21,12 @@
 
 ## Events
 
-| Event     | Description | Type                                     |
-| --------- | ----------- | ---------------------------------------- |
-| `pChange` |             | `CustomEvent<PlanetValueInterface<any>>` |
-| `pHelp`   |             | `CustomEvent<void>`                      |
-| `pInput`  |             | `CustomEvent<PlanetValueInterface<any>>` |
-| `pSearch` |             | `CustomEvent<void>`                      |
+| Event           | Description | Type                                     |
+| --------------- | ----------- | ---------------------------------------- |
+| `pChange`       |             | `CustomEvent<PlanetValueInterface<any>>` |
+| `pHelp`         |             | `CustomEvent<void>`                      |
+| `pInput`        |             | `CustomEvent<PlanetValueInterface<any>>` |
+| `pSearchClick2` |             | `CustomEvent<void>`                      |
 
 
 ## Dependencies

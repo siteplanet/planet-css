@@ -111,6 +111,13 @@ export class PlanetCrud {
   @Event() itemAdd: EventEmitter<object>;
   @Event() itemDeleted: EventEmitter<object>;
   @Event() itemUpdate: EventEmitter<object>;
+  @Event() itemSearch: EventEmitter<object>;
+
+  @Method() async setColumnValue(key, valuePair) {
+    console.log(`old formstate`, this.formState);
+    this.formState = { ...this.formState, [key]: valuePair };
+    console.log(`new formstate`, this.formState);
+  }
 
   @Method() async openForm(state: 'put' | 'post', row?: any) {
     this.createForm(state, row);
@@ -151,6 +158,11 @@ export class PlanetCrud {
     this.formState = { ...this.formState, [key]: event.target.value }
   }
 
+  handleSearch(key: string) {
+    console.log(`crud handles click on search button`);
+    this.itemSearch.emit({ key });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     switch (this.formMode) {
@@ -188,7 +200,8 @@ export class PlanetCrud {
                         type={column.type}
                         value={this.formState[column.key]}
                         validators={column.validators}
-                        onPChange={(event) => this.handleInput(column.key, event)}>
+                        onPChange={(event) => this.handleInput(column.key, event)}
+                        onPSearchClick2={() => this.handleSearch(column.key)}>
                       </planet-input>
                     </planet-column>
                   ))}

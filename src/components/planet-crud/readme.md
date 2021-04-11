@@ -22,6 +22,7 @@
 | ------------- | ----------- | --------------------- |
 | `itemAdd`     |             | `CustomEvent<object>` |
 | `itemDeleted` |             | `CustomEvent<object>` |
+| `itemSearch`  |             | `CustomEvent<object>` |
 | `itemUpdate`  |             | `CustomEvent<object>` |
 
 
@@ -38,6 +39,16 @@ Type: `Promise<void>`
 
 
 ### `openForm(state: 'put' | 'post', row?: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setColumnValue(key: any, valuePair: any) => Promise<void>`
 
 
 

@@ -66,6 +66,7 @@ export namespace Components {
         "openForm": (state: 'put' | 'post', row?: any) => Promise<void>;
         "page": number;
         "pages": number;
+        "setColumnValue": (key: any, valuePair: any) => Promise<void>;
         "titleOfForm": string;
     }
     interface PlanetFooter {
@@ -433,6 +434,7 @@ declare namespace LocalJSX {
         "data"?: any[];
         "onItemAdd"?: (event: CustomEvent<object>) => void;
         "onItemDeleted"?: (event: CustomEvent<object>) => void;
+        "onItemSearch"?: (event: CustomEvent<object>) => void;
         "onItemUpdate"?: (event: CustomEvent<object>) => void;
         "page"?: number;
         "pages"?: number;
@@ -462,7 +464,7 @@ declare namespace LocalJSX {
         "onPChange"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
         "onPHelp"?: (event: CustomEvent<void>) => void;
         "onPInput"?: (event: CustomEvent<PlanetValueInterface<any>>) => void;
-        "onPSearch"?: (event: CustomEvent<void>) => void;
+        "onPSearchClick2"?: (event: CustomEvent<void>) => void;
         "options"?: PlanetValueInterface<any>[];
         "showHelp"?: boolean;
         "showValue"?: boolean;
@@ -476,7 +478,7 @@ declare namespace LocalJSX {
         "onPClear"?: (event: CustomEvent<void>) => void;
         "onPFocus"?: (event: CustomEvent<void>) => void;
         "onPHelp"?: (event: CustomEvent<void>) => void;
-        "onPSearch"?: (event: CustomEvent<void>) => void;
+        "onPSearchClick"?: (event: CustomEvent<void>) => void;
         "showHelp"?: boolean;
         "showSearch"?: boolean;
         "validators"?: (() => Validator<PlanetValueInterface<any>>)[];

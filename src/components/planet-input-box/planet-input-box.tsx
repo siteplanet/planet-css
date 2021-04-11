@@ -18,7 +18,7 @@ export class PlanetInputBox {
   @Event() pClear: EventEmitter<void>;
   @Event() pFocus: EventEmitter<void>;
   @Event() pHelp: EventEmitter<void>;
-  @Event() pSearch: EventEmitter<void>;
+  @Event() pSearchClick: EventEmitter<void>;
 
   handleClear() {
     this.pClear.emit();
@@ -34,8 +34,9 @@ export class PlanetInputBox {
   }
 
   handleSearch(event) {
+    console.log(`clicked on search button`);
     event.stopPropagation();
-    this.pSearch.emit();
+    this.pSearchClick.emit();
   }
 
   render() {

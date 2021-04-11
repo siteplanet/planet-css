@@ -22,7 +22,7 @@ export class PlanetInput {
   @Event() pChange: EventEmitter<PlanetValueInterface<any>>;
   @Event() pHelp: EventEmitter<void>;
   @Event() pInput: EventEmitter<PlanetValueInterface<any>>;
-  @Event() pSearch: EventEmitter<void>;
+  @Event() pSearchClick2: EventEmitter<void>;
 
   @State() dateHours = 0;
   @State() dateMinutes = 0;
@@ -75,7 +75,8 @@ export class PlanetInput {
   }
 
   handleSearch() {
-    this.pSearch.emit();
+    console.log(`input handles click on search button`);
+    this.pSearchClick2.emit();
   }
 
   handleInput(event) {
@@ -199,7 +200,7 @@ export class PlanetInput {
           {this.handleClear()}}
           onPFocus={() => {this.handleSetFocus()}}
           onPHelp={() => {this.handleHelp()}}
-          onPSearch={() => {this.handleSearch()}}>
+          onPSearchClick={() => {this.handleSearch()}}>
           <div slot="planet-input-box__area">
             {this.type === 'autocomplete' || this.type === 'select' || this.type === 'text' ? (
               <Fragment>

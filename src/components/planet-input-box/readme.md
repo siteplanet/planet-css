@@ -19,12 +19,12 @@
 
 ## Events
 
-| Event     | Description | Type                |
-| --------- | ----------- | ------------------- |
-| `pClear`  |             | `CustomEvent<void>` |
-| `pFocus`  |             | `CustomEvent<void>` |
-| `pHelp`   |             | `CustomEvent<void>` |
-| `pSearch` |             | `CustomEvent<void>` |
+| Event          | Description | Type                |
+| -------------- | ----------- | ------------------- |
+| `pClear`       |             | `CustomEvent<void>` |
+| `pFocus`       |             | `CustomEvent<void>` |
+| `pHelp`        |             | `CustomEvent<void>` |
+| `pSearchClick` |             | `CustomEvent<void>` |
 
 
 ## Dependencies

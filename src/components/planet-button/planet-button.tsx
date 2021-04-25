@@ -1,5 +1,4 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { PlanetButtonSeverity } from './planet-button-severity.enum';
 
 @Component({
   tag: 'planet-button',

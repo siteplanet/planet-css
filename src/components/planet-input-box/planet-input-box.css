@@ -50,3 +50,8 @@
 .planet-input-box__message:empty {
   display: none;
 }
+
+.planet-input__actions {
+  box-sizing: border-box;
+  padding-left: 12px;
+}

@@ -194,7 +194,7 @@ export class PlanetCrud {
               <div slot="content">
                 <planet-row class="form-section">
                   {this.columns.map(column => (
-                    <planet-column key={column.key} xlarge={6}>
+                    <planet-column key={column.key} xlarge={6} medium={12}>
                       <planet-input
                         label={column.label}
                         type={column.type}

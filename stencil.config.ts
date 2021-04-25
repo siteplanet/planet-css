@@ -91,6 +91,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage:  '@siteplanet/planet-css',
       proxiesFile: '../planet-react/src/components.ts',
+      includeDefineCustomElements: true,
     }),
     // vueOutputTarget({
     //   componentCorePackage: 'planet',

@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlanetAlertSeverity } from "./components/planet-alert/planet-alert-severity.enum";
-import { PlanetButtonSeverity } from "./components/planet-button/planet-button-severity.enum";
 import { PlanetValueInterface } from "./components/planet-input/planet-value-interface";
 import { Validator } from "./validators/validator";
 import { PlanetValueInterface as PlanetValueInterface1 } from ".";
@@ -23,7 +22,7 @@ export namespace Components {
         "form": string;
         "full": boolean;
         "pTabIndex": number;
-        "severity": PlanetButtonSeverity;
+        "severity": 'error' | 'success';
         "size": 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg';
         "type": 'button' | 'submit';
     }
@@ -394,7 +393,7 @@ declare namespace LocalJSX {
         "form"?: string;
         "full"?: boolean;
         "pTabIndex"?: number;
-        "severity"?: PlanetButtonSeverity;
+        "severity"?: 'error' | 'success';
         "size"?: 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg';
         "type"?: 'button' | 'submit';
     }

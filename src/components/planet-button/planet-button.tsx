@@ -10,7 +10,7 @@ export class PlanetButton {
   @Prop() disabled: boolean;
   @Prop() form: string;
   @Prop() full: boolean;
-  @Prop() severity: PlanetButtonSeverity;
+  @Prop() severity: 'error' | 'success';
   @Prop() size: 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg' = 'large';
   @Prop() pTabIndex: number;
   @Prop() type: 'button' | 'submit' = 'submit';
@@ -23,12 +23,12 @@ export class PlanetButton {
       <button
         class={{
           'button': true,
-          'button--error': this.severity === PlanetButtonSeverity.ERROR,
+          'button--error': this.severity === 'error',
           'button--size-lg': this.size === 'lg',
           'button--size-md': this.size === 'md',
           'button--size-sm': this.size === 'sm' || this.size === 'mini', // deprecated: mini
           'button--size-xs': this.size === 'xs',
-          'button--success': this.severity === PlanetButtonSeverity.SUCCESS,
+          'button--success': this.severity === 'success',
         }}
         disabled={this.disabled}
         form={this.form}

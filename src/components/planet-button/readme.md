@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property    | Attribute     | Description | Type                                                         | Default     |
-| ----------- | ------------- | ----------- | ------------------------------------------------------------ | ----------- |
-| `disabled`  | `disabled`    |             | `boolean`                                                    | `undefined` |
-| `form`      | `form`        |             | `string`                                                     | `undefined` |
-| `full`      | `full`        |             | `boolean`                                                    | `undefined` |
-| `pTabIndex` | `p-tab-index` |             | `number`                                                     | `undefined` |
-| `severity`  | `severity`    |             | `PlanetButtonSeverity.ERROR \| PlanetButtonSeverity.SUCCESS` | `undefined` |
-| `size`      | `size`        |             | `"large" \| "lg" \| "md" \| "mini" \| "sm" \| "xs"`          | `'large'`   |
-| `type`      | `type`        |             | `"button" \| "submit"`                                       | `'submit'`  |
+| Property    | Attribute     | Description | Type                                                | Default     |
+| ----------- | ------------- | ----------- | --------------------------------------------------- | ----------- |
+| `disabled`  | `disabled`    |             | `boolean`                                           | `undefined` |
+| `form`      | `form`        |             | `string`                                            | `undefined` |
+| `full`      | `full`        |             | `boolean`                                           | `undefined` |
+| `pTabIndex` | `p-tab-index` |             | `number`                                            | `undefined` |
+| `severity`  | `severity`    |             | `"error" \| "success"`                              | `undefined` |
+| `size`      | `size`        |             | `"large" \| "lg" \| "md" \| "mini" \| "sm" \| "xs"` | `'large'`   |
+| `type`      | `type`        |             | `"button" \| "submit"`                              | `'submit'`  |
 
 
 ## Dependencies

@@ -7,10 +7,18 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `page`   | `page`    |             | `number` | `undefined` |
-| `pages`  | `pages`   |             | `number` | `undefined` |
+| Property              | Attribute     | Description | Type       | Default     |
+| --------------------- | ------------- | ----------- | ---------- | ----------- |
+| `allowedItemsPerPage` | --            |             | `number[]` | `undefined` |
+| `page`                | `page`        |             | `number`   | `1`         |
+| `totalItems`          | `total-items` |             | `number`   | `undefined` |
+
+
+## Events
+
+| Event     | Description | Type                                            |
+| --------- | ----------- | ----------------------------------------------- |
+| `pUpdate` |             | `CustomEvent<{ limit: number; skip: number; }>` |
 
 
 ## Dependencies

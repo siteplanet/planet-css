@@ -117,8 +117,9 @@ export namespace Components {
     interface PlanetPage {
     }
     interface PlanetPagination {
+        "allowedItemsPerPage": number[];
         "page": number;
-        "pages": number;
+        "totalItems": number;
     }
     interface PlanetRow {
     }
@@ -509,8 +510,10 @@ declare namespace LocalJSX {
     interface PlanetPage {
     }
     interface PlanetPagination {
+        "allowedItemsPerPage"?: number[];
+        "onPUpdate"?: (event: CustomEvent<{ limit: number, skip: number }>) => void;
         "page"?: number;
-        "pages"?: number;
+        "totalItems"?: number;
     }
     interface PlanetRow {
     }

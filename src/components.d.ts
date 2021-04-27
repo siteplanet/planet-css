@@ -122,6 +122,11 @@ export namespace Components {
     }
     interface PlanetRow {
     }
+    interface PlanetTile {
+        "color": string;
+        "count": number;
+        "graphNumbers": number[];
+    }
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
@@ -318,6 +323,12 @@ declare global {
         prototype: HTMLPlanetRowElement;
         new (): HTMLPlanetRowElement;
     };
+    interface HTMLPlanetTileElement extends Components.PlanetTile, HTMLStencilElement {
+    }
+    var HTMLPlanetTileElement: {
+        prototype: HTMLPlanetTileElement;
+        new (): HTMLPlanetTileElement;
+    };
     interface HTMLPlanetTitleOfGroupElement extends Components.PlanetTitleOfGroup, HTMLStencilElement {
     }
     var HTMLPlanetTitleOfGroupElement: {
@@ -374,6 +385,7 @@ declare global {
         "planet-page": HTMLPlanetPageElement;
         "planet-pagination": HTMLPlanetPaginationElement;
         "planet-row": HTMLPlanetRowElement;
+        "planet-tile": HTMLPlanetTileElement;
         "planet-title-of-group": HTMLPlanetTitleOfGroupElement;
         "planet-title-of-page": HTMLPlanetTitleOfPageElement;
         "planet-validation-message": HTMLPlanetValidationMessageElement;
@@ -502,6 +514,11 @@ declare namespace LocalJSX {
     }
     interface PlanetRow {
     }
+    interface PlanetTile {
+        "color"?: string;
+        "count"?: number;
+        "graphNumbers"?: number[];
+    }
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
@@ -542,6 +559,7 @@ declare namespace LocalJSX {
         "planet-page": PlanetPage;
         "planet-pagination": PlanetPagination;
         "planet-row": PlanetRow;
+        "planet-tile": PlanetTile;
         "planet-title-of-group": PlanetTitleOfGroup;
         "planet-title-of-page": PlanetTitleOfPage;
         "planet-validation-message": PlanetValidationMessage;
@@ -583,6 +601,7 @@ declare module "@stencil/core" {
             "planet-page": LocalJSX.PlanetPage & JSXBase.HTMLAttributes<HTMLPlanetPageElement>;
             "planet-pagination": LocalJSX.PlanetPagination & JSXBase.HTMLAttributes<HTMLPlanetPaginationElement>;
             "planet-row": LocalJSX.PlanetRow & JSXBase.HTMLAttributes<HTMLPlanetRowElement>;
+            "planet-tile": LocalJSX.PlanetTile & JSXBase.HTMLAttributes<HTMLPlanetTileElement>;
             "planet-title-of-group": LocalJSX.PlanetTitleOfGroup & JSXBase.HTMLAttributes<HTMLPlanetTitleOfGroupElement>;
             "planet-title-of-page": LocalJSX.PlanetTitleOfPage & JSXBase.HTMLAttributes<HTMLPlanetTitleOfPageElement>;
             "planet-validation-message": LocalJSX.PlanetValidationMessage & JSXBase.HTMLAttributes<HTMLPlanetValidationMessageElement>;

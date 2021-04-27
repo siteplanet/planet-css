@@ -1,0 +1,79 @@
+:host {
+  border-radius: 8px;
+  color: rgba(255, 255, 255, .85);
+  display: block;
+  position: relative;
+}
+
+svg {
+  border-radius: 8px;
+}
+
+.tile__title-box {
+  flex: 1;
+}
+
+.tile__count {
+  border-radius: 6px;
+  color: rgba(255, 255, 255, .85);
+  font-weight: 500;
+  font-size: 29px;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 100px;
+  max-height: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.tile__content {
+  box-sizing: border-box;
+  display: flex;
+  padding: 0 20px 0 20px;
+  width: 100%;
+}
+
+:host(.tile--color-A) { background-color: #FF676C; }
+:host(.tile--color-A) .tile__count { background-color: rgba(233, 51, 61, .7); }
+:host(.tile--color-A) .tile__graph-area { fill: #FF3945; }
+
+:host(.tile--color-B) { background-color: #FF9B66; }
+:host(.tile--color-B) .tile__count { background-color: rgba(246, 115, 52, .7); }
+:host(.tile--color-B) .tile__graph-area { fill: #FF803A; }
+
+:host(.tile--color-C) { background-color: #FFCE5E; }
+:host(.tile--color-C) .tile__count { background-color: rgba(239, 174, 33, .7); }
+:host(.tile--color-C) .tile__graph-area { fill: #FFC224; }
+
+:host(.tile--color-D) { background-color: #92D662; }
+:host(.tile--color-D) .tile__count { background-color: rgba(105, 184, 44, .7); }
+:host(.tile--color-D) .tile__graph-area { fill: #75CC31; }
+
+:host(.tile--color-E) { background-color: #2AE5D0; }
+:host(.tile--color-E) .etile__count { background-color: rgba(0, 200, 176, .7); }
+:host(.tile--color-E) .tile__graph-area { fill: #00DFC4; }
+
+:host(.tile--color-F) { background-color: #43D2FF; }
+:host(.tile--color-F) .tile__count { background-color: rgba(0, 178, 234, .7); }
+:host(.tile--color-F) .tile__graph-area { fill: #00C7FF; }
+
+:host(.tile--color-G) { background-color: #71A9FF; }
+:host(.tile--color-G) .tile__count { background-color: rgba(67, 133, 236, .7); }
+:host(.tile--color-G) .tile__graph-area { fill: #4B94FF; }
+
+:host(.tile--color-H) { background-color: #BB89FF; }
+:host(.tile--color-H) .tile__count { background-color: rgba(153, 96, 237, .7); }
+:host(.tile--color-H) .tile__graph-area { fill: #A96CFF; }
+
+.title {
+  display: block;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.2;
+}
+

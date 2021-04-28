@@ -13,6 +13,7 @@
 | `form`      | `form`        |             | `string`                                            | `undefined` |
 | `full`      | `full`        |             | `boolean`                                           | `undefined` |
 | `pTabIndex` | `p-tab-index` |             | `number`                                            | `undefined` |
+| `selected`  | `selected`    |             | `boolean`                                           | `undefined` |
 | `severity`  | `severity`    |             | `"error" \| "success"`                              | `undefined` |
 | `size`      | `size`        |             | `"large" \| "lg" \| "md" \| "mini" \| "sm" \| "xs"` | `'large'`   |
 | `type`      | `type`        |             | `"button" \| "submit"`                              | `'submit'`  |

@@ -31,14 +31,14 @@ export class PlanetPagination {
     return (
       <Host>
         <planet-button-group>
-          <planet-button onClick={() => this.goToPrevious()}>&lt;</planet-button>
-          <planet-button>{page}</planet-button>
-          <planet-button onClick={() => this.goToNext()}>&gt;</planet-button>
+          <planet-button size="sm" onClick={() => this.goToPrevious()}>&lt;</planet-button>
+          <planet-button size="sm" selected={true}>{page}</planet-button>
+          <planet-button size="sm" onClick={() => this.goToNext()}>&gt;</planet-button>
         </planet-button-group>
 
         <planet-button-group>
           {this.allowedItemsPerPage.map(item => (
-            <planet-button onClick={() => this.setItemsPerPage(item)} color={item === itemsPerPage ? 'success' : 'info'}>{item}</planet-button>
+            <planet-button onClick={() => this.setItemsPerPage(item)} selected={item === itemsPerPage ? true : undefined} size="sm">{item}</planet-button>
           ))}
         </planet-button-group>
         <slot></slot>

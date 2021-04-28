@@ -22,6 +22,7 @@ export namespace Components {
         "form": string;
         "full": boolean;
         "pTabIndex": number;
+        "selected": boolean;
         "severity": 'error' | 'success';
         "size": 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg';
         "type": 'button' | 'submit';
@@ -444,6 +445,7 @@ declare namespace LocalJSX {
         "form"?: string;
         "full"?: boolean;
         "pTabIndex"?: number;
+        "selected"?: boolean;
         "severity"?: 'error' | 'success';
         "size"?: 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg';
         "type"?: 'button' | 'submit';

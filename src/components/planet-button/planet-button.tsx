@@ -9,6 +9,7 @@ export class PlanetButton {
   @Prop() disabled: boolean;
   @Prop() form: string;
   @Prop() full: boolean;
+  @Prop() selected: boolean;
   @Prop() severity: 'error' | 'success';
   @Prop() size: 'mini' | 'large' | 'sm' | 'xs' | 'md' | 'lg' = 'large';
   @Prop() pTabIndex: number;
@@ -27,6 +28,7 @@ export class PlanetButton {
           'button--size-md': this.size === 'md',
           'button--size-sm': this.size === 'sm' || this.size === 'mini', // deprecated: mini
           'button--size-xs': this.size === 'xs',
+          'button--seleced': this.selected,
           'button--success': this.severity === 'success',
         }}
         disabled={this.disabled}

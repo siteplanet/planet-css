@@ -7,8 +7,8 @@
   text-align: right;
 }
 
-planet-pagination + planet-button-group {
-  margin-left: 10px;
+planet-pagination {
+  margin-left: 8px;
 }
 
 .modal-actions {

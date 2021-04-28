@@ -164,9 +164,9 @@ export class PlanetCrud {
             </planet-title-of-page>
           </planet-column>
           <planet-column class="crud__actions">
-            <planet-pagination allowedItemsPerPage={allowedItemsPerPage} page={page} totalItems={totalItems}></planet-pagination>
-            <planet-button-group>
-              <planet-button onClick={() => this.openForm('post')}>New item</planet-button>
+            <planet-pagination allowedItemsPerPage={allowedItemsPerPage} page={page} totalItems={totalItems} style={{float: 'right'}}></planet-pagination>
+            <planet-button-group style={{float: 'right'}}>
+              <planet-button onClick={() => this.openForm('post')} size="sm">New item</planet-button>
             </planet-button-group>
           </planet-column>
         </planet-row>

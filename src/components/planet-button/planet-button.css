@@ -116,6 +116,11 @@ button:active {
   --box-shadow-color: rgb(86, 150, 38);
 }
 
+.button--selected {
+  background-color: var(--button--background-color--active);
+  --box-shadow-color: var(--button--background-color--shadow--active);
+}
+
 :host(.button--full),
 :host(.button--full) .button {
   display: block;

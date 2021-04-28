@@ -1,9 +1,7 @@
 :host {
   display: block;
-  background-color: var(--card-content--background-color);
-  border-radius: var(--card-content--border-radius);
-  font-size: var(--card-content--font-size);
-  font-weight: var(--card-content--font-weight);
-  line-height: var(--card-content--line-height);
-  padding: var(--card-content--padding);
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, .5);
+  font-size: 20px;
+  padding: 2px 16px;
 }

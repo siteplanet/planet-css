@@ -14,3 +14,29 @@ planet-pagination + planet-button-group {
 .modal-actions {
   margin-top: 16px;
 }
+
+@media screen and (max-width: 1199px) {
+  planet-card {
+    margin-bottom: 8px;
+  }
+
+  planet-grid-header,
+  planet-grid-item {
+    display: none;
+  }
+
+  planet-grid {
+    display: block;
+    grid-template-columns: none !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  planet-card {
+    display: none;
+  }
+}
+
+planet-card-actions planet-button + planet-button {
+  margin-left: 8px;
+}

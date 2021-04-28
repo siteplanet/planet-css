@@ -1,4 +1,4 @@
-# planet-card
+# planet-card-actions
 
 
 
@@ -14,8 +14,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  planet-crud --> planet-card
-  style planet-card fill:#f9f,stroke:#333,stroke-width:4px
+  planet-crud --> planet-card-actions
+  style planet-card-actions fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

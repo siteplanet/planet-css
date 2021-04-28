@@ -1,11 +1,11 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'planet-card-header',
-  styleUrl: 'planet-card-header.css',
+  tag: 'planet-nav-card-content',
+  styleUrl: 'planet-nav-card-content.css',
   shadow: true,
 })
-export class PlanetCardHeader {
+export class PlanetNavCardContent {
 
   render() {
     return (

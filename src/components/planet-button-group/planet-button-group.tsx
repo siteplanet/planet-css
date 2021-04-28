@@ -9,9 +9,7 @@ export class PlanetButtonGroup {
 
   render() {
     return (
-      <Host>
-        <slot></slot>
-      </Host>
+      <Host><slot></slot></Host>
     );
   }
 

@@ -30,9 +30,11 @@ export namespace Components {
     }
     interface PlanetCard {
     }
+    interface PlanetCardActions {
+    }
     interface PlanetCardContent {
     }
-    interface PlanetCardHeader {
+    interface PlanetCardTitle {
     }
     interface PlanetCollapsible {
         "toggle": () => Promise<void>;
@@ -52,6 +54,7 @@ export namespace Components {
         "imageUrl": string;
     }
     interface PlanetCrud {
+        "allowedItemsPerPage": number[];
         "closeForm": () => Promise<void>;
         "columns": {
     key: string;
@@ -60,13 +63,14 @@ export namespace Components {
     type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
     validators: any[];
     defaultValue?: PlanetValueInterface<any>,
+    showAs?: 'primaryCode' | 'primaryName' | 'secondaryCode' | 'secondaryName';
   }[];
         "data": any[];
         "openForm": (state: 'put' | 'post', row?: any) => Promise<void>;
         "page": number;
-        "pages": number;
         "setColumnValue": (key: any, valuePair: any) => Promise<void>;
         "titleOfForm": string;
+        "totalItems": number;
     }
     interface PlanetFooter {
     }
@@ -110,6 +114,12 @@ export namespace Components {
     }
     interface PlanetModal {
         "titleOfModal": string;
+    }
+    interface PlanetNavCard {
+    }
+    interface PlanetNavCardContent {
+    }
+    interface PlanetNavCardHeader {
     }
     interface PlanetOverlayNavigation {
         "open": boolean;
@@ -174,17 +184,23 @@ declare global {
         prototype: HTMLPlanetCardElement;
         new (): HTMLPlanetCardElement;
     };
+    interface HTMLPlanetCardActionsElement extends Components.PlanetCardActions, HTMLStencilElement {
+    }
+    var HTMLPlanetCardActionsElement: {
+        prototype: HTMLPlanetCardActionsElement;
+        new (): HTMLPlanetCardActionsElement;
+    };
     interface HTMLPlanetCardContentElement extends Components.PlanetCardContent, HTMLStencilElement {
     }
     var HTMLPlanetCardContentElement: {
         prototype: HTMLPlanetCardContentElement;
         new (): HTMLPlanetCardContentElement;
     };
-    interface HTMLPlanetCardHeaderElement extends Components.PlanetCardHeader, HTMLStencilElement {
+    interface HTMLPlanetCardTitleElement extends Components.PlanetCardTitle, HTMLStencilElement {
     }
-    var HTMLPlanetCardHeaderElement: {
-        prototype: HTMLPlanetCardHeaderElement;
-        new (): HTMLPlanetCardHeaderElement;
+    var HTMLPlanetCardTitleElement: {
+        prototype: HTMLPlanetCardTitleElement;
+        new (): HTMLPlanetCardTitleElement;
     };
     interface HTMLPlanetCollapsibleElement extends Components.PlanetCollapsible, HTMLStencilElement {
     }
@@ -300,6 +316,24 @@ declare global {
         prototype: HTMLPlanetModalElement;
         new (): HTMLPlanetModalElement;
     };
+    interface HTMLPlanetNavCardElement extends Components.PlanetNavCard, HTMLStencilElement {
+    }
+    var HTMLPlanetNavCardElement: {
+        prototype: HTMLPlanetNavCardElement;
+        new (): HTMLPlanetNavCardElement;
+    };
+    interface HTMLPlanetNavCardContentElement extends Components.PlanetNavCardContent, HTMLStencilElement {
+    }
+    var HTMLPlanetNavCardContentElement: {
+        prototype: HTMLPlanetNavCardContentElement;
+        new (): HTMLPlanetNavCardContentElement;
+    };
+    interface HTMLPlanetNavCardHeaderElement extends Components.PlanetNavCardHeader, HTMLStencilElement {
+    }
+    var HTMLPlanetNavCardHeaderElement: {
+        prototype: HTMLPlanetNavCardHeaderElement;
+        new (): HTMLPlanetNavCardHeaderElement;
+    };
     interface HTMLPlanetOverlayNavigationElement extends Components.PlanetOverlayNavigation, HTMLStencilElement {
     }
     var HTMLPlanetOverlayNavigationElement: {
@@ -361,8 +395,9 @@ declare global {
         "planet-button": HTMLPlanetButtonElement;
         "planet-button-group": HTMLPlanetButtonGroupElement;
         "planet-card": HTMLPlanetCardElement;
+        "planet-card-actions": HTMLPlanetCardActionsElement;
         "planet-card-content": HTMLPlanetCardContentElement;
-        "planet-card-header": HTMLPlanetCardHeaderElement;
+        "planet-card-title": HTMLPlanetCardTitleElement;
         "planet-collapsible": HTMLPlanetCollapsibleElement;
         "planet-column": HTMLPlanetColumnElement;
         "planet-confirm": HTMLPlanetConfirmElement;
@@ -382,6 +417,9 @@ declare global {
         "planet-item": HTMLPlanetItemElement;
         "planet-label": HTMLPlanetLabelElement;
         "planet-modal": HTMLPlanetModalElement;
+        "planet-nav-card": HTMLPlanetNavCardElement;
+        "planet-nav-card-content": HTMLPlanetNavCardContentElement;
+        "planet-nav-card-header": HTMLPlanetNavCardHeaderElement;
         "planet-overlay-navigation": HTMLPlanetOverlayNavigationElement;
         "planet-page": HTMLPlanetPageElement;
         "planet-pagination": HTMLPlanetPaginationElement;
@@ -414,9 +452,11 @@ declare namespace LocalJSX {
     }
     interface PlanetCard {
     }
+    interface PlanetCardActions {
+    }
     interface PlanetCardContent {
     }
-    interface PlanetCardHeader {
+    interface PlanetCardTitle {
     }
     interface PlanetCollapsible {
     }
@@ -435,6 +475,7 @@ declare namespace LocalJSX {
         "imageUrl"?: string;
     }
     interface PlanetCrud {
+        "allowedItemsPerPage"?: number[];
         "columns"?: {
     key: string;
     label: string;
@@ -442,6 +483,7 @@ declare namespace LocalJSX {
     type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
     validators: any[];
     defaultValue?: PlanetValueInterface<any>,
+    showAs?: 'primaryCode' | 'primaryName' | 'secondaryCode' | 'secondaryName';
   }[];
         "data"?: any[];
         "onItemAdd"?: (event: CustomEvent<object>) => void;
@@ -449,8 +491,8 @@ declare namespace LocalJSX {
         "onItemSearch"?: (event: CustomEvent<object>) => void;
         "onItemUpdate"?: (event: CustomEvent<object>) => void;
         "page"?: number;
-        "pages"?: number;
         "titleOfForm"?: string;
+        "totalItems"?: number;
     }
     interface PlanetFooter {
     }
@@ -504,6 +546,12 @@ declare namespace LocalJSX {
         "onPClose"?: (event: CustomEvent<void>) => void;
         "titleOfModal"?: string;
     }
+    interface PlanetNavCard {
+    }
+    interface PlanetNavCardContent {
+    }
+    interface PlanetNavCardHeader {
+    }
     interface PlanetOverlayNavigation {
         "open"?: boolean;
     }
@@ -537,8 +585,9 @@ declare namespace LocalJSX {
         "planet-button": PlanetButton;
         "planet-button-group": PlanetButtonGroup;
         "planet-card": PlanetCard;
+        "planet-card-actions": PlanetCardActions;
         "planet-card-content": PlanetCardContent;
-        "planet-card-header": PlanetCardHeader;
+        "planet-card-title": PlanetCardTitle;
         "planet-collapsible": PlanetCollapsible;
         "planet-column": PlanetColumn;
         "planet-confirm": PlanetConfirm;
@@ -558,6 +607,9 @@ declare namespace LocalJSX {
         "planet-item": PlanetItem;
         "planet-label": PlanetLabel;
         "planet-modal": PlanetModal;
+        "planet-nav-card": PlanetNavCard;
+        "planet-nav-card-content": PlanetNavCardContent;
+        "planet-nav-card-header": PlanetNavCardHeader;
         "planet-overlay-navigation": PlanetOverlayNavigation;
         "planet-page": PlanetPage;
         "planet-pagination": PlanetPagination;
@@ -579,8 +631,9 @@ declare module "@stencil/core" {
             "planet-button": LocalJSX.PlanetButton & JSXBase.HTMLAttributes<HTMLPlanetButtonElement>;
             "planet-button-group": LocalJSX.PlanetButtonGroup & JSXBase.HTMLAttributes<HTMLPlanetButtonGroupElement>;
             "planet-card": LocalJSX.PlanetCard & JSXBase.HTMLAttributes<HTMLPlanetCardElement>;
+            "planet-card-actions": LocalJSX.PlanetCardActions & JSXBase.HTMLAttributes<HTMLPlanetCardActionsElement>;
             "planet-card-content": LocalJSX.PlanetCardContent & JSXBase.HTMLAttributes<HTMLPlanetCardContentElement>;
-            "planet-card-header": LocalJSX.PlanetCardHeader & JSXBase.HTMLAttributes<HTMLPlanetCardHeaderElement>;
+            "planet-card-title": LocalJSX.PlanetCardTitle & JSXBase.HTMLAttributes<HTMLPlanetCardTitleElement>;
             "planet-collapsible": LocalJSX.PlanetCollapsible & JSXBase.HTMLAttributes<HTMLPlanetCollapsibleElement>;
             "planet-column": LocalJSX.PlanetColumn & JSXBase.HTMLAttributes<HTMLPlanetColumnElement>;
             "planet-confirm": LocalJSX.PlanetConfirm & JSXBase.HTMLAttributes<HTMLPlanetConfirmElement>;
@@ -600,6 +653,9 @@ declare module "@stencil/core" {
             "planet-item": LocalJSX.PlanetItem & JSXBase.HTMLAttributes<HTMLPlanetItemElement>;
             "planet-label": LocalJSX.PlanetLabel & JSXBase.HTMLAttributes<HTMLPlanetLabelElement>;
             "planet-modal": LocalJSX.PlanetModal & JSXBase.HTMLAttributes<HTMLPlanetModalElement>;
+            "planet-nav-card": LocalJSX.PlanetNavCard & JSXBase.HTMLAttributes<HTMLPlanetNavCardElement>;
+            "planet-nav-card-content": LocalJSX.PlanetNavCardContent & JSXBase.HTMLAttributes<HTMLPlanetNavCardContentElement>;
+            "planet-nav-card-header": LocalJSX.PlanetNavCardHeader & JSXBase.HTMLAttributes<HTMLPlanetNavCardHeaderElement>;
             "planet-overlay-navigation": LocalJSX.PlanetOverlayNavigation & JSXBase.HTMLAttributes<HTMLPlanetOverlayNavigationElement>;
             "planet-page": LocalJSX.PlanetPage & JSXBase.HTMLAttributes<HTMLPlanetPageElement>;
             "planet-pagination": LocalJSX.PlanetPagination & JSXBase.HTMLAttributes<HTMLPlanetPaginationElement>;

@@ -1,15 +1,15 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'planet-card',
-  styleUrl: 'planet-card.css',
+  tag: 'planet-nav-card',
+  styleUrl: 'planet-nav-card.css',
   shadow: true,
 })
-export class PlanetCard {
+export class PlanetNavCard {
 
   render() {
     return (
-      <Host class="card">
+      <Host>
         <slot></slot>
       </Host>
     );

@@ -1,5 +1,4 @@
 import { Component, Event, EventEmitter, Fragment, Host, h, Prop, State, Method, Watch } from '@stencil/core';
-import { RequiredValidator } from '../../validators/required-validator/required-validator';
 import { PlanetButtonSeverity } from '../planet-button/planet-button-severity.enum';
 import { PlanetValueInterface } from '../planet-input/planet-value-interface';
 
@@ -10,6 +9,10 @@ import { PlanetValueInterface } from '../planet-input/planet-value-interface';
 })
 export class PlanetCrud {
   /*
+  * List of allowed items per page
+  */
+  @Prop() allowedItemsPerPage: number[];
+  /*
   * Column settings
   */
   @Prop() columns: {
@@ -19,89 +22,24 @@ export class PlanetCrud {
     type: 'autocomplete' | 'select' | 'text' | 'time' | 'toggle';
     validators: any[];
     defaultValue?: PlanetValueInterface<any>,
-  }[] = [
-      {
-        key: 'id',
-        label: 'ID',
-        showInGrid: false,
-        type: 'text',
-        validators: [RequiredValidator],
-      },
-      {
-        key: 'shortName',
-        label: 'Short Name',
-        showInGrid: true,
-        type: 'text',
-        validators: [RequiredValidator],
-      },
-      {
-        key: 'longName',
-        label: 'Long Name',
-        showInGrid: true,
-        type: 'text',
-        validators: [RequiredValidator],
-      },
-      {
-        key: 'country',
-        label: 'Country',
-        showInGrid: true,
-        type: 'text',
-        validators: [RequiredValidator],
-      },
-    ];
+    showAs?: 'primaryCode' | 'primaryName' | 'secondaryCode' | 'secondaryName';
+  }[];
   /*
   * Data for rows
   */
-  @Prop() data: any[] = [
-    {
-      id: {
-        description: 'x',
-        value: 'x',
-      },
-      shortName: {
-        description: 'x',
-        value: 'x',
-      },
-      longName: {
-        description: 'x',
-        value: 'x',
-      },
-      country: {
-        description: 'x',
-        value: 'x',
-      },
-    },
-    {
-      id: {
-        description: 'x',
-        value: 'x',
-      },
-      shortName: {
-        description: 'x',
-        value: 'x',
-      },
-      longName: {
-        description: 'x',
-        value: 'x',
-      },
-      country: {
-        description: 'x',
-        value: 'x',
-      },
-    }
-  ]
+  @Prop() data: any[];
   /*
   * Number of current page
   */
-  @Prop() page: number;
-  /*
-  * Number of total pages
-  */
-  @Prop() pages: number;
+  @Prop({ mutable: true }) page = 1;
   /*
   * Title of form
   */
   @Prop() titleOfForm: string;
+  /*
+  * Number of total items
+  */
+  @Prop({ mutable: true }) totalItems: number;
 
   @State() dataState: any[];
   @State() formState: object;
@@ -175,17 +113,18 @@ export class PlanetCrud {
     this.itemAdd.emit({ new: item });
     console.log(`emit add`, { new: item });
   }
-  
+
   handleDelete(item) {
     this.itemDeleted.emit({ previous: item });
   }
 
   handleUpdate(item) {
-    console.log(`emit update`, { new: item, previous: this.formStatePrevious });
     this.itemUpdate.emit({ new: item, previous: this.formStatePrevious });
   }
 
   render() {
+    const { allowedItemsPerPage, page, totalItems } = this
+
     return (
       <Host class="crud">
         {this.formMode ? (
@@ -225,7 +164,7 @@ export class PlanetCrud {
             </planet-title-of-page>
           </planet-column>
           <planet-column class="crud__actions">
-            <planet-pagination></planet-pagination>
+            <planet-pagination allowedItemsPerPage={allowedItemsPerPage} page={page} totalItems={totalItems}></planet-pagination>
             <planet-button-group>
               <planet-button onClick={() => this.openForm('post')}>New item</planet-button>
             </planet-button-group>
@@ -245,6 +184,34 @@ export class PlanetCrud {
                   <planet-button severity={PlanetButtonSeverity.ERROR} size="xs" onClick={() => this.handleDelete(row)}>Delete</planet-button>
                 </planet-buton-group>
               </planet-grid-item>
+              <planet-card>
+                <div class="card-container" style={{ display: 'flex' }}>
+                  <div class="card-main" style={{ flex: '1' }}>
+                    <planet-card-title>
+                      {this.columns.filter(column => column.showInGrid && column?.showAs === 'primaryCode').map(column => (
+                        <strong>{row[column.key] ? row[column.key].value : null} /&nbsp;</strong>
+                      ))}
+                      {this.columns.filter(column => column.showInGrid && column?.showAs === 'primaryName').map(column => (
+                        <Fragment>{row[column.key] ? row[column.key].value : null}</Fragment>
+                      ))}
+                    </planet-card-title>
+                    {this.columns.filter(column => column.showInGrid && column?.showAs === 'secondaryName').map(column => (
+                      <planet-card-content>{row[column.key] ? row[column.key].value : null}</planet-card-content>
+                    ))}
+                  </div>
+                  <div>
+                      <div class="card-extra" style={{color: 'rgba(0, 0, 0, .6)', textAlign: 'right', padding: '16px 16px 0', fontSize: '18px', lineHeight: '1.5'}}>
+                        {this.columns.filter(column => column.showInGrid && column?.showAs === 'secondaryCode').map(column => (
+                          <Fragment>{row[column.key] ? row[column.key].value : null}<br /></Fragment>
+                        ))}
+                      </div>
+                  </div>
+                </div>
+                <planet-card-actions>
+                  <planet-button size="xs" onClick={() => this.openForm('put', row)}>Edit</planet-button>
+                  <planet-button severity={PlanetButtonSeverity.ERROR} size="xs" onClick={() => this.handleDelete(row)}>Delete</planet-button>
+                </planet-card-actions>
+              </planet-card>
             </Fragment>
           )) : null}
         </planet-grid>

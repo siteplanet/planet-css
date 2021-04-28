@@ -1,3 +1,8 @@
 :host {
-  display: inline-block;
+  display: flex;
+  justify-content: flex-end;
+}
+
+planet-button-group + planet-button-group {
+  margin-left: 16px;
 }

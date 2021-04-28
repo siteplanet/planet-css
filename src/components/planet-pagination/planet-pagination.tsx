@@ -26,7 +26,7 @@ export class PlanetPagination {
   }
 
   render() {
-    const { page } = this
+    const { itemsPerPage, page } = this
 
     return (
       <Host>
@@ -38,7 +38,7 @@ export class PlanetPagination {
 
         <planet-button-group>
           {this.allowedItemsPerPage.map(item => (
-            <planet-button onClick={() => this.setItemsPerPage(item)} color={item === this.itemsPerPage ? 'success' : 'info'}>{item}</planet-button>
+            <planet-button onClick={() => this.setItemsPerPage(item)} color={item === itemsPerPage ? 'success' : 'info'}>{item}</planet-button>
           ))}
         </planet-button-group>
         <slot></slot>

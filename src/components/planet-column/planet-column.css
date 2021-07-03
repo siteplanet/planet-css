@@ -5,6 +5,7 @@
   padding-right: 8px;
 }
 
+:host(.column--xlarge-0-2) { max-width: 20%; min-width: 20%; }
 :host(.column--xlarge-1) { max-width: 8.333%; min-width: 8.333%; }
 :host(.column--xlarge-2) { max-width: 16.666%; min-width: 16.666%; }
 :host(.column--xlarge-3) { max-width: 25%; min-width: 25%; }
@@ -19,6 +20,7 @@
 :host(.column--xlarge-12) { max-width: 100%; min-width: 100%; }
 
 @media (max-width: 1920px) {
+  :host(.column--large-0-2) { max-width: 20%; min-width: 20%; }
   :host(.column--large-1) { max-width: 8.333%; min-width: 8.333%; }
   :host(.column--large-2) { max-width: 16.666%; min-width: 16.666%; }
   :host(.column--large-3) { max-width: 25%; min-width: 25%; }
@@ -33,7 +35,24 @@
   :host(.column--large-12) { max-width: 100%; min-width: 100%; }
 }
 
+@media (max-width: 1400px) {
+  :host(.column--medium-large-0-2) { max-width: 20%; min-width: 20%; }
+  :host(.column--medium-large-1) { max-width: 8.333%; min-width: 8.333%; }
+  :host(.column--medium-large-2) { max-width: 16.666%; min-width: 16.666%; }
+  :host(.column--medium-large-3) { max-width: 25%; min-width: 25%; }
+  :host(.column--medium-large-4) { max-width: 33.333%; min-width: 33.333%; }
+  :host(.column--medium-large-5) { max-width: 41.666%; min-width: 41.666%; }
+  :host(.column--medium-large-6) { max-width: 50%; min-width: 50%; }
+  :host(.column--medium-large-7) { max-width: 58.333%; min-width: 58.333%; }
+  :host(.column--medium-large-8) { max-width: 66.666%; min-width: 66.666%; }
+  :host(.column--medium-large-9) { max-width: 75%; min-width: 75%; }
+  :host(.column--medium-large-10) { max-width: 83.333%; min-width: 83.333%; }
+  :host(.column--medium-large-11) { max-width: 91.666%; min-width: 91.666%; }
+  :host(.column--medium-large-12) { max-width: 100%; min-width: 100%; }
+}
+
 @media (max-width: 960px) {
+  :host(.column--medium-0-2) { max-width: 20%; min-width: 20%; }
   :host(.column--medium-1) { max-width: 8.333%; min-width: 8.333%; }
   :host(.column--medium-2) { max-width: 16.666%; min-width: 16.666%; }
   :host(.column--medium-3) { max-width: 25%; min-width: 25%; }
@@ -49,6 +68,7 @@
 }
 
 @media (max-width: 600px) {
+  :host(.column--small-0-2) { max-width: 20%; min-width: 20%; }
   :host(.column--small-1) { max-width: 12.5%; min-width: 12.5%; }
   :host(.column--small-2) { max-width: 25%; min-width: 25%; }
   :host(.column--small-3) { max-width: 37.5%; min-width: 37.5%; }

@@ -9,6 +9,7 @@ export class PlanetColumn {
   @Prop() xlarge: number;
   @Prop() large: number;
   @Prop() medium: number;
+  @Prop() mediumLarge: number;
   @Prop() small: number;
   @Prop() xsmall: number;
 
@@ -16,6 +17,7 @@ export class PlanetColumn {
     return (
       <Host class={{
         'column': true,
+        'column--xlarge-0-2': this.xlarge === 0.2,
         'column--xlarge-1': this.xlarge === 1,
         'column--xlarge-2': this.xlarge === 2,
         'column--xlarge-3': this.xlarge === 3,
@@ -28,6 +30,7 @@ export class PlanetColumn {
         'column--xlarge-10': this.xlarge === 10,
         'column--xlarge-11': this.xlarge === 11,
         'column--xlarge-12': this.xlarge === 12,
+        'column--large-0-2': this.large === 0.2,
         'column--large-1': this.large === 1,
         'column--large-2': this.large === 2,
         'column--large-3': this.large === 3,
@@ -40,6 +43,7 @@ export class PlanetColumn {
         'column--large-10': this.large === 10,
         'column--large-11': this.large === 11,
         'column--large-12': this.large === 12,
+        'column--medium-0-2': this.medium === 0.2,
         'column--medium-1': this.medium === 1,
         'column--medium-2': this.medium === 2,
         'column--medium-3': this.medium === 3,
@@ -52,6 +56,20 @@ export class PlanetColumn {
         'column--medium-10': this.medium === 10,
         'column--medium-11': this.medium === 11,
         'column--medium-12': this.medium === 12,
+        'column--medium-large-0-2': this.mediumLarge === 0.2,
+        'column--medium-large-1': this.mediumLarge === 1,
+        'column--medium-large-2': this.mediumLarge === 2,
+        'column--medium-large-3': this.mediumLarge === 3,
+        'column--medium-large-4': this.mediumLarge === 4,
+        'column--medium-large-5': this.mediumLarge === 5,
+        'column--medium-large-6': this.mediumLarge === 6,
+        'column--medium-large-7': this.mediumLarge === 7,
+        'column--medium-large-8': this.mediumLarge === 8,
+        'column--medium-large-9': this.mediumLarge === 9,
+        'column--medium-large-10': this.mediumLarge === 10,
+        'column--medium-large-11': this.mediumLarge === 11,
+        'column--medium-large-12': this.mediumLarge === 12,
+        'column--small-0-2': this.small === 0.2,
         'column--small-1': this.small === 1,
         'column--small-2': this.small === 2,
         'column--small-3': this.small === 3,

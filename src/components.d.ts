@@ -43,6 +43,7 @@ export namespace Components {
     interface PlanetColumn {
         "large": number;
         "medium": number;
+        "mediumLarge": number;
         "small": number;
         "xlarge": number;
         "xsmall": number;
@@ -465,6 +466,7 @@ declare namespace LocalJSX {
     interface PlanetColumn {
         "large"?: number;
         "medium"?: number;
+        "mediumLarge"?: number;
         "small"?: number;
         "xlarge"?: number;
         "xsmall"?: number;

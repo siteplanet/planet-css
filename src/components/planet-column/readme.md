@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `large`  | `large`   |             | `number` | `undefined` |
-| `medium` | `medium`  |             | `number` | `undefined` |
-| `small`  | `small`   |             | `number` | `undefined` |
-| `xlarge` | `xlarge`  |             | `number` | `undefined` |
-| `xsmall` | `xsmall`  |             | `number` | `undefined` |
+| Property      | Attribute      | Description | Type     | Default     |
+| ------------- | -------------- | ----------- | -------- | ----------- |
+| `large`       | `large`        |             | `number` | `undefined` |
+| `medium`      | `medium`       |             | `number` | `undefined` |
+| `mediumLarge` | `medium-large` |             | `number` | `undefined` |
+| `small`       | `small`        |             | `number` | `undefined` |
+| `xlarge`      | `xlarge`       |             | `number` | `undefined` |
+| `xsmall`      | `xsmall`       |             | `number` | `undefined` |
 
 
 ## Dependencies

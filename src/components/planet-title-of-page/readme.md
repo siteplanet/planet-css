@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property    | Attribute   | Description | Type      | Default     |
+| ----------- | ----------- | ----------- | --------- | ----------- |
+| `secondary` | `secondary` |             | `boolean` | `undefined` |
+| `tertiary`  | `tertiary`  |             | `boolean` | `undefined` |
+
+
 ## Dependencies
 
 ### Used by

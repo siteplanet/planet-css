@@ -143,6 +143,8 @@ export namespace Components {
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
+        "secondary"?: boolean;
+        "tertiary"?: boolean;
     }
     interface PlanetValidationMessage {
     }
@@ -577,6 +579,8 @@ declare namespace LocalJSX {
     interface PlanetTitleOfGroup {
     }
     interface PlanetTitleOfPage {
+        "secondary"?: boolean;
+        "tertiary"?: boolean;
     }
     interface PlanetValidationMessage {
     }
